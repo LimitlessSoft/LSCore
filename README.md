@@ -1,34 +1,35 @@
 # LSCore
-### free and open-source .NET Api framework
+### Free and open-source .NET Api framework
 
-A .NET Api framework which makes building your API faster and easier.
-Include base generic managers which communicates with your database on table level.
-Include base api managers to easily communicate with other APIs and hande requests.
-Automatically scans your api project for Managers, Validators, Mappers.
+A .NET libraries which makes building your API faster and easier.
+Using DI to implement managers, mappers, validators, converts and others for the faster building process.
 
 To effectively use this framework, follow your project infrastructure as described bellow
 
+For whole Framework to work, install LSCore.Contracts, LSCore.Domain, LSCore.Framework and LSCore.Repository (if you have database)
+
 ## Api structure
-Base structure of API using this framework should contains 5 projects.
- - ProjectName.Api (Web Api Project)
- - ProjectName.Contracts (Class Library)
- - ProjectName.Domain (Class Library)
- - ProjectName.Repository (Class Library)
+Base structure of API using this framework should contains 4 projects.
+ - YourProject.Api (Web Api Project)
+ - YourProject.Contracts (Class Library)
+ - YourProject.Domain (Class Library)
+ - YourProject.Repository (Class Library, if you are communicating with database)
  
 ### .Api 
 Used to build controllers with endpoints which will call implementations from class library.
 Should not contain any logic inside it.
 This project must reference:
 `LSCore.Framework`
-`ProjectName.Domain`
-`ProjectName.Repository`
+`YourProject.Domain`
+`YourProject.Repository`
 
 Important: If you do not reference both `Domain` and `Repository` proejcts, Dependency Injection will not find Managers!
 Important: Endpoints inside your controllers should only be used to catch request and call managers method which contains all the logic, valiadtions, request handling and building resposne.
 
 Only folder you should have in this project is `Controllers` which contains your controllers.
+
 ### .Contracts
-Used to declare entity classes, enumerators, manager interfaces, dtos, constants, static classes.
+Used to declare entity classes, enumerators, manager interfaces, dtos, constants, static classes, dto mappers etc.
 This project must reference:
 `LSCore.Contracts`
 
@@ -45,13 +46,12 @@ Common folders you should have in this project are:
 
 and a `Constants.cs` which is used to store all constants used for this API
 
-
 ### .Domain
 Used to declare all the logic and implementations in your project.
 This project must reference:
 `LSCore.Domain`
-`ProjectName.Contracts`
-`ProjectName.Repository` (if you have database)
+`YourProject.Contracts`
+`YourProject.Repository` (if you have database)
 
 Common folders you should have in this project are:
 - Managers
@@ -80,6 +80,7 @@ Each API endpoint should return some value. You should always return one of thes
 - LSCoreResponse
 - LSCoreResponse<TPayload>
 - LSCoreListResponse<TPayload>
+- LSCorePaginatedResponse<TPayload> (To be implemented)
 
 All the responses have this JSON structure:
 ```
