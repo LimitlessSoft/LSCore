@@ -1,0 +1,12 @@
+C:\Users\arist\Documents\source\LSCore\src\LSCore.Framework\bin\Debug\net7.0\LSCore.Framework.deps.json
+C:\Users\arist\Documents\source\LSCore\src\LSCore.Framework\bin\Debug\net7.0\LSCore.Framework.dll
+C:\Users\arist\Documents\source\LSCore\src\LSCore.Framework\bin\Debug\net7.0\LSCore.Framework.pdb
+C:\Users\arist\Documents\source\LSCore\src\LSCore.Framework\obj\Debug\net7.0\LSCore.Framework.csproj.AssemblyReference.cache
+C:\Users\arist\Documents\source\LSCore\src\LSCore.Framework\obj\Debug\net7.0\LSCore.Framework.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\arist\Documents\source\LSCore\src\LSCore.Framework\obj\Debug\net7.0\LSCore.Framework.AssemblyInfoInputs.cache
+C:\Users\arist\Documents\source\LSCore\src\LSCore.Framework\obj\Debug\net7.0\LSCore.Framework.AssemblyInfo.cs
+C:\Users\arist\Documents\source\LSCore\src\LSCore.Framework\obj\Debug\net7.0\LSCore.Framework.csproj.CoreCompileInputs.cache
+C:\Users\arist\Documents\source\LSCore\src\LSCore.Framework\obj\Debug\net7.0\LSCore.Framework.dll
+C:\Users\arist\Documents\source\LSCore\src\LSCore.Framework\obj\Debug\net7.0\refint\LSCore.Framework.dll
+C:\Users\arist\Documents\source\LSCore\src\LSCore.Framework\obj\Debug\net7.0\LSCore.Framework.pdb
+C:\Users\arist\Documents\source\LSCore\src\LSCore.Framework\obj\Debug\net7.0\ref\LSCore.Framework.dll

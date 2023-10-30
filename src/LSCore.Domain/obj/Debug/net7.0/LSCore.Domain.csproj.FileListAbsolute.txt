@@ -1,0 +1,15 @@
+C:\Users\arist\Documents\source\LSCore\src\LSCore.Domain\bin\Debug\net7.0\LSCore.Domain.deps.json
+C:\Users\arist\Documents\source\LSCore\src\LSCore.Domain\bin\Debug\net7.0\LSCore.Domain.dll
+C:\Users\arist\Documents\source\LSCore\src\LSCore.Domain\bin\Debug\net7.0\LSCore.Domain.pdb
+C:\Users\arist\Documents\source\LSCore\src\LSCore.Domain\obj\Debug\net7.0\LSCore.Domain.csproj.AssemblyReference.cache
+C:\Users\arist\Documents\source\LSCore\src\LSCore.Domain\obj\Debug\net7.0\LSCore.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\arist\Documents\source\LSCore\src\LSCore.Domain\obj\Debug\net7.0\LSCore.Domain.AssemblyInfoInputs.cache
+C:\Users\arist\Documents\source\LSCore\src\LSCore.Domain\obj\Debug\net7.0\LSCore.Domain.AssemblyInfo.cs
+C:\Users\arist\Documents\source\LSCore\src\LSCore.Domain\obj\Debug\net7.0\LSCore.Domain.csproj.CoreCompileInputs.cache
+C:\Users\arist\Documents\source\LSCore\src\LSCore.Domain\obj\Debug\net7.0\LSCore.Domain.dll
+C:\Users\arist\Documents\source\LSCore\src\LSCore.Domain\obj\Debug\net7.0\refint\LSCore.Domain.dll
+C:\Users\arist\Documents\source\LSCore\src\LSCore.Domain\obj\Debug\net7.0\LSCore.Domain.pdb
+C:\Users\arist\Documents\source\LSCore\src\LSCore.Domain\obj\Debug\net7.0\ref\LSCore.Domain.dll
+C:\Users\arist\Documents\source\LSCore\src\LSCore.Domain\bin\Debug\net7.0\LSCore.Contracts.dll
+C:\Users\arist\Documents\source\LSCore\src\LSCore.Domain\bin\Debug\net7.0\LSCore.Contracts.pdb
+C:\Users\arist\Documents\source\LSCore\src\LSCore.Domain\obj\Debug\net7.0\LSCore.Domain.csproj.CopyComplete
