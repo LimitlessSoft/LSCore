@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33829.357
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LSCore.Framework", "src\LSCore.Framework\LSCore.Framework.csproj", "{64F02289-F003-4170-8E57-F617F66B9357}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LSCore.Framework", "src\LSCore.Framework\LSCore.Framework.csproj", "{64F02289-F003-4170-8E57-F617F66B9357}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LSCore.Contracts", "src\LSCore.Contracts\LSCore.Contracts.csproj", "{3BF8A48E-CB9E-49E4-ADC5-BCA61007941A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LSCore.Contracts", "src\LSCore.Contracts\LSCore.Contracts.csproj", "{3BF8A48E-CB9E-49E4-ADC5-BCA61007941A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LSCore.Domain", "src\LSCore.Domain\LSCore.Domain.csproj", "{2F538119-5E1D-4D93-AB99-79783BEEAE98}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LSCore.Domain", "src\LSCore.Domain\LSCore.Domain.csproj", "{2F538119-5E1D-4D93-AB99-79783BEEAE98}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LSCore.Repository", "src\LSCore.Repository\LSCore.Repository.csproj", "{056C712D-ED3B-44D9-B5B5-42D148E19AAB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LSCore.Repository", "src\LSCore.Repository\LSCore.Repository.csproj", "{056C712D-ED3B-44D9-B5B5-42D148E19AAB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
