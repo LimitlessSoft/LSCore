@@ -1,4 +1,6 @@
-﻿namespace LSCore.Contracts.Entities
+﻿using LSCore.Contracts.Interfaces;
+
+namespace LSCore.Contracts.Entities
 {
     public class LSCoreEntity : ILSCoreEntity
     {

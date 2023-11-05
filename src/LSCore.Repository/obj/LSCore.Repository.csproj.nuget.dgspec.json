@@ -5,7 +5,7 @@
   },
   "projects": {
     "C:\\Users\\arist\\Documents\\source\\LSCore\\src\\LSCore.Contracts\\LSCore.Contracts.csproj": {
-      "version": "1.0.0",
+      "version": "1.0.7",
       "restore": {
         "projectUniqueName": "C:\\Users\\arist\\Documents\\source\\LSCore\\src\\LSCore.Contracts\\LSCore.Contracts.csproj",
         "projectName": "LSCore.Contracts",
@@ -82,7 +82,7 @@
       }
     },
     "C:\\Users\\arist\\Documents\\source\\LSCore\\src\\LSCore.Repository\\LSCore.Repository.csproj": {
-      "version": "1.0.0",
+      "version": "1.0.7",
       "restore": {
         "projectUniqueName": "C:\\Users\\arist\\Documents\\source\\LSCore\\src\\LSCore.Repository\\LSCore.Repository.csproj",
         "projectName": "LSCore.Repository",
@@ -127,7 +127,7 @@
           "dependencies": {
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[7.0.13, )"
+              "version": "[6.0.18, )"
             },
             "Microsoft.Extensions.Configuration.Abstractions": {
               "target": "Package",

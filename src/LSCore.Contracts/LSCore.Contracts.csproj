@@ -8,11 +8,9 @@
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
     <RepositoryUrl>https://github.com/LimitlessSoft/LSCore</RepositoryUrl>
+    <Version>1.0.7</Version>
+    <Description>Object models used by other LSCore packets</Description>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Folder Include="Enums\" />
-  </ItemGroup>
 
   <ItemGroup>
     <None Include="..\..\LICENSE">

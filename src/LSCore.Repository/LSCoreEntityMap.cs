@@ -1,4 +1,4 @@
-﻿using LSCore.Contracts.Entities;
+﻿using LSCore.Contracts.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

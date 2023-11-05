@@ -5,7 +5,7 @@
   },
   "projects": {
     "C:\\Users\\arist\\Documents\\source\\LSCore\\src\\LSCore.Contracts\\LSCore.Contracts.csproj": {
-      "version": "1.0.0",
+      "version": "1.0.7",
       "restore": {
         "projectUniqueName": "C:\\Users\\arist\\Documents\\source\\LSCore\\src\\LSCore.Contracts\\LSCore.Contracts.csproj",
         "projectName": "LSCore.Contracts",
@@ -82,7 +82,7 @@
       }
     },
     "C:\\Users\\arist\\Documents\\source\\LSCore\\src\\LSCore.Domain\\LSCore.Domain.csproj": {
-      "version": "1.0.0",
+      "version": "1.0.7",
       "restore": {
         "projectUniqueName": "C:\\Users\\arist\\Documents\\source\\LSCore\\src\\LSCore.Domain\\LSCore.Domain.csproj",
         "projectName": "LSCore.Domain",
@@ -132,6 +132,10 @@
             "Lamar": {
               "target": "Package",
               "version": "[12.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.18, )"
             }
           },
           "imports": [

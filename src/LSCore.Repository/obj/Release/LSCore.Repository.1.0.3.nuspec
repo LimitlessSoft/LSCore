@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>LSCore.Repository</id>
+    <version>1.0.3</version>
+    <authors>LSCore.Repository</authors>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <license type="file">LICENSE</license>
+    <licenseUrl>https://aka.ms/deprecateLicenseUrl</licenseUrl>
+    <readme>README.md</readme>
+    <description>Package Description</description>
+    <repository url="https://github.com/LimitlessSoft/LSCore" />
+    <dependencies>
+      <group targetFramework="net7.0">
+        <dependency id="LSCore.Contracts" version="1.0.3" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.EntityFrameworkCore" version="7.0.13" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Extensions.Configuration.Abstractions" version="7.0.0" exclude="Build,Analyzers" />
+        <dependency id="Npgsql.EntityFrameworkCore.PostgreSQL" version="6.0.8" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="C:\Users\arist\Documents\source\LSCore\src\LSCore.Repository\bin\Release\net7.0\LSCore.Repository.dll" target="lib\net7.0\LSCore.Repository.dll" />
+    <file src="C:\Users\arist\Documents\source\LSCore\LICENSE" target="\LICENSE" />
+    <file src="C:\Users\arist\Documents\source\LSCore\README.md" target="\README.md" />
+  </files>
+</package>

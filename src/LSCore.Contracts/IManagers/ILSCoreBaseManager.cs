@@ -6,6 +6,6 @@ namespace LSCore.Contracts.IManagers
     public interface ILSCoreBaseManager
     {
         void SetContext(HttpContext httpContext);
-        bool IsContextInvalid(ILSCoreResponse response);
+        //bool IsContextInvalid(ILSCoreResponse response);
     }
 }

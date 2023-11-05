@@ -10,3 +10,8 @@ C:\Users\arist\Documents\source\LSCore\src\LSCore.Framework\obj\Release\net7.0\L
 C:\Users\arist\Documents\source\LSCore\src\LSCore.Framework\obj\Release\net7.0\refint\LSCore.Framework.dll
 C:\Users\arist\Documents\source\LSCore\src\LSCore.Framework\obj\Release\net7.0\LSCore.Framework.pdb
 C:\Users\arist\Documents\source\LSCore\src\LSCore.Framework\obj\Release\net7.0\ref\LSCore.Framework.dll
+C:\Users\arist\Documents\source\LSCore\src\LSCore.Framework\bin\Release\net7.0\LSCore.Contracts.dll
+C:\Users\arist\Documents\source\LSCore\src\LSCore.Framework\bin\Release\net7.0\LSCore.Domain.dll
+C:\Users\arist\Documents\source\LSCore\src\LSCore.Framework\bin\Release\net7.0\LSCore.Contracts.pdb
+C:\Users\arist\Documents\source\LSCore\src\LSCore.Framework\bin\Release\net7.0\LSCore.Domain.pdb
+C:\Users\arist\Documents\source\LSCore\src\LSCore.Framework\obj\Release\net7.0\LSCore.Framework.csproj.CopyComplete
