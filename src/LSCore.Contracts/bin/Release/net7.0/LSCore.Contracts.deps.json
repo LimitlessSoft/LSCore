@@ -6,7 +6,7 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v7.0": {
-      "LSCore.Contracts/1.0.8": {
+      "LSCore.Contracts/1.0.9": {
         "dependencies": {
           "Microsoft.AspNetCore.Http.Abstractions": "2.2.0",
           "Microsoft.Extensions.Logging": "7.0.0",
@@ -121,7 +121,7 @@
     }
   },
   "libraries": {
-    "LSCore.Contracts/1.0.8": {
+    "LSCore.Contracts/1.0.9": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

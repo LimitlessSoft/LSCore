@@ -247,13 +247,13 @@ namespace LSCore.Domain.Managers
         }
     }
 
-    public class BaseManager<TManager, TEntity> : LSCoreBaseManager<TManager> where TEntity
+    public class LSCoreBaseManager<TManager, TEntity> : LSCoreBaseManager<TManager> where TEntity
         : class, ILSCoreEntity, new()
     {
         private readonly ILogger<TManager> _logger;
         private readonly DbContext _dbContext;
 
-        public BaseManager(ILogger<TManager> logger, DbContext dbContext)
+        public LSCoreBaseManager(ILogger<TManager> logger, DbContext dbContext)
             : base(logger, dbContext)
         {
             _logger = logger;

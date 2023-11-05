@@ -577,7 +577,7 @@
           }
         }
       },
-      "LSCore.Contracts/1.0.8": {
+      "LSCore.Contracts/1.0.9": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
         "dependencies": {
@@ -1773,7 +1773,7 @@
         "valueinjecter.nuspec"
       ]
     },
-    "LSCore.Contracts/1.0.8": {
+    "LSCore.Contracts/1.0.9": {
       "type": "project",
       "path": "../LSCore.Contracts/LSCore.Contracts.csproj",
       "msbuildProject": "../LSCore.Contracts/LSCore.Contracts.csproj"
@@ -1782,7 +1782,7 @@
   "projectFileDependencyGroups": {
     "net7.0": [
       "FluentValidation >= 11.5.2",
-      "LSCore.Contracts >= 1.0.8",
+      "LSCore.Contracts >= 1.0.9",
       "Lamar >= 12.0.0",
       "Microsoft.EntityFrameworkCore >= 6.0.18",
       "Minio >= 6.0.0"
@@ -1793,7 +1793,7 @@
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
-    "version": "1.0.8",
+    "version": "1.0.9",
     "restore": {
       "projectUniqueName": "C:\\Users\\arist\\Documents\\source\\LSCore\\src\\LSCore.Domain\\LSCore.Domain.csproj",
       "projectName": "LSCore.Domain",
