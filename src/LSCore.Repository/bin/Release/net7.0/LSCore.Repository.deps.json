@@ -6,9 +6,9 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v7.0": {
-      "LSCore.Repository/1.0.7": {
+      "LSCore.Repository/1.0.8": {
         "dependencies": {
-          "LSCore.Contracts": "1.0.7",
+          "LSCore.Contracts": "1.0.8",
           "Microsoft.EntityFrameworkCore": "6.0.18",
           "Microsoft.Extensions.Configuration.Abstractions": "7.0.0",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "6.0.8"
@@ -229,7 +229,7 @@
           }
         }
       },
-      "LSCore.Contracts/1.0.7": {
+      "LSCore.Contracts/1.0.8": {
         "dependencies": {
           "Microsoft.AspNetCore.Http.Abstractions": "2.2.0",
           "Microsoft.Extensions.Logging": "7.0.0",
@@ -243,7 +243,7 @@
     }
   },
   "libraries": {
-    "LSCore.Repository/1.0.7": {
+    "LSCore.Repository/1.0.8": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
@@ -409,7 +409,7 @@
       "path": "valueinjecter/3.2.0",
       "hashPath": "valueinjecter.3.2.0.nupkg.sha512"
     },
-    "LSCore.Contracts/1.0.7": {
+    "LSCore.Contracts/1.0.8": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

@@ -2,6 +2,19 @@
   "version": 3,
   "targets": {
     "net7.0": {
+      "CommunityToolkit.HighPerformance/8.2.1": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0/CommunityToolkit.HighPerformance.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0/CommunityToolkit.HighPerformance.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
       "FastExpressionCompiler/3.3.4": {
         "type": "package",
         "compile": {
@@ -322,6 +335,26 @@
           "lib/netstandard1.0/_._": {}
         }
       },
+      "Minio/6.0.0": {
+        "type": "package",
+        "dependencies": {
+          "CommunityToolkit.HighPerformance": "8.2.1",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "7.0.0",
+          "Microsoft.Extensions.Logging": "7.0.0",
+          "System.IO.Hashing": "7.0.0",
+          "System.Reactive": "6.0.0"
+        },
+        "compile": {
+          "lib/net7.0/Minio.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0/Minio.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
       "Newtonsoft.Json/13.0.3": {
         "type": "package",
         "compile": {
@@ -386,6 +419,38 @@
           "ref/netstandard1.5/System.IO.dll": {
             "related": ".xml"
           }
+        }
+      },
+      "System.IO.Hashing/7.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0/System.IO.Hashing.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0/System.IO.Hashing.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
+        }
+      },
+      "System.Reactive/6.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/System.Reactive.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/System.Reactive.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
         }
       },
       "System.Reflection/4.3.0": {
@@ -512,7 +577,7 @@
           }
         }
       },
-      "LSCore.Contracts/1.0.7": {
+      "LSCore.Contracts/1.0.8": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
         "dependencies": {
@@ -531,6 +596,32 @@
     }
   },
   "libraries": {
+    "CommunityToolkit.HighPerformance/8.2.1": {
+      "sha512": "0/5BHriP3T/vbHnjL/kgHo9qIOVbwAMeSrz0XWMhL83IwLk3sNhSd2+sCzRKjzufQZWL2xKEFbF93Itwpoijbg==",
+      "type": "package",
+      "path": "communitytoolkit.highperformance/8.2.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "License.md",
+        "ThirdPartyNotices.txt",
+        "communitytoolkit.highperformance.8.2.1.nupkg.sha512",
+        "communitytoolkit.highperformance.nuspec",
+        "lib/net6.0/CommunityToolkit.HighPerformance.dll",
+        "lib/net6.0/CommunityToolkit.HighPerformance.pdb",
+        "lib/net6.0/CommunityToolkit.HighPerformance.xml",
+        "lib/net7.0/CommunityToolkit.HighPerformance.dll",
+        "lib/net7.0/CommunityToolkit.HighPerformance.pdb",
+        "lib/net7.0/CommunityToolkit.HighPerformance.xml",
+        "lib/netstandard2.0/CommunityToolkit.HighPerformance.dll",
+        "lib/netstandard2.0/CommunityToolkit.HighPerformance.pdb",
+        "lib/netstandard2.0/CommunityToolkit.HighPerformance.xml",
+        "lib/netstandard2.1/CommunityToolkit.HighPerformance.dll",
+        "lib/netstandard2.1/CommunityToolkit.HighPerformance.pdb",
+        "lib/netstandard2.1/CommunityToolkit.HighPerformance.xml"
+      ]
+    },
     "FastExpressionCompiler/3.3.4": {
       "sha512": "gOGFxybUK0SQJ6TIV0YubqRfTSL2PGaoW1C7epcT76/tpufhXUGqLW0fP/PKDmhWhCS0YcnbCCFZMn3claa7ng==",
       "type": "package",
@@ -986,6 +1077,29 @@
         "runtime.json"
       ]
     },
+    "Minio/6.0.0": {
+      "sha512": "otyZTEZaKMpkmYFlX5MNYsijo5xT4BcKATFhBFMWUa2XdUEHNvU1mktGL2hxq/oLWSySDALpPDA0aWCvvnPlTg==",
+      "type": "package",
+      "path": "minio/6.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "icon.png",
+        "lib/net6.0/Minio.dll",
+        "lib/net6.0/Minio.pdb",
+        "lib/net6.0/Minio.xml",
+        "lib/net7.0/Minio.dll",
+        "lib/net7.0/Minio.pdb",
+        "lib/net7.0/Minio.xml",
+        "lib/netstandard2.0/Minio.dll",
+        "lib/netstandard2.0/Minio.pdb",
+        "lib/netstandard2.0/Minio.xml",
+        "minio.6.0.0.nupkg.sha512",
+        "minio.nuspec",
+        "readme.md"
+      ]
+    },
     "Newtonsoft.Json/13.0.3": {
       "sha512": "HrC5BXdl00IP9zeV+0Z848QWPAoCr9P3bDEZguI+gkLcBKAOxix/tLEAAHC+UvDNPv4a2d18lOReHMOagPa+zQ==",
       "type": "package",
@@ -1143,6 +1257,61 @@
         "ref/xamarinwatchos10/_._",
         "system.io.4.3.0.nupkg.sha512",
         "system.io.nuspec"
+      ]
+    },
+    "System.IO.Hashing/7.0.0": {
+      "sha512": "sDnWM0N3AMCa86LrKTWeF3BZLD2sgWyYUc7HL6z4+xyDZNQRwzmxbo4qP2rX2MqC+Sy1/gOSRDah5ltxY5jPxw==",
+      "type": "package",
+      "path": "system.io.hashing/7.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/net461/System.IO.Hashing.targets",
+        "buildTransitive/net462/_._",
+        "buildTransitive/net6.0/_._",
+        "buildTransitive/netcoreapp2.0/System.IO.Hashing.targets",
+        "lib/net462/System.IO.Hashing.dll",
+        "lib/net462/System.IO.Hashing.xml",
+        "lib/net6.0/System.IO.Hashing.dll",
+        "lib/net6.0/System.IO.Hashing.xml",
+        "lib/net7.0/System.IO.Hashing.dll",
+        "lib/net7.0/System.IO.Hashing.xml",
+        "lib/netstandard2.0/System.IO.Hashing.dll",
+        "lib/netstandard2.0/System.IO.Hashing.xml",
+        "system.io.hashing.7.0.0.nupkg.sha512",
+        "system.io.hashing.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "System.Reactive/6.0.0": {
+      "sha512": "31kfaW4ZupZzPsI5PVe77VhnvFF55qgma7KZr/E0iFTs6fmdhhG8j0mgEx620iLTey1EynOkEfnyTjtNEpJzGw==",
+      "type": "package",
+      "path": "system.reactive/6.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "build/net6.0-windows10.0.19041/_._",
+        "build/net6.0/_._",
+        "buildTransitive/net6.0-windows10.0.19041/_._",
+        "buildTransitive/net6.0/_._",
+        "icon.png",
+        "lib/net472/System.Reactive.dll",
+        "lib/net472/System.Reactive.xml",
+        "lib/net6.0-windows10.0.19041/System.Reactive.dll",
+        "lib/net6.0-windows10.0.19041/System.Reactive.xml",
+        "lib/net6.0/System.Reactive.dll",
+        "lib/net6.0/System.Reactive.xml",
+        "lib/netstandard2.0/System.Reactive.dll",
+        "lib/netstandard2.0/System.Reactive.xml",
+        "lib/uap10.0.18362/System.Reactive.dll",
+        "lib/uap10.0.18362/System.Reactive.pri",
+        "lib/uap10.0.18362/System.Reactive.xml",
+        "readme.md",
+        "system.reactive.6.0.0.nupkg.sha512",
+        "system.reactive.nuspec"
       ]
     },
     "System.Reflection/4.3.0": {
@@ -1604,7 +1773,7 @@
         "valueinjecter.nuspec"
       ]
     },
-    "LSCore.Contracts/1.0.7": {
+    "LSCore.Contracts/1.0.8": {
       "type": "project",
       "path": "../LSCore.Contracts/LSCore.Contracts.csproj",
       "msbuildProject": "../LSCore.Contracts/LSCore.Contracts.csproj"
@@ -1613,9 +1782,10 @@
   "projectFileDependencyGroups": {
     "net7.0": [
       "FluentValidation >= 11.5.2",
-      "LSCore.Contracts >= 1.0.7",
+      "LSCore.Contracts >= 1.0.8",
       "Lamar >= 12.0.0",
-      "Microsoft.EntityFrameworkCore >= 6.0.18"
+      "Microsoft.EntityFrameworkCore >= 6.0.18",
+      "Minio >= 6.0.0"
     ]
   },
   "packageFolders": {
@@ -1623,7 +1793,7 @@
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
-    "version": "1.0.7",
+    "version": "1.0.8",
     "restore": {
       "projectUniqueName": "C:\\Users\\arist\\Documents\\source\\LSCore\\src\\LSCore.Domain\\LSCore.Domain.csproj",
       "projectName": "LSCore.Domain",
@@ -1677,6 +1847,10 @@
           "Microsoft.EntityFrameworkCore": {
             "target": "Package",
             "version": "[6.0.18, )"
+          },
+          "Minio": {
+            "target": "Package",
+            "version": "[6.0.0, )"
           }
         },
         "imports": [

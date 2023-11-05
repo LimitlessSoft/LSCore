@@ -6,11 +6,11 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v7.0": {
-      "LSCore.Framework/1.0.7": {
+      "LSCore.Framework/1.0.8": {
         "dependencies": {
           "FluentValidation.DependencyInjectionExtensions": "11.5.2",
-          "LSCore.Contracts": "1.0.7",
-          "LSCore.Domain": "1.0.7",
+          "LSCore.Contracts": "1.0.8",
+          "LSCore.Domain": "1.0.8",
           "Lamar.Microsoft.DependencyInjection": "12.0.2",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "7.0.9",
           "Microsoft.AspNetCore.OpenApi": "7.0.5",
@@ -19,6 +19,14 @@
         },
         "runtime": {
           "LSCore.Framework.dll": {}
+        }
+      },
+      "CommunityToolkit.HighPerformance/8.2.1": {
+        "runtime": {
+          "lib/net7.0/CommunityToolkit.HighPerformance.dll": {
+            "assemblyVersion": "8.2.0.0",
+            "fileVersion": "8.2.1.1"
+          }
         }
       },
       "FastExpressionCompiler/3.3.4": {
@@ -427,6 +435,21 @@
           }
         }
       },
+      "Minio/6.0.0": {
+        "dependencies": {
+          "CommunityToolkit.HighPerformance": "8.2.1",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "7.0.0",
+          "Microsoft.Extensions.Logging": "7.0.0",
+          "System.IO.Hashing": "7.0.0",
+          "System.Reactive": "6.0.0"
+        },
+        "runtime": {
+          "lib/net7.0/Minio.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.0.0"
+          }
+        }
+      },
       "Newtonsoft.Json/13.0.3": {
         "runtime": {
           "lib/net6.0/Newtonsoft.Json.dll": {
@@ -505,6 +528,22 @@
           "System.Threading.Tasks": "4.3.0"
         }
       },
+      "System.IO.Hashing/7.0.0": {
+        "runtime": {
+          "lib/net7.0/System.IO.Hashing.dll": {
+            "assemblyVersion": "7.0.0.0",
+            "fileVersion": "7.0.22.51805"
+          }
+        }
+      },
+      "System.Reactive/6.0.0": {
+        "runtime": {
+          "lib/net6.0/System.Reactive.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.0.1"
+          }
+        }
+      },
       "System.Reflection/4.3.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.1.0",
@@ -569,7 +608,7 @@
           }
         }
       },
-      "LSCore.Contracts/1.0.7": {
+      "LSCore.Contracts/1.0.8": {
         "dependencies": {
           "Microsoft.AspNetCore.Http.Abstractions": "2.2.0",
           "Microsoft.Extensions.Logging": "7.0.0",
@@ -580,12 +619,13 @@
           "LSCore.Contracts.dll": {}
         }
       },
-      "LSCore.Domain/1.0.7": {
+      "LSCore.Domain/1.0.8": {
         "dependencies": {
           "FluentValidation": "11.5.2",
-          "LSCore.Contracts": "1.0.7",
+          "LSCore.Contracts": "1.0.8",
           "Lamar": "12.0.2",
-          "Microsoft.EntityFrameworkCore": "6.0.18"
+          "Microsoft.EntityFrameworkCore": "6.0.18",
+          "Minio": "6.0.0"
         },
         "runtime": {
           "LSCore.Domain.dll": {}
@@ -594,10 +634,17 @@
     }
   },
   "libraries": {
-    "LSCore.Framework/1.0.7": {
+    "LSCore.Framework/1.0.8": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "CommunityToolkit.HighPerformance/8.2.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-0/5BHriP3T/vbHnjL/kgHo9qIOVbwAMeSrz0XWMhL83IwLk3sNhSd2+sCzRKjzufQZWL2xKEFbF93Itwpoijbg==",
+      "path": "communitytoolkit.highperformance/8.2.1",
+      "hashPath": "communitytoolkit.highperformance.8.2.1.nupkg.sha512"
     },
     "FastExpressionCompiler/3.3.4": {
       "type": "package",
@@ -963,6 +1010,13 @@
       "path": "microsoft.openapi/1.4.3",
       "hashPath": "microsoft.openapi.1.4.3.nupkg.sha512"
     },
+    "Minio/6.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-otyZTEZaKMpkmYFlX5MNYsijo5xT4BcKATFhBFMWUa2XdUEHNvU1mktGL2hxq/oLWSySDALpPDA0aWCvvnPlTg==",
+      "path": "minio/6.0.0",
+      "hashPath": "minio.6.0.0.nupkg.sha512"
+    },
     "Newtonsoft.Json/13.0.3": {
       "type": "package",
       "serviceable": true,
@@ -1032,6 +1086,20 @@
       "sha512": "sha512-3qjaHvxQPDpSOYICjUoTsmoq5u6QJAFRUITgeT/4gqkF1bajbSmb1kwSxEA8AHlofqgcKJcM8udgieRNhaJ5Cg==",
       "path": "system.io/4.3.0",
       "hashPath": "system.io.4.3.0.nupkg.sha512"
+    },
+    "System.IO.Hashing/7.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-sDnWM0N3AMCa86LrKTWeF3BZLD2sgWyYUc7HL6z4+xyDZNQRwzmxbo4qP2rX2MqC+Sy1/gOSRDah5ltxY5jPxw==",
+      "path": "system.io.hashing/7.0.0",
+      "hashPath": "system.io.hashing.7.0.0.nupkg.sha512"
+    },
+    "System.Reactive/6.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-31kfaW4ZupZzPsI5PVe77VhnvFF55qgma7KZr/E0iFTs6fmdhhG8j0mgEx620iLTey1EynOkEfnyTjtNEpJzGw==",
+      "path": "system.reactive/6.0.0",
+      "hashPath": "system.reactive.6.0.0.nupkg.sha512"
     },
     "System.Reflection/4.3.0": {
       "type": "package",
@@ -1110,12 +1178,12 @@
       "path": "valueinjecter/3.2.0",
       "hashPath": "valueinjecter.3.2.0.nupkg.sha512"
     },
-    "LSCore.Contracts/1.0.7": {
+    "LSCore.Contracts/1.0.8": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "LSCore.Domain/1.0.7": {
+    "LSCore.Domain/1.0.8": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

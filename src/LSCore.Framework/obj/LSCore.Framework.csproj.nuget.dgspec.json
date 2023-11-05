@@ -5,7 +5,7 @@
   },
   "projects": {
     "C:\\Users\\arist\\Documents\\source\\LSCore\\src\\LSCore.Contracts\\LSCore.Contracts.csproj": {
-      "version": "1.0.7",
+      "version": "1.0.8",
       "restore": {
         "projectUniqueName": "C:\\Users\\arist\\Documents\\source\\LSCore\\src\\LSCore.Contracts\\LSCore.Contracts.csproj",
         "projectName": "LSCore.Contracts",
@@ -82,7 +82,7 @@
       }
     },
     "C:\\Users\\arist\\Documents\\source\\LSCore\\src\\LSCore.Domain\\LSCore.Domain.csproj": {
-      "version": "1.0.7",
+      "version": "1.0.8",
       "restore": {
         "projectUniqueName": "C:\\Users\\arist\\Documents\\source\\LSCore\\src\\LSCore.Domain\\LSCore.Domain.csproj",
         "projectName": "LSCore.Domain",
@@ -136,6 +136,10 @@
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[6.0.18, )"
+            },
+            "Minio": {
+              "target": "Package",
+              "version": "[6.0.0, )"
             }
           },
           "imports": [
@@ -159,7 +163,7 @@
       }
     },
     "C:\\Users\\arist\\Documents\\source\\LSCore\\src\\LSCore.Framework\\LSCore.Framework.csproj": {
-      "version": "1.0.7",
+      "version": "1.0.8",
       "restore": {
         "projectUniqueName": "C:\\Users\\arist\\Documents\\source\\LSCore\\src\\LSCore.Framework\\LSCore.Framework.csproj",
         "projectName": "LSCore.Framework",

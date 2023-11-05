@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "XQm2k48AvznexQRJuCR9rl0OaqD6FNLGiZdM/dgqkTTr7t2GxRsOU+A+BH5bEPgIA1JRlv7/LwAz+7EPtx/K0w==",
+  "dgSpecHash": "GYewJWv5w/49JfRnhISlUU+PFaNyVLxHyVvgCD+TqbdEgUz9SRv6E7YtfAK44xl+a73Qaa5urNVI4ga5WaEEMw==",
   "success": true,
   "projectFilePath": "C:\\Users\\arist\\Documents\\source\\LSCore\\src\\LSCore.Framework\\LSCore.Framework.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\arist\\.nuget\\packages\\communitytoolkit.highperformance\\8.2.1\\communitytoolkit.highperformance.8.2.1.nupkg.sha512",
     "C:\\Users\\arist\\.nuget\\packages\\fastexpressioncompiler\\3.3.4\\fastexpressioncompiler.3.3.4.nupkg.sha512",
     "C:\\Users\\arist\\.nuget\\packages\\fluentvalidation\\11.5.2\\fluentvalidation.11.5.2.nupkg.sha512",
     "C:\\Users\\arist\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\11.5.2\\fluentvalidation.dependencyinjectionextensions.11.5.2.nupkg.sha512",
@@ -56,6 +57,7 @@
     "C:\\Users\\arist\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Users\\arist\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
     "C:\\Users\\arist\\.nuget\\packages\\microsoft.openapi\\1.4.3\\microsoft.openapi.1.4.3.nupkg.sha512",
+    "C:\\Users\\arist\\.nuget\\packages\\minio\\6.0.0\\minio.6.0.0.nupkg.sha512",
     "C:\\Users\\arist\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
     "C:\\Users\\arist\\.nuget\\packages\\swashbuckle.aspnetcore\\6.5.0\\swashbuckle.aspnetcore.6.5.0.nupkg.sha512",
     "C:\\Users\\arist\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.5.0\\swashbuckle.aspnetcore.swagger.6.5.0.nupkg.sha512",
@@ -66,6 +68,8 @@
     "C:\\Users\\arist\\.nuget\\packages\\system.diagnostics.eventlog\\6.0.0\\system.diagnostics.eventlog.6.0.0.nupkg.sha512",
     "C:\\Users\\arist\\.nuget\\packages\\system.identitymodel.tokens.jwt\\6.15.1\\system.identitymodel.tokens.jwt.6.15.1.nupkg.sha512",
     "C:\\Users\\arist\\.nuget\\packages\\system.io\\4.3.0\\system.io.4.3.0.nupkg.sha512",
+    "C:\\Users\\arist\\.nuget\\packages\\system.io.hashing\\7.0.0\\system.io.hashing.7.0.0.nupkg.sha512",
+    "C:\\Users\\arist\\.nuget\\packages\\system.reactive\\6.0.0\\system.reactive.6.0.0.nupkg.sha512",
     "C:\\Users\\arist\\.nuget\\packages\\system.reflection\\4.3.0\\system.reflection.4.3.0.nupkg.sha512",
     "C:\\Users\\arist\\.nuget\\packages\\system.reflection.primitives\\4.3.0\\system.reflection.primitives.4.3.0.nupkg.sha512",
     "C:\\Users\\arist\\.nuget\\packages\\system.runtime\\4.3.0\\system.runtime.4.3.0.nupkg.sha512",

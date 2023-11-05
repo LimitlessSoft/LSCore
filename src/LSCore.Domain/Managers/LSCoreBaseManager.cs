@@ -14,20 +14,20 @@ using static LSCore.Contracts.Extensions.LSCoreHttpResponseExtensions;
 
 namespace LSCore.Domain.Managers
 {
-    public class BaseManager<TManager> : ILSCoreBaseManager
+    public class LSCoreBaseManager<TManager> : ILSCoreBaseManager
     {
         private readonly ILogger<TManager> _logger;
         private readonly DbContext? _dbContext;
 
         public LSCoreContextUser CurrentUser { get; set; }
 
-        public BaseManager(ILogger<TManager> logger)
+        public LSCoreBaseManager(ILogger<TManager> logger)
         {
             _logger = logger;
             _dbContext = null;
         }
 
-        public BaseManager(ILogger<TManager> logger, DbContext dbContext)
+        public LSCoreBaseManager(ILogger<TManager> logger, DbContext dbContext)
         {
             _logger = logger;
             _dbContext = dbContext;
@@ -247,7 +247,7 @@ namespace LSCore.Domain.Managers
         }
     }
 
-    public class BaseManager<TManager, TEntity> : BaseManager<TManager> where TEntity
+    public class BaseManager<TManager, TEntity> : LSCoreBaseManager<TManager> where TEntity
         : class, ILSCoreEntity, new()
     {
         private readonly ILogger<TManager> _logger;
