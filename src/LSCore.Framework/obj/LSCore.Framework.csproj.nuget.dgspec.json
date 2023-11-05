@@ -5,7 +5,7 @@
   },
   "projects": {
     "C:\\Users\\arist\\Documents\\source\\LSCore\\src\\LSCore.Contracts\\LSCore.Contracts.csproj": {
-      "version": "1.0.9",
+      "version": "1.0.10",
       "restore": {
         "projectUniqueName": "C:\\Users\\arist\\Documents\\source\\LSCore\\src\\LSCore.Contracts\\LSCore.Contracts.csproj",
         "projectName": "LSCore.Contracts",
@@ -82,7 +82,7 @@
       }
     },
     "C:\\Users\\arist\\Documents\\source\\LSCore\\src\\LSCore.Domain\\LSCore.Domain.csproj": {
-      "version": "1.0.9",
+      "version": "1.0.10",
       "restore": {
         "projectUniqueName": "C:\\Users\\arist\\Documents\\source\\LSCore\\src\\LSCore.Domain\\LSCore.Domain.csproj",
         "projectName": "LSCore.Domain",
@@ -163,7 +163,7 @@
       }
     },
     "C:\\Users\\arist\\Documents\\source\\LSCore\\src\\LSCore.Framework\\LSCore.Framework.csproj": {
-      "version": "1.0.9",
+      "version": "1.0.10",
       "restore": {
         "projectUniqueName": "C:\\Users\\arist\\Documents\\source\\LSCore\\src\\LSCore.Framework\\LSCore.Framework.csproj",
         "projectName": "LSCore.Framework",

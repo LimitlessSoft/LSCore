@@ -1,4 +1,5 @@
-﻿using LSCore.Contracts.Http.Interfaces;
+﻿using LSCore.Contracts.Extensions;
+using LSCore.Contracts.Http.Interfaces;
 using System.Net;
 
 namespace LSCore.Contracts.Http
@@ -8,6 +9,16 @@ namespace LSCore.Contracts.Http
         public HttpStatusCode Status { get; set; } = HttpStatusCode.OK;
         public bool NotOk => Convert.ToInt16(Status).ToString()[0] != '2';
         public List<string>? Errors { get; set; } = null;
+
+        public LSCoreResponse()
+        {
+
+        }
+
+        public LSCoreResponse(ILSCoreResponse responseToMerge)
+        {
+            this.Merge(responseToMerge);
+        }
 
         public static LSCoreResponse NotImplemented()
         {
@@ -53,6 +64,11 @@ namespace LSCore.Contracts.Http
 
     public class LSCoreResponse<TPayload> : ILSCoreResponse<TPayload>
     {
+        public TPayload? Payload { get; set; }
+        public bool NotOk => Convert.ToInt16(Status).ToString()[0] != '2';
+        public HttpStatusCode Status { get; set; } = HttpStatusCode.OK;
+        public List<string>? Errors { get; set; } = null;
+
         public LSCoreResponse()
         {
 
@@ -62,10 +78,6 @@ namespace LSCore.Contracts.Http
         {
             Payload = payload;
         }
-        public TPayload? Payload { get; set; }
-        public bool NotOk => Convert.ToInt16(Status).ToString()[0] != '2';
-        public HttpStatusCode Status { get; set; } = HttpStatusCode.OK;
-        public List<string>? Errors { get; set; } = null;
 
         public static LSCoreResponse<TPayload> NotImplemented()
         {
