@@ -29,5 +29,6 @@ namespace LSCore.Contracts.IManagers
         Task<LSCoreResponse> PutAsync<TRequest>(HttpClient httpClient, string endpoint, TRequest request);
         Task<LSCoreResponse<TPayload>> PostAsync<TRequest, TPayload>(HttpClient httpClient, string endpoint, TRequest request);
         Task<LSCoreResponse<TPayload>> PutAsync<TRequest, TPayload>(HttpClient httpClient, string endpoint, TRequest request);
+        Task<LSCoreResponse> DeleteAsync(string endpoint);
     }
 }

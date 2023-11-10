@@ -1,8 +1,9 @@
-﻿using LSCore.Contracts.Tasks;
+﻿using LSCore.Contracts.IManagers;
+using LSCore.Contracts.Tasks;
 
 namespace LSCore.Domain.Managers
 {
-    public class LSCoreTaskSchedulerManager
+    public class LSCoreTaskSchedulerManager : ILSCoreTaskSchedulerManager
     {
         private List<Task> _asyncTasks { get; set; } = new List<Task>();
         private List<LSCoreTask> _tasks { get; set; } = new List<LSCoreTask>();

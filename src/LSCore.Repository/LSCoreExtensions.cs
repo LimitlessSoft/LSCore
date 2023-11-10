@@ -27,15 +27,9 @@ namespace LSCore.Repository
 
         public static DbContextOptionsBuilder ConfigureDbContext(this DbContextOptionsBuilder dbContextOptionsBuilder, IConfigurationRoot configurationRoot, string migrationAssembly, string dbName)
         {
-#if DEBUG
-            var postgresHost = configurationRoot.GetSection("POSTGRES")["HOST"];
-            var postgresPort = configurationRoot.GetSection("POSTGRES")["PORT"];
-            var postgresPassword = configurationRoot.GetSection("POSTGRES")["PASSWORD"];
-#else
-            var postgresHost = Environment.GetEnvironmentVariable("POSTGRES_HOST");
-            var postgresPort = Environment.GetEnvironmentVariable("POSTGRES_PORT");
-            var postgresPassword = Environment.GetEnvironmentVariable("POSTGRES_PASSWORD");
-#endif
+            var postgresHost = configurationRoot["POSTGRES_HOST"];
+            var postgresPort = configurationRoot["POSTGRES_PORT"];
+            var postgresPassword = configurationRoot["POSTGRES_PASSWORD"];
             var connection = $"Server={postgresHost};Port={postgresPort};Userid=postgres;Password={postgresPassword};Pooling=false;MinPoolSize=1;MaxPoolSize=20;Timeout=15;Database={dbName};Include Error Detail=true;";
 
             return dbContextOptionsBuilder.UseNpgsql(connection, x =>

@@ -22,6 +22,7 @@ namespace TD.Core.Framework
             var builder = new ConfigurationBuilder();
 
             builder.AddJsonFile("appsettings.json", true);
+            builder.AddEnvironmentVariables();
 
             ConfigurationRoot = builder.Build();
         }

@@ -2,7 +2,7 @@
 
 namespace LSCore.Contracts.Enums.ValidationCodes
 {
-    public enum LSCoreCommonValidaitonCodes
+    public enum LSCoreCommonValidationCodes
     {
         [Description("Value '{0}' must be greater than '{1}'.")]
         COMM_001,
