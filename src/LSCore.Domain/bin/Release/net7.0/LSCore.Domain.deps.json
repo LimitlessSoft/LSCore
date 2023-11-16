@@ -6,10 +6,10 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v7.0": {
-      "LSCore.Domain/1.0.16": {
+      "LSCore.Domain/1.0.18": {
         "dependencies": {
           "FluentValidation": "11.5.2",
-          "LSCore.Contracts": "1.0.16",
+          "LSCore.Contracts": "1.0.18",
           "Lamar": "12.0.0",
           "Microsoft.EntityFrameworkCore": "6.0.18",
           "Minio": "6.0.0"
@@ -334,7 +334,7 @@
           }
         }
       },
-      "LSCore.Contracts/1.0.16": {
+      "LSCore.Contracts/1.0.18": {
         "dependencies": {
           "Microsoft.AspNetCore.Http.Abstractions": "2.2.0",
           "Microsoft.Extensions.Logging": "7.0.0",
@@ -348,7 +348,7 @@
     }
   },
   "libraries": {
-    "LSCore.Domain/1.0.16": {
+    "LSCore.Domain/1.0.18": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
@@ -619,7 +619,7 @@
       "path": "valueinjecter/3.2.0",
       "hashPath": "valueinjecter.3.2.0.nupkg.sha512"
     },
-    "LSCore.Contracts/1.0.16": {
+    "LSCore.Contracts/1.0.18": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

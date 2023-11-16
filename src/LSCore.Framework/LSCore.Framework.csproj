@@ -7,7 +7,7 @@
     <RepositoryUrl>https://github.com/LimitlessSoft/LSCore</RepositoryUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <Version>1.0.16</Version>
+    <Version>1.0.18</Version>
     <Description>Framewrok used to build fast scalable .NET Web APIs</Description>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
   </PropertyGroup>

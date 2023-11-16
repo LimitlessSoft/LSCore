@@ -43,6 +43,8 @@ namespace TD.Core.Framework
                 );
                 s.TheCallingAssembly();
                 s.WithDefaultConventions();
+                s.ConnectImplementationsToTypesClosing(typeof(ILSCoreQuery<>));
+                s.ConnectImplementationsToTypesClosing(typeof(ILSCoreQuery<,>));
                 s.ConnectImplementationsToTypesClosing(typeof(IValidator<>));
                 s.ConnectImplementationsToTypesClosing(typeof(ILSCoreMap<,>));
                 s.ConnectImplementationsToTypesClosing(typeof(ILSCoreDtoMapper<,>));

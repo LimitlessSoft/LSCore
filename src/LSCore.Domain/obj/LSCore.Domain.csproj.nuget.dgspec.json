@@ -5,7 +5,7 @@
   },
   "projects": {
     "C:\\Users\\arist\\Documents\\source\\LSCore\\src\\LSCore.Contracts\\LSCore.Contracts.csproj": {
-      "version": "1.0.16",
+      "version": "1.0.18",
       "restore": {
         "projectUniqueName": "C:\\Users\\arist\\Documents\\source\\LSCore\\src\\LSCore.Contracts\\LSCore.Contracts.csproj",
         "projectName": "LSCore.Contracts",
@@ -77,12 +77,12 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
         }
       }
     },
     "C:\\Users\\arist\\Documents\\source\\LSCore\\src\\LSCore.Domain\\LSCore.Domain.csproj": {
-      "version": "1.0.16",
+      "version": "1.0.18",
       "restore": {
         "projectUniqueName": "C:\\Users\\arist\\Documents\\source\\LSCore\\src\\LSCore.Domain\\LSCore.Domain.csproj",
         "projectName": "LSCore.Domain",
@@ -158,7 +158,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
         }
       }
     }

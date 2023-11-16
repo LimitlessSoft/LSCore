@@ -1,5 +1,7 @@
-﻿using LSCore.Contracts;
+﻿using FluentValidation;
+using LSCore.Contracts;
 using LSCore.Contracts.Http;
+using LSCore.Contracts.Http.Interfaces;
 using LSCore.Contracts.IManagers;
 using LSCore.Contracts.Interfaces;
 using LSCore.Contracts.Requests;
@@ -244,6 +246,37 @@ namespace LSCore.Domain.Managers
         {
             entity.IsActive = false;
             Update(entity);
+        }
+
+        public ILSCoreResponse<TPayload> ExecuteCustomQuery<TPayload>()
+            where TPayload : class
+        {
+            var query = (ILSCoreQuery<TPayload>?)LSCoreDomainConstants.Container?.TryGetInstance(typeof(ILSCoreQuery<TPayload>));
+            if (query == null)
+                throw new NullReferenceException(nameof(query));
+
+            if (_dbContext == null)
+                throw new NullReferenceException(nameof(_dbContext));
+
+            return query.Execute((ILSCoreDbContext)_dbContext);
+        }
+
+        public ILSCoreResponse<TPayload> ExecuteCustomQuery<TRequest, TPayload>(TRequest request)
+            where TPayload : class
+        {
+            var query = (ILSCoreQuery<TRequest, TPayload>?)LSCoreDomainConstants.Container?.TryGetInstance(typeof(ILSCoreQuery<TRequest, TPayload>));
+            if (query == null)
+                throw new NullReferenceException(nameof(query));
+
+            if (_dbContext == null)
+                throw new NullReferenceException(nameof(_dbContext));
+
+            if(request == null)
+                throw new NullReferenceException(nameof(request));
+
+            query.Request = request;
+
+            return query.Execute((ILSCoreDbContext)_dbContext);
         }
     }
 

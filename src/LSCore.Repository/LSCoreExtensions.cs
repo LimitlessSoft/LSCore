@@ -14,7 +14,8 @@ namespace LSCore.Repository
             return map.Map(entityTypeBuilder);
         }
 
-        public static void ConfigureNpgsqlDatabase<TDbContext, TStartup>(this IConfigurationRoot configurationRoot, IServiceCollection services, string dbName) where TDbContext : DbContext
+        public static void ConfigureNpgsqlDatabase<TDbContext, TStartup>(this IConfigurationRoot configurationRoot, IServiceCollection services, string dbName)
+            where TDbContext : DbContext
             where TStartup : ILSCoreMigratable
         {
             AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
