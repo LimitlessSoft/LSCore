@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 
-namespace TD.Core.Framework
+namespace LSCore.Framework
 {
     public interface ILSCoreBaseStartup
     {

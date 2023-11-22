@@ -1,7 +1,7 @@
 ﻿using LSCore.Contracts.Interfaces;
 using LSCore.Domain;
 
-namespace TD.Core.Framework.Extensions
+namespace LSCore.Framework.Extensions
 {
     public static class LSCoreEntityExtensions
     {

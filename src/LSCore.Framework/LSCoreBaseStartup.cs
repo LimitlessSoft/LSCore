@@ -1,13 +1,12 @@
 ﻿using FluentValidation;
 using Lamar;
-using LSCore.Contracts;
 using LSCore.Contracts.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace TD.Core.Framework
+namespace LSCore.Framework
 {
     public class LSCoreBaseStartup : ILSCoreBaseStartup
     {
@@ -39,7 +38,7 @@ namespace TD.Core.Framework
             {
                 s.AssembliesAndExecutablesFromApplicationBaseDirectory(x =>
                     x.GetName().Name.StartsWith(ProjectName) ||
-                    x.GetName().Name.StartsWith("TD.Core")
+                    x.GetName().Name.StartsWith("LSCore")
                 );
                 s.TheCallingAssembly();
                 s.WithDefaultConventions();

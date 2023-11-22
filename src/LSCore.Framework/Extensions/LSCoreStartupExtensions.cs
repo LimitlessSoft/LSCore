@@ -5,7 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace TD.Core.Framework.Extensions
+namespace LSCore.Framework.Extensions
 {
     public static class LSCoreStartupExtensions
     {

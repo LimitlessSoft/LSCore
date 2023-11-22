@@ -1,4 +1,4 @@
-﻿namespace TD.Core.Framework.Extensions
+﻿namespace LSCore.Framework.Extensions
 {
     public static class LSCoreBaseManagerExtensions
     {

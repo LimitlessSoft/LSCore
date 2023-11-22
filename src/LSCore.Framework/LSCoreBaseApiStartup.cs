@@ -6,7 +6,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
 
-namespace TD.Core.Framework
+namespace LSCore.Framework
 {
     public class LSCoreBaseApiStartup : LSCoreBaseStartup
     {
