@@ -66,15 +66,9 @@ namespace LSCore.Framework
                 {
                     options.TokenValidationParameters = new TokenValidationParameters()
                     {
-#if DEBUG
-                        ValidIssuer = ConfigurationRoot["Jwt:Issuer"],
-                        ValidAudience = ConfigurationRoot["Jwt:Audience"],
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(ConfigurationRoot["Jwt:Key"])),
-#else
-                    ValidIssuer = Environment.GetEnvironmentVariable("JWT_ISSUER").ToString(),
-                    ValidAudience = Environment.GetEnvironmentVariable("JWT_AUDIENCE").ToString(),
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Environment.GetEnvironmentVariable("JWT_KEY").ToString())),
-#endif
+                        ValidIssuer = ConfigurationRoot["JWT_ISSURE"],
+                        ValidAudience = ConfigurationRoot["JWT_AUDIENCE"],
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(ConfigurationRoot["JWT_KEY"]!)),
                         ValidateIssuer = true,
                         ValidateAudience = true,
                         ValidateLifetime = false,
