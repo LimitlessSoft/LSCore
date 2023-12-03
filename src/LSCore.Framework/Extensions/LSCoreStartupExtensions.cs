@@ -11,19 +11,19 @@ namespace LSCore.Framework.Extensions
             where TStartup : class
         {
             Host.CreateDefaultBuilder(args)
-            .UseLamar()
-            .ConfigureLogging(x =>
-            {
-                x.ClearProviders();
-                x.AddConsole();
-                x.AddDebug();
-            })
-            .ConfigureWebHostDefaults((webBuilder) =>
-            {
-                webBuilder.UseStartup<TStartup>();
-            })
-            .Build()
-            .Run();
+                .UseLamar()
+                .ConfigureLogging(x =>
+                {
+                    x.ClearProviders();
+                    x.AddConsole();
+                    x.AddDebug();
+                })
+                .ConfigureWebHostDefaults((webBuilder) =>
+                {
+                    webBuilder.UseStartup<TStartup>();
+                })
+                .Build()
+                .Run();
         }
     }
 }
