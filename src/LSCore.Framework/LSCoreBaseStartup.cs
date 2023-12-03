@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 using Lamar;
+using Lamar.Scanning.Conventions;
 using LSCore.Contracts.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
@@ -13,6 +14,7 @@ namespace LSCore.Framework
         public static IContainer? Container { get; set; }
         public IConfigurationRoot ConfigurationRoot { get; set; }
         public string ProjectName { get; set; }
+        public Action<IAssemblyScanner>? AdditionalScanOptions { get; set; }
 
         public LSCoreBaseStartup(string projectName)
         {
@@ -47,6 +49,9 @@ namespace LSCore.Framework
                 s.ConnectImplementationsToTypesClosing(typeof(IValidator<>));
                 s.ConnectImplementationsToTypesClosing(typeof(ILSCoreMap<,>));
                 s.ConnectImplementationsToTypesClosing(typeof(ILSCoreDtoMapper<,>));
+
+                if (AdditionalScanOptions != null)
+                    AdditionalScanOptions(s);
             });
 
             ConfigureIoC(services);
