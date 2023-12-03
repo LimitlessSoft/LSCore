@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\src\LSCore.Domain\LSCore.Domain.csproj" />
+    <ProjectReference Include="..\SP.Simple.Contracts\SP.Simple.Contracts.csproj" />
+  </ItemGroup>
+
 </Project>

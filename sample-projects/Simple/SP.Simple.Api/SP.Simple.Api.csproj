@@ -15,4 +15,10 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\src\LSCore.Framework\LSCore.Framework.csproj" />
+    <ProjectReference Include="..\SP.Simple.Contracts\SP.Simple.Contracts.csproj" />
+    <ProjectReference Include="..\SP.Simple.Domain\SP.Simple.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
