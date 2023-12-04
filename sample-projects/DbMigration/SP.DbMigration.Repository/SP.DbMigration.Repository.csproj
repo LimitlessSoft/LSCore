@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\src\LSCore.Repository\LSCore.Repository.csproj" />
+    <ProjectReference Include="..\SP.DbMigration.Contracts\SP.DbMigration.Contracts.csproj" />
+  </ItemGroup>
+
+</Project>
