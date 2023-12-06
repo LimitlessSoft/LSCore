@@ -2,7 +2,7 @@
 
 namespace LSCore.Contracts.Responses
 {
-    public partial class LSCorePagedResponse<TEntity> : LSCoreListResponse<TEntity>
+    public partial class LSCoreSortedPagedResponse<TEntity> : LSCoreListResponse<TEntity>
     {
         public class Meta
         {

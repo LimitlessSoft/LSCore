@@ -1,11 +1,26 @@
 ﻿using LSCore.Contracts.Requests;
 using LSCore.Contracts.Responses;
+using System.Linq.Expressions;
 
 namespace LSCore.Contracts.Extensions
 {
     public static class LSCoreQueriableExtensions
     {
-        public static LSCorePagedResponse<TEntity> ToPagedResponse<TEntity>(this IQueryable<TEntity> source, LSCoreSortablePageableRequest request) =>
-            new LSCorePagedResponse<TEntity>(source.Skip(request.CurrentPage - 1 * request.PageSize).Take(request.PageSize).ToList());
+        public static LSCoreSortedPagedResponse<TEntity> ToSortedAndPagedResponse<TEntity, TSortColumn>(this IQueryable<TEntity> source,
+            LSCoreSortablePageableRequest<TSortColumn> request, Dictionary<TSortColumn, Expression<Func<TEntity, object>>> sortDictionary)
+            where TSortColumn : struct
+        {
+            if(request.SortColumn.HasValue)
+            {
+                if(request.SortDirection == System.ComponentModel.ListSortDirection.Descending)
+                    source = source.OrderByDescending(sortDictionary[request.SortColumn.Value]);
+                else
+                    source = source.OrderBy(sortDictionary[request.SortColumn.Value]);
+            }
+
+            source = source.Skip((request.CurrentPage - 1) * request.PageSize).Take(request.PageSize);
+
+            return new LSCoreSortedPagedResponse<TEntity>(source.ToList());
+        }
     }
 }
