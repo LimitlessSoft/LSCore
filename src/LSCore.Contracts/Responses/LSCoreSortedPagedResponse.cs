@@ -1,6 +1,5 @@
 ﻿using LSCore.Contracts.Http;
 using LSCore.Contracts.Interfaces;
-using LSCore.Contracts.Requests;
 
 namespace LSCore.Contracts.Responses
 {
