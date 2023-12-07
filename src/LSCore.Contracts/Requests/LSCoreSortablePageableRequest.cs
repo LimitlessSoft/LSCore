@@ -1,8 +1,9 @@
-﻿using System.ComponentModel;
+﻿using LSCore.Contracts.Interfaces;
+using System.ComponentModel;
 
 namespace LSCore.Contracts.Requests
 {
-    public class LSCoreSortablePageableRequest<TSortColumn>
+    public class LSCoreSortablePageableRequest<TSortColumn> : ILSCorePageable
         where TSortColumn : struct
     {
         public int PageSize { get; set; } = 10;

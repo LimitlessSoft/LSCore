@@ -18,9 +18,9 @@ namespace LSCore.Contracts.Extensions
                     source = source.OrderBy(sortDictionary[request.SortColumn.Value]);
             }
 
-            source = source.Skip((request.CurrentPage - 1) * request.PageSize).Take(request.PageSize);
+            var pagedResult = source.Skip((request.CurrentPage - 1) * request.PageSize).Take(request.PageSize);
 
-            return new LSCoreSortedPagedResponse<TEntity>(source.ToList());
+            return new LSCoreSortedPagedResponse<TEntity>(pagedResult.ToList(), request, source.Count());
         }
     }
 }
