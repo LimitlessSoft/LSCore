@@ -1,4 +1,5 @@
-﻿using LSCore.Contracts.Responses;
+﻿using LSCore.Contracts.Http;
+using LSCore.Contracts.Responses;
 using Microsoft.AspNetCore.Mvc;
 using SP.Simple.Contracts.Dtos.SortedPagedMock;
 using SP.Simple.Contracts.IManagers;
@@ -22,7 +23,7 @@ namespace SP.Simple.Api.Controllers
 
         [HttpGet]
         [Route("/sorted-mocks")]
-        public LSCoreSortedListResponse<GetSortedPagedMockDto> GetSorted([FromQuery] GetSortedMockRequest request) =>
+        public LSCoreListResponse<GetSortedPagedMockDto> GetSorted([FromQuery] GetSortedMockRequest request) =>
             _sortedPagedMockManager.GetSorted(request);
     }
 }

@@ -1,4 +1,5 @@
-﻿using LSCore.Contracts.Requests;
+﻿using LSCore.Contracts.Http;
+using LSCore.Contracts.Requests;
 using LSCore.Contracts.Responses;
 using System.Linq.Expressions;
 
@@ -19,14 +20,6 @@ namespace LSCore.Contracts.Extensions
             }
 
             return source;
-        }
-        public static LSCoreSortedListResponse<TEntity> ToSortedListResponse<TEntity, TSortColumn>(this IQueryable<TEntity> source,
-            LSCoreSortableRequest<TSortColumn> request, Dictionary<TSortColumn, Expression<Func<TEntity, object>>> sortDictionary)
-            where TSortColumn : struct
-        {
-            source = SortQuery(source, request, sortDictionary);
-
-            return new LSCoreSortedListResponse<TEntity>(source.ToList());
         }
 
         public static LSCoreSortedPagedResponse<TEntity> ToSortedAndPagedResponse<TEntity, TSortColumn>(this IQueryable<TEntity> source,

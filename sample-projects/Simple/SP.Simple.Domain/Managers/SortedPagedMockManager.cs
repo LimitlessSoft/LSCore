@@ -1,4 +1,5 @@
 ﻿using LSCore.Contracts.Extensions;
+using LSCore.Contracts.Http;
 using LSCore.Contracts.Responses;
 using SP.Simple.Contracts.Dtos.SortedPagedMock;
 using SP.Simple.Contracts.Enums.SortColumnCodes;
@@ -25,7 +26,7 @@ namespace SP.Simple.Domain.Managers
                 .ToSortedAndPagedResponse(request, SortedPagedMockSortColumnCodes.SortedPagedMockSortRules);
         }
 
-        public LSCoreSortedListResponse<GetSortedPagedMockDto> GetSorted(GetSortedMockRequest request)
+        public LSCoreListResponse<GetSortedPagedMockDto> GetSorted(GetSortedMockRequest request)
         {
             #region Initialize mock data
             var mockListData = new List<GetSortedPagedMockDto>();
@@ -37,8 +38,9 @@ namespace SP.Simple.Domain.Managers
                 });
             #endregion
 
-            return mockListData.AsQueryable()
-                .ToSortedListResponse(request, SortedPagedMockSortColumnCodes.SortedPagedMockSortRules);
+            return new LSCoreListResponse<GetSortedPagedMockDto>(mockListData.AsQueryable()
+                .SortQuery(request, SortedPagedMockSortColumnCodes.SortedPagedMockSortRules)
+                .ToList());
         }
     }
 }
