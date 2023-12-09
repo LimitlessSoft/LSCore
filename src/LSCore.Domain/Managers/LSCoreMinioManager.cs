@@ -1,6 +1,7 @@
 ﻿using LSCore.Contracts;
 using LSCore.Contracts.Dtos;
 using LSCore.Contracts.Http;
+using LSCore.Contracts.SettingsModels;
 using Minio;
 using Minio.DataModel.Args;
 using static LSCore.Contracts.LSCoreContractsConstants;
@@ -9,19 +10,11 @@ namespace LSCore.Domain.Managers
 {
     public class LSCoreMinioManager
     {
-        private readonly string _bucketBase;
-        private readonly string _host;
-        private readonly string _accessKey;
-        private readonly string _secretKey;
-        private readonly string _port;
+        private readonly LSCoreMinioSettings _settings;
 
-        public LSCoreMinioManager(string BucketBase, string host, string accessKey, string secretKey, string port)
+        public LSCoreMinioManager(LSCoreMinioSettings settings)
         {
-            _bucketBase = BucketBase.ToLower();
-            _host = host;
-            _accessKey = accessKey;
-            _secretKey = secretKey;
-            _port = port;
+            _settings = settings;
         }
 
         public async Task UploadAsync(Stream fileStream, string fileName, string contentType, Dictionary<string, string> tags = null)
@@ -31,24 +24,24 @@ namespace LSCore.Domain.Managers
                 fileName = LSCoreContractsConstants.Minio.DictionarySeparatorChar + fileName;
 
             var client = new MinioClient()
-                .WithEndpoint($"{_host}:{_port}")
-                .WithCredentials(_accessKey, _secretKey)
+                .WithEndpoint($"{_settings.Host}:{_settings.Port}")
+                .WithCredentials(_settings.AccessKey, _settings.SecretKey)
                 .Build();
 
             var be = new BucketExistsArgs()
-                .WithBucket(_bucketBase);
+                .WithBucket(_settings.BucketBase);
 
             bool found = await client.BucketExistsAsync(be).ConfigureAwait(false);
             if (!found)
             {
                 var mb = new MakeBucketArgs()
-                    .WithBucket(_bucketBase);
+                    .WithBucket(_settings.BucketBase);
 
                 await client.MakeBucketAsync(mb).ConfigureAwait(false);
             }
 
             var uploadObj = new PutObjectArgs()
-                .WithBucket(_bucketBase)
+                .WithBucket(_settings.BucketBase)
                 .WithObjectSize(fileStream.Length)
                 .WithStreamData(fileStream)
                 .WithObject(fileName)
@@ -66,14 +59,14 @@ namespace LSCore.Domain.Managers
 
             var response = new LSCoreResponse<LSCoreFileDto>();
             var client = new MinioClient()
-                .WithEndpoint($"{_host}:{_port}")
-                .WithCredentials(_accessKey, _secretKey)
+                .WithEndpoint($"{_settings.Host} : {_settings.Port}")
+                .WithCredentials(_settings.AccessKey, _settings.SecretKey)
                 .Build();
 
             try
             {
                 var statObjectArgs = new StatObjectArgs()
-                    .WithBucket(_bucketBase)
+                    .WithBucket(_settings.BucketBase)
                     .WithObject(file);
 
                 await client.StatObjectAsync(statObjectArgs).ConfigureAwait(false);
@@ -86,7 +79,7 @@ namespace LSCore.Domain.Managers
 
             var ms = new MemoryStream();
             var getArgs = new GetObjectArgs()
-                .WithBucket(_bucketBase)
+                .WithBucket(_settings.BucketBase)
                 .WithObject(file)
                 .WithCallbackStream((stream) =>
                 {
@@ -94,7 +87,7 @@ namespace LSCore.Domain.Managers
                 });
 
             var tagsArgs = new GetObjectTagsArgs()
-                .WithBucket(_bucketBase)
+                .WithBucket(_settings.BucketBase)
                 .WithObject(file);
 
             var r = await client.GetObjectAsync(getArgs).ConfigureAwait(false);
