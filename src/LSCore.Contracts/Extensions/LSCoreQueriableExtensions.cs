@@ -6,7 +6,7 @@ namespace LSCore.Contracts.Extensions
 {
     public static class LSCoreQueriableExtensions
     {
-        private static IQueryable<TEntity> SortQuery<TEntity, TSortColumn>(this IQueryable<TEntity> source,
+        public static IQueryable<TEntity> SortQuery<TEntity, TSortColumn>(this IQueryable<TEntity> source,
             LSCoreSortableRequest<TSortColumn> request, Dictionary<TSortColumn, Expression<Func<TEntity, object>>> sortDictionary)
             where TSortColumn : struct
         {
