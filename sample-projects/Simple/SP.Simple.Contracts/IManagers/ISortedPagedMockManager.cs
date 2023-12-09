@@ -7,5 +7,6 @@ namespace SP.Simple.Contracts.IManagers
     public interface ISortedPagedMockManager
     {
         LSCoreSortedPagedResponse<GetSortedPagedMockDto> Get(GetSortedPagedMockRequest request);
+        LSCoreSortedListResponse<GetSortedPagedMockDto> GetSorted(GetSortedMockRequest request);
     }
 }

@@ -24,5 +24,21 @@ namespace SP.Simple.Domain.Managers
             return mockListData.AsQueryable()
                 .ToSortedAndPagedResponse(request, SortedPagedMockSortColumnCodes.SortedPagedMockSortRules);
         }
+
+        public LSCoreSortedListResponse<GetSortedPagedMockDto> GetSorted(GetSortedMockRequest request)
+        {
+            #region Initialize mock data
+            var mockListData = new List<GetSortedPagedMockDto>();
+            for (int i = 0; i < 100; i++)
+                mockListData.Add(new GetSortedPagedMockDto()
+                {
+                    Name = $"{Random.Shared.Next(Int32.MaxValue)} [{i}]",
+                    Description = $"{Random.Shared.Next(Int32.MaxValue)} [{i}]"
+                });
+            #endregion
+
+            return mockListData.AsQueryable()
+                .ToSortedListResponse(request, SortedPagedMockSortColumnCodes.SortedPagedMockSortRules);
+        }
     }
 }
