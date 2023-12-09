@@ -8,7 +8,7 @@ namespace SP.Simple.Api
         private new const string ProjectName = "SP.Simple";
         public Startup()
             : base(ProjectName,
-                  addAuthentication: false,
+                  addAuthentication: true,
                   useCustomAuthorizationPolicy: false)
         {
         }
