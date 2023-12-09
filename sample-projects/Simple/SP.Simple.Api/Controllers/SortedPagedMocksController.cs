@@ -19,5 +19,10 @@ namespace SP.Simple.Api.Controllers
         [Route("/sorted-paged-mocks")]
         public LSCoreSortedPagedResponse<GetSortedPagedMockDto> Get([FromQuery] GetSortedPagedMockRequest request) =>
             _sortedPagedMockManager.Get(request);
+
+        [HttpGet]
+        [Route("/sorted-mocks")]
+        public LSCoreSortedListResponse<GetSortedPagedMockDto> GetSorted([FromQuery] GetSortedMockRequest request) =>
+            _sortedPagedMockManager.GetSorted(request);
     }
 }
