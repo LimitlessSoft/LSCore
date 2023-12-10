@@ -59,7 +59,7 @@ namespace LSCore.Domain.Managers
 
             var response = new LSCoreResponse<LSCoreFileDto>();
             var client = new MinioClient()
-                .WithEndpoint($"{_settings.Host} : {_settings.Port}")
+                .WithEndpoint($"{_settings.Host}:{_settings.Port}")
                 .WithCredentials(_settings.AccessKey, _settings.SecretKey)
                 .Build();
 
