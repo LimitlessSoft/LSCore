@@ -53,10 +53,17 @@ namespace LSCore.Domain.Managers
             await client.PutObjectAsync(uploadObj).ConfigureAwait(false);
         }
 
-        public async Task<LSCoreResponse<LSCoreFileDto>> DownloadAsync(string file)
+        public Task<LSCoreResponse<LSCoreFileDto>> DownloadAsync(string file)
         {
-            file = file.Replace(Path.DirectorySeparatorChar, LSCoreContractsConstants.Minio.DictionarySeparatorChar);
+            return DownloadAsync(new LSCoreMinioDownloadOptions()
+            {
+                FileName = file,
+                Bucket = _settings.BucketBase
+            });
+        }
 
+        public async Task<LSCoreResponse<LSCoreFileDto>> DownloadAsync(LSCoreMinioDownloadOptions options)
+        {
             var response = new LSCoreResponse<LSCoreFileDto>();
             var client = new MinioClient()
                 .WithEndpoint($"{_settings.Host}:{_settings.Port}")
@@ -66,8 +73,8 @@ namespace LSCore.Domain.Managers
             try
             {
                 var statObjectArgs = new StatObjectArgs()
-                    .WithBucket(_settings.BucketBase)
-                    .WithObject(file);
+                    .WithBucket(options.Bucket)
+                    .WithObject(options.FileName);
 
                 await client.StatObjectAsync(statObjectArgs).ConfigureAwait(false);
             }
@@ -80,7 +87,7 @@ namespace LSCore.Domain.Managers
             var ms = new MemoryStream();
             var getArgs = new GetObjectArgs()
                 .WithBucket(_settings.BucketBase)
-                .WithObject(file)
+                .WithObject(options.FileName)
                 .WithCallbackStream((stream) =>
                 {
                     stream.CopyTo(ms);
@@ -88,7 +95,7 @@ namespace LSCore.Domain.Managers
 
             var tagsArgs = new GetObjectTagsArgs()
                 .WithBucket(_settings.BucketBase)
-                .WithObject(file);
+                .WithObject(options.FileName);
 
             var r = await client.GetObjectAsync(getArgs).ConfigureAwait(false);
             var tags = await client.GetObjectTagsAsync(tagsArgs).ConfigureAwait(false);
