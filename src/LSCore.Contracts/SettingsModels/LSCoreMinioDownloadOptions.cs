@@ -3,8 +3,9 @@
     public class LSCoreMinioDownloadOptions
     {
         private string _fileName { get; set; }
+        private string _bucket { get; set; }
 
-        public string Bucket { get; set; }
+        public string Bucket { get => _bucket; set => _bucket = value.ToLower(); }
         public string FileName
         {
             get => _fileName;
