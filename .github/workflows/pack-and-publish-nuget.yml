@@ -2,8 +2,6 @@ name: Pack and publish nuget packages
 on:
   push:
     branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
 
 jobs:
 
