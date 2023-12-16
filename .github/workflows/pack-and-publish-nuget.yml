@@ -21,7 +21,7 @@ jobs:
         run: dotnet pack src/LSCore.Contracts/LSCore.Contracts.csproj -c Release
         
       - name: Publish Contracts
-        run: dotnet nuget push src/LSCore.Framework/bin/Release/*.nupkg --api-key ${{ secrets.NUGET_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+        run: dotnet nuget push src/LSCore.Contracts/bin/Release/*.nupkg --api-key ${{ secrets.NUGET_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
   pack-and-publish-domain:
     runs-on: ubuntu-latest
     steps:
