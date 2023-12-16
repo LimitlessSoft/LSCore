@@ -5,13 +5,12 @@ namespace LSCore.Contracts.Http
 {
     public class LSCoreFileResponse : ILSCoreResponse
     {
-        public LSCoreFileDto Payload { get; set; }
+        public LSCoreFileDto? Payload { get; set; }
         public HttpStatusCode Status { get; set; } = HttpStatusCode.OK;
 
         public bool NotOk => Convert.ToInt16(Status).ToString()[0] != '2';
         public List<string>? Errors { get; set; } = null;
 
-        public void Merge(ILSCoreResponse response) => Status = response.NotOk ? response.Status == HttpStatusCode.NotFound ? HttpStatusCode.NotFound : HttpStatusCode.BadRequest : Status;
         public static LSCoreFileResponse NotImplemented()
         {
             return new LSCoreFileResponse()
@@ -19,6 +18,7 @@ namespace LSCore.Contracts.Http
                 Status = HttpStatusCode.NotImplemented
             };
         }
+
         public static LSCoreFileResponse BadRequest()
         {
             return BadRequest(null);

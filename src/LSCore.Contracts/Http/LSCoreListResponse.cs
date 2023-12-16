@@ -3,7 +3,7 @@ using System.Net;
 
 namespace LSCore.Contracts.Http
 {
-    public class LSCoreListResponse<TEntity> : ILSCoreListResponse<TEntity>
+    public class LSCoreListResponse<TEntity> : ILSCoreResponse<List<TEntity>>
     {
         public HttpStatusCode Status { get; set; } = HttpStatusCode.OK;
         public bool NotOk => Convert.ToInt16(Status).ToString()[0] != '2';
@@ -27,10 +27,12 @@ namespace LSCore.Contracts.Http
                 Status = HttpStatusCode.NotImplemented
             };
         }
+
         public static LSCoreListResponse<TEntity> BadRequest()
         {
             return BadRequest(null);
         }
+
         public static LSCoreListResponse<TEntity> BadRequest(params string[]? errorMessages)
         {
             return new LSCoreListResponse<TEntity>()
