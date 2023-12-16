@@ -1,5 +1,6 @@
 ﻿using Lamar;
 using LSCore.Framework;
+using SP.Simple.Contracts.MockData.Products;
 
 namespace SP.Simple.Api
 {
@@ -11,6 +12,12 @@ namespace SP.Simple.Api
                   addAuthentication: true,
                   useCustomAuthorizationPolicy: false)
         {
+            SeedMockData();
+        }
+
+        private void SeedMockData()
+        {
+            ProductsMockData.SeedData();
         }
 
         public override void ConfigureServices(IServiceCollection services)
