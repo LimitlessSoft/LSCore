@@ -1,0 +1,80 @@
+name: Pack and publish nuget packages
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+
+# ===========================
+# Packing
+# ===========================
+
+  pack-contracts:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        
+      - name: Pack Contracts
+        run: dotnet pack ./src/LSCore.Contracts/LSCore.Contracts.csproj -c Release
+        
+  pack-domain:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        
+      - name: Pack Domain
+        run: dotnet pack ./src/LSCore.Domain/LSCore.Domain.csproj -c Release
+        
+  pack-repository:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        
+      - name: Pack Repository
+        run: dotnet pack ./src/LSCore.Repository/LSCore.Repository.csproj -c Release
+        
+  pack-framework:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        
+      - name: Pack Framework
+        run: dotnet pack ./src/LSCore.Framework/LSCore.Framework.csproj -c Release
+
+# ===========================
+# Publishing
+# ===========================
+
+  publish-contracts:
+    runs-on: ubuntu-latest
+    needs: pack-contracts
+    steps:
+      - name: Publish Contracts
+        run: dotnet nuget push ./src/LSCore.Framework/bin/Release/*.nupkg --api-key ${{ secrets.NUGET_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+        
+  publish-domain:
+    runs-on: ubuntu-latest
+    needs: pack-domain
+    steps:
+      - name: Publish Domain
+        run: dotnet nuget push ./src/LSCore.Domain/bin/Release/*.nupkg --api-key ${{ secrets.NUGET_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+        
+  publish-repository:
+    runs-on: ubuntu-latest
+    needs: pack-repository
+    steps:
+      - name: Publish Repository
+        run: dotnet nuget push ./src/LSCore.Repository/bin/Release/*.nupkg --api-key ${{ secrets.NUGET_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+        
+  publish-framework:
+    runs-on: ubuntu-latest
+    needs: pack-framework
+    steps:
+      - name: Publish Framework
+        run: dotnet nuget push ./src/LSCore.Framework/bin/Release/*.nupkg --api-key ${{ secrets.NUGET_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
