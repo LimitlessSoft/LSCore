@@ -15,14 +15,14 @@ Code merged into `main` is automatically packed and pushed to nuget
 ![GitHub last commit (branch)](https://img.shields.io/github/last-commit/LimitlessSoft/LSCore/develop?label=Last%20develop%20commit)
 ![GitHub Release](https://img.shields.io/github/v/release/LimitlessSoft/LSCore)
 <br>
-![Nuget](https://img.shields.io/nuget/v/LSCore.Contracts)
-![Nuget](https://img.shields.io/nuget/dt/LSCore.Contracts)
+![Nuget](https://img.shields.io/nuget/v/LSCore.Contracts?label=LSCore.Contracts%20nuget)
+![Nuget](https://img.shields.io/nuget/dt/LSCore.Contracts?label=LSCore.Contracts%20nuget)
 <br>
-![Nuget](https://img.shields.io/nuget/v/LSCore.Domain)
-![Nuget](https://img.shields.io/nuget/dt/LSCore.Domain)
+![Nuget](https://img.shields.io/nuget/v/LSCore.Domain?label=LSCore.Domain%20nuget)
+![Nuget](https://img.shields.io/nuget/dt/LSCore.Domain?label=LSCore.Domain%20nuget)
 <br>
-![Nuget](https://img.shields.io/nuget/v/LSCore.Framework)
-![Nuget](https://img.shields.io/nuget/dt/LSCore.Framework)
+![Nuget](https://img.shields.io/nuget/v/LSCore.Framework?label=LSCore.Framework%20nuget)
+![Nuget](https://img.shields.io/nuget/dt/LSCore.Framework?label=LSCore.Framework%20nuget)
 <br>
-![Nuget](https://img.shields.io/nuget/v/LSCore.Repository)
-![Nuget](https://img.shields.io/nuget/dt/LSCore.Repository)
+![Nuget](https://img.shields.io/nuget/v/LSCore.Repository?label=LSCore.Repository%20nuget)
+![Nuget](https://img.shields.io/nuget/dt/LSCore.Repository?label=LSCore.Repository%20nuget)
