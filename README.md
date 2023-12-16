@@ -7,6 +7,22 @@ Using DI to implement managers, mappers, validators, converts and others for the
 Check out sample-projects/Simple to see simplest API project with one EP.
 
 # Contribution
-To contribute fork this project, make change and make PR.
+To contribute fork this project, branch from `develop`, make change and make PR onto `develop` branch
 Since there is no esablished protocol, your change may not be accepted.
 Best thing to do is create issue and discuss change there until someone create protocol for the contributiors.
+Code merged into `main` is automatically packed and pushed to nuget
+
+![GitHub last commit (branch)](https://img.shields.io/github/last-commit/LimitlessSoft/LSCore/develop?label=Last%20develop%20commit)
+![GitHub Release](https://img.shields.io/github/v/release/LimitlessSoft/LSCore)
+<br>
+![Nuget](https://img.shields.io/nuget/v/LSCore.Contracts)
+![Nuget](https://img.shields.io/nuget/dt/LSCore.Contracts)
+<br>
+![Nuget](https://img.shields.io/nuget/v/LSCore.Domain)
+![Nuget](https://img.shields.io/nuget/dt/LSCore.Domain)
+<br>
+![Nuget](https://img.shields.io/nuget/v/LSCore.Framework)
+![Nuget](https://img.shields.io/nuget/dt/LSCore.Framework)
+<br>
+![Nuget](https://img.shields.io/nuget/v/LSCore.Repository)
+![Nuget](https://img.shields.io/nuget/dt/LSCore.Repository)
