@@ -17,7 +17,7 @@ namespace LSCore.Contracts.Extensions
 
         public static void Merge<TPayload>(this ILSCoreResponse<TPayload> source, ILSCoreResponse response)
         {
-            source.Merge(response);
+            (source as ILSCoreResponse).Merge(response);
             if (source.NotOk)
                 source.Payload = default(TPayload);
         }
