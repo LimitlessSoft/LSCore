@@ -23,11 +23,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SP.Simple.Contracts", "samp
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DbMigration", "DbMigration", "{529D4D0C-72BD-4F12-B1CB-5683B7712E76}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SP.DbMigration.App", "sample-projects\DbMigration\SP.DbMigration.App\SP.DbMigration.App.csproj", "{C47DC119-E30C-4CA5-9438-CC80D1069288}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SP.DbMigration.App", "sample-projects\DbMigration\SP.DbMigration.App\SP.DbMigration.App.csproj", "{C47DC119-E30C-4CA5-9438-CC80D1069288}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SP.DbMigration.Contracts", "sample-projects\DbMigration\SP.DbMigration.Contracts\SP.DbMigration.Contracts.csproj", "{85E35BC7-A5C2-4A06-813F-0FA90A3FA7D6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SP.DbMigration.Contracts", "sample-projects\DbMigration\SP.DbMigration.Contracts\SP.DbMigration.Contracts.csproj", "{85E35BC7-A5C2-4A06-813F-0FA90A3FA7D6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SP.DbMigration.Repository", "sample-projects\DbMigration\SP.DbMigration.Repository\SP.DbMigration.Repository.csproj", "{264D75C0-FCE2-4DF3-823E-B6FC17B0096C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SP.DbMigration.Repository", "sample-projects\DbMigration\SP.DbMigration.Repository\SP.DbMigration.Repository.csproj", "{264D75C0-FCE2-4DF3-823E-B6FC17B0096C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
