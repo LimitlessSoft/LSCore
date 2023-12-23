@@ -19,6 +19,6 @@
         }
         public Stream FileStream { get; set; }
         public string ContentType { get; set; }
-        public Dictionary<string, string> Tags { get; set; }
+        public Dictionary<string, string>? Tags { get; set; }
     }
 }

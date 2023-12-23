@@ -1,5 +1,7 @@
 ﻿using Lamar;
+using LSCore.Contracts.SettingsModels;
 using LSCore.Framework;
+using SP.Simple.Contracts;
 using SP.Simple.Contracts.MockData.Products;
 
 namespace SP.Simple.Api
@@ -33,6 +35,17 @@ namespace SP.Simple.Api
         public override void ConfigureContainer(ServiceRegistry services)
         {
             base.ConfigureContainer(services);
+
+            // Comment this part out if you do not want to start this API with MINIO.
+            // If you do so, everything inside ImagesController will fail since DI will not be able to resolve LSCoreMinioSettings.
+            services.For<LSCoreMinioSettings>().Use(new LSCoreMinioSettings()
+            {
+                AccessKey = ConfigurationRoot["MINIO_ACCESS_KEY"]!,
+                BucketBase = Constants.Minio.BucketBase,
+                Host = ConfigurationRoot["MINIO_HOST"]!,
+                Port = ConfigurationRoot["MINIO_PORT"]!,
+                SecretKey = ConfigurationRoot["MINIO_SECRET_KEY"]!
+            });
         }
 
         public override void ConfigureIoC(ServiceRegistry services)
