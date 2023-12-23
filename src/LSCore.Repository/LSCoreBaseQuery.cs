@@ -10,7 +10,7 @@ namespace LSCore.Repository
         public abstract ILSCoreResponse<TPayload> Execute(ILSCoreDbContext dbContext);
     }
 
-    public abstract class LSCoreBaseQuery<TRequest, TPayload> : ILSCoreQuery<TPayload>
+    public abstract class LSCoreBaseQuery<TRequest, TPayload> : ILSCoreQuery<TRequest, TPayload>
         where TPayload : class
     {
         public TRequest? Request { get; set; }
