@@ -1,5 +1,6 @@
 ﻿using LSCore.Contracts.Dtos;
 using LSCore.Contracts.Http;
+using LSCore.Contracts.IManagers;
 using LSCore.Contracts.SettingsModels;
 using Minio;
 using Minio.DataModel.Args;
@@ -7,7 +8,7 @@ using Minio.DataModel.Tags;
 
 namespace LSCore.Domain.Managers
 {
-    public class LSCoreMinioManager
+    public class LSCoreMinioManager : ILSCoreMinioManager
     {
         private readonly LSCoreMinioSettings _settings;
 
@@ -16,7 +17,7 @@ namespace LSCore.Domain.Managers
             _settings = settings;
         }
 
-        public  Task UploadAsync(Stream fileStream, string fileName, string contentType, Dictionary<string, string> tags = null) =>
+        public Task UploadAsync(Stream fileStream, string fileName, string contentType, Dictionary<string, string>? tags = null) =>
             UploadAsync(new LSCoreMinioUploadOptions()
             {
                 Bucket = _settings.BucketBase,
@@ -47,7 +48,7 @@ namespace LSCore.Domain.Managers
 
             var uploadObj = new PutObjectArgs()
                 .WithBucket(_settings.BucketBase)
-                .WithObjectSize(options.FileName.Length)
+                .WithObjectSize(options.FileStream.Length)
             .WithStreamData(options.FileStream)
                 .WithObject(options.FileName)
             .WithContentType(options.ContentType);
