@@ -1,5 +1,7 @@
 ﻿using FluentValidation;
 using LSCore.Contracts;
+using LSCore.Contracts.Enums.ValidationCodes;
+using LSCore.Contracts.Extensions;
 using LSCore.Contracts.Http;
 using LSCore.Contracts.Http.Interfaces;
 using LSCore.Contracts.IManagers;
@@ -10,6 +12,7 @@ using LSCore.Domain.Validators;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using Minio.DataModel.Notification;
 using Omu.ValueInjecter;
 using System.Linq.Expressions;
 using static LSCore.Contracts.Extensions.LSCoreHttpResponseExtensions;
@@ -58,65 +61,66 @@ namespace LSCore.Domain.Managers
             where TEntity : class, ILSCoreEntity, new()
             where TRequest : LSCoreSaveRequest
         {
-            if (_dbContext == null)
-                return LSCoreResponse<TEntity>.InternalServerError();
-
-            var response = new LSCoreResponse<TEntity>();
-            if (request.IsRequestInvalid(response))
-                return response;
-
-            var entityMapper = (ILSCoreMap<TEntity, TRequest>?)LSCoreDomainConstants.Container?.TryGetInstance(typeof(ILSCoreMap<TEntity, TRequest>));
-
-            var entity = new TEntity();
-            if (!request.Id.HasValue)
-            {
-                var lastId = _dbContext.Set<TEntity>()
-                    .AsQueryable()
-                    .OrderByDescending(x => x.Id)
-                    .Select(x => x.Id)
-                    .FirstOrDefault();
-
-                if (entityMapper == null)
-                    entity.InjectFrom(request);
-                else
-                    entityMapper.Map(entity, request);
-
-                entity.Id = ++lastId;
-                entity.CreatedAt = DateTime.UtcNow;
-                entity.CreatedBy = CurrentUser?.Id ?? 0;
-
-                _dbContext.Set<TEntity>()
-                    .Add(entity);
-            }
-            else
-            {
-                entity = _dbContext.Set<TEntity>()
-                    .FirstOrDefault(x => x.Id == request.Id);
-
-                if (entity == null)
-                    return LSCoreResponse<TEntity>.NotFound();
-
-                if (entityMapper == null)
-                    entity.InjectFrom(request);
-                else
-                    entityMapper.Map(entity, request);
-
-                entity.UpdatedAt = DateTime.UtcNow;
-                entity.UpdatedBy = CurrentUser?.Id ?? 0;
-
-                _dbContext.Set<TEntity>()
-                    .Update(entity);
-            }
             try
             {
+                if (_dbContext == null)
+                    return LSCoreResponse<TEntity>.InternalServerError();
+
+                var response = new LSCoreResponse<TEntity>();
+                if (request.IsRequestInvalid(response))
+                    return response;
+
+                var entityMapper = (ILSCoreMap<TEntity, TRequest>?)LSCoreDomainConstants.Container?.TryGetInstance(typeof(ILSCoreMap<TEntity, TRequest>));
+
+                var entity = new TEntity();
+                if (!request.Id.HasValue)
+                {
+                    var lastId = _dbContext.Set<TEntity>()
+                        .AsQueryable()
+                        .OrderByDescending(x => x.Id)
+                        .Select(x => x.Id)
+                        .FirstOrDefault();
+
+                    if (entityMapper == null)
+                        entity.InjectFrom(request);
+                    else
+                        entityMapper.Map(entity, request);
+
+                    entity.Id = ++lastId;
+                    entity.CreatedAt = DateTime.UtcNow;
+                    entity.CreatedBy = CurrentUser?.Id ?? 0;
+
+                    _dbContext.Set<TEntity>()
+                        .Add(entity);
+                }
+                else
+                {
+                    entity = _dbContext.Set<TEntity>()
+                        .FirstOrDefault(x => x.Id == request.Id);
+
+                    if (entity == null)
+                        return LSCoreResponse<TEntity>.NotFound();
+
+                    if (entityMapper == null)
+                        entity.InjectFrom(request);
+                    else
+                        entityMapper.Map(entity, request);
+
+                    entity.UpdatedAt = DateTime.UtcNow;
+                    entity.UpdatedBy = CurrentUser?.Id ?? 0;
+
+                    _dbContext.Set<TEntity>()
+                        .Update(entity);
+                }
                 _dbContext.SaveChanges();
+
+                return new LSCoreResponse<TEntity>(entity);
             }
             catch
             {
+                // ToDo: Log exception
                 return LSCoreResponse<TEntity>.InternalServerError();
             }
-
-            return new LSCoreResponse<TEntity>(entity);
         }
 
         /// <summary>
@@ -125,17 +129,25 @@ namespace LSCore.Domain.Managers
         /// <typeparam name="TEntity"></typeparam>
         /// <param name="entity"></param>
         /// <returns></returns>
-        public TEntity Update<TEntity>(TEntity entity) where TEntity : class
+        public LSCoreResponse<TEntity> Update<TEntity>(TEntity entity) where TEntity : class
         {
-            if (_dbContext == null)
-                throw new ArgumentNullException(nameof(_dbContext));
+            try
+            {
+                if (_dbContext == null)
+                    return LSCoreResponse<TEntity>.BadRequest(string.Format(LSCoreCommonValidationCodes.COMM_006.GetDescription()!, nameof(_dbContext)));
 
-            _dbContext.Set<TEntity>()
-                .Update(entity);
+                _dbContext.Set<TEntity>()
+                    .Update(entity);
 
-            _dbContext.SaveChanges();
+                _dbContext.SaveChanges();
 
-            return entity;
+                return new LSCoreResponse<TEntity>(entity);
+            }
+            catch
+            {
+                // ToDo: Log exception
+                return LSCoreResponse<TEntity>.InternalServerError();
+            }
         }
 
         /// <summary>
@@ -145,17 +157,25 @@ namespace LSCore.Domain.Managers
         /// <param name="entity"></param>
         /// <returns></returns>
         /// <exception cref="ArgumentNullException"></exception>
-        public TEntity Insert<TEntity>(TEntity entity) where TEntity : class
+        public LSCoreResponse<TEntity> Insert<TEntity>(TEntity entity) where TEntity : class
         {
-            if (_dbContext == null)
-                throw new ArgumentNullException(nameof(_dbContext));
+            try
+            {
+                if (_dbContext == null)
+                    return LSCoreResponse<TEntity>.BadRequest(string.Format(LSCoreCommonValidationCodes.COMM_006.GetDescription()!, nameof(_dbContext)));
 
-            _dbContext.Set<TEntity>()
-                .Add(entity);
+                _dbContext.Set<TEntity>()
+                    .Add(entity);
 
-            _dbContext.SaveChanges();
+                _dbContext.SaveChanges();
 
-            return entity;
+                return new LSCoreResponse<TEntity>(entity);
+            }
+            catch
+            {
+                // ToDo: Log exception
+                return LSCoreResponse<TEntity>.InternalServerError();
+            }
         }
 
         /// <summary>
@@ -163,13 +183,21 @@ namespace LSCore.Domain.Managers
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
-        public IQueryable<T> Queryable<T>() where T : class
+        public LSCoreResponse<IQueryable<T>> Queryable<T>() where T : class
         {
-            if (_dbContext == null)
-                throw new ArgumentNullException(nameof(_dbContext));
+            try
+            {
+                if (_dbContext == null)
+                    return LSCoreResponse<IQueryable<T>>.BadRequest(string.Format(LSCoreCommonValidationCodes.COMM_006.GetDescription()!, nameof(_dbContext)));
 
-            return _dbContext.Set<T>()
-                .AsQueryable();
+                return new LSCoreResponse<IQueryable<T>>(_dbContext.Set<T>()
+                    .AsQueryable());
+            }
+            catch
+            {
+                // ToDo: Log exception
+                return LSCoreResponse<IQueryable<T>>.InternalServerError();
+            }
         }
 
         /// <summary>
@@ -179,14 +207,29 @@ namespace LSCore.Domain.Managers
         /// <returns></returns>
         public LSCoreResponse<T> First<T>(Expression<Func<T, bool>> predicate) where T : class
         {
-            if (_dbContext == null)
+            try
+            {
+                if (_dbContext == null)
+                    return LSCoreResponse<T>.BadRequest(string.Format(LSCoreCommonValidationCodes.COMM_006.GetDescription()!, nameof(_dbContext)));
+
+                var response = new LSCoreResponse<T>();
+
+                var querableResponse = Queryable<T>();
+                response.Merge(querableResponse);
+                if (response.NotOk)
+                    return response;
+
+                var entity = querableResponse.Payload!.FirstOrDefault(predicate);
+                if (entity == null)
+                    return LSCoreResponse<T>.NotFound();
+
+                return new LSCoreResponse<T>(entity);
+            }
+            catch
+            {
+                // ToDo: Log exception
                 return LSCoreResponse<T>.InternalServerError();
-
-            var entity = Queryable<T>().FirstOrDefault(predicate);
-            if (entity == null)
-                return LSCoreResponse<T>.NotFound();
-
-            return new LSCoreResponse<T>(entity);
+            }
         }
 
         public LSCoreResponse<TPayload> First<TEntity, TPayload>(Expression<Func<TEntity, bool>> predicate)
@@ -324,16 +367,25 @@ namespace LSCore.Domain.Managers
         /// Gets manager entity table as queryable
         /// </summary>
         /// <returns></returns>
-        public IQueryable<TEntity> Queryable() =>
+        public LSCoreResponse<IQueryable<TEntity>> Queryable() =>
             Queryable<TEntity>();
 
         /// <summary>
         /// Gets manager entity table as queryable
         /// </summary>
         /// <returns></returns>
-        public IQueryable<TEntity> Queryable(Expression<Func<TEntity, bool>> predicate) =>
-            Queryable<TEntity>()
-                .Where(predicate);
+        public LSCoreResponse<IQueryable<TEntity>> Queryable(Expression<Func<TEntity, bool>> predicate)
+        {
+            var response = new LSCoreResponse<IQueryable<TEntity>>();
+
+            var querableResponse = Queryable<TEntity>();
+            response.Merge(querableResponse);
+            if (response.NotOk)
+                return response;
+            
+            response.Payload = querableResponse.Payload!.Where(predicate);
+            return response;
+        }
 
         /// <summary>
         /// Gets first manager entity
