@@ -14,5 +14,7 @@ namespace LSCore.Contracts.Enums.ValidationCodes
         COMM_004,
         [Description("DBContext is not set!")]
         COMM_005,
+        [Description("Object null reference: '{0}'")]
+        COMM_006,
     }
 }
