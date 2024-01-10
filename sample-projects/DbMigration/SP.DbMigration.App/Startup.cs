@@ -19,7 +19,7 @@ namespace SP.DbMigration.App
         {
             base.ConfigureServices(services);
 
-            ConfigurationRoot.ConfigureNpgsqlDatabase<MigrationDbContext, Startup>(services, "test_database");
+            ConfigurationRoot.ConfigureNpgsqlDatabase<MigrationDbContext, Startup>(services);
         }
 
         public override void ConfigureContainer(ServiceRegistry services)

@@ -321,6 +321,36 @@ namespace LSCore.Domain.Managers
 
             return query.Execute((ILSCoreDbContext)_dbContext);
         }
+
+        public ILSCoreResponse ExecuteCustomCommand()
+        {
+            var command = (ILSCoreCommand?)LSCoreDomainConstants.Container?.TryGetInstance(typeof(ILSCoreCommand));
+            if (command == null)
+                throw new NullReferenceException(nameof(command));
+
+            if (_dbContext == null)
+                throw new NullReferenceException(nameof(_dbContext));
+
+            return command.Execute((ILSCoreDbContext)_dbContext);
+        }
+
+        public ILSCoreResponse ExecuteCustomCommand<TRequest>(TRequest request)
+            where TRequest : class
+        {
+            var command = (ILSCoreCommand<TRequest>?)LSCoreDomainConstants.Container?.TryGetInstance(typeof(ILSCoreCommand<TRequest>));
+            if (command == null)
+                throw new NullReferenceException(nameof(command));
+
+            if (_dbContext == null)
+                throw new NullReferenceException(nameof(_dbContext));
+
+            if (request == null)
+                throw new NullReferenceException(nameof(request));
+
+            command.Request = request;
+
+            return command.Execute((ILSCoreDbContext)_dbContext);
+        }
     }
 
     public class LSCoreBaseManager<TManager, TEntity> : LSCoreBaseManager<TManager> where TEntity
