@@ -322,9 +322,8 @@ namespace LSCore.Domain.Managers
             return query.Execute((ILSCoreDbContext)_dbContext);
         }
 
-        public ILSCoreResponse ExecuteCustomCommand()
+        public ILSCoreResponse ExecuteCustomCommand(ILSCoreCommand command)
         {
-            var command = (ILSCoreCommand?)LSCoreDomainConstants.Container?.TryGetInstance(typeof(ILSCoreCommand));
             if (command == null)
                 throw new NullReferenceException(nameof(command));
 
