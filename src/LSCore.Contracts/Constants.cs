@@ -16,7 +16,13 @@
 
         public static class Minio
         {
-            public static char DictionarySeparatorChar = '/';
+            public const char DictionarySeparatorChar = '/';
+        }
+
+        public static class ResponseLogMessages
+        {
+            public const string LogErrorBaseMessageFormat = "Bad LSCoreResponse occured with status {0} at {1} line {2}!";
+            public const string LogErrorObjectFormat = "LSCoreResponse object: {0}";
         }
     }
 }
