@@ -12,7 +12,8 @@ namespace SP.Simple.Api
         public Startup()
             : base(ProjectName,
                   addAuthentication: true,
-                  useCustomAuthorizationPolicy: false)
+                  useCustomAuthorizationPolicy: false,
+                  apiKeyAuthentication: true)
         {
             SeedMockData();
         }
