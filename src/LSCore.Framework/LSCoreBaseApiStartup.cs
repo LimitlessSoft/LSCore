@@ -21,7 +21,7 @@ namespace LSCore.Framework
         {
             _addAuthentication = addAuthentication;
             _useCustomAuthorizationPolicy = useCustomAuthorizationPolicy;
-            _addAuthentication = apiKeyAuthentication;
+            _apiKeyAuthentication = apiKeyAuthentication;
         }
 
         public override void ConfigureServices(IServiceCollection services)
@@ -121,7 +121,7 @@ namespace LSCore.Framework
                     AfterAuthenticationMiddleware(applicationBuilder);
 
                 if(_apiKeyAuthentication)
-                    applicationBuilder.UseMiddleware<LSApiKeyAuthenticationMiddleware>(ConfigurationRoot["API_KEY"]);
+                    applicationBuilder.UseMiddleware<LSCoreApiKeyAuthenticationMiddleware>(ConfigurationRoot["API_KEY"]);
             }
 
             applicationBuilder.UseEndpoints((routes) =>
