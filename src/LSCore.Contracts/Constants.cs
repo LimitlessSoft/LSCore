@@ -2,6 +2,7 @@
 {
     public static class LSCoreContractsConstants
     {
+        public const string ApiKeyCustomHeader = "X-Api-Auth";
         public static class ClaimNames
         {
             public const string CustomUsername = "custom:username";
