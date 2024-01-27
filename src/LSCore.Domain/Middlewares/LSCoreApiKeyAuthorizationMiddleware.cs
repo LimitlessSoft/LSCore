@@ -18,14 +18,11 @@ namespace LSCore.Domain.Middlewares
 
         public async Task Invoke(HttpContext context)
         {
-            if(context.User.Identity != null && !context.User.Identity.IsAuthenticated)
+            var requestApiKey = context.Request.Headers[LSCoreContractsConstants.ApiKeyCustomHeader].FirstOrDefault();
+            if(string.IsNullOrWhiteSpace(requestApiKey) || !_apiKeySettings.ApiKeys.Contains(requestApiKey))
             {
-                var requestApiKey = context.Request.Headers[LSCoreContractsConstants.ApiKeyCustomHeader].FirstOrDefault();
-                if(string.IsNullOrWhiteSpace(requestApiKey) || !_apiKeySettings.ApiKeys.Contains(requestApiKey))
-                {
-                    context.Response.StatusCode = 403;
-                    return;
-                }
+                context.Response.StatusCode = 403;
+                return;
             }
             await _next(context);
         }

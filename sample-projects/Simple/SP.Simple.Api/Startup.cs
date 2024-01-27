@@ -51,8 +51,7 @@ namespace SP.Simple.Api
             });
             services.For<LSCoreApiKeysSettings>().Use(new LSCoreApiKeysSettings()
             {
-                ApiKeys = ConfigurationRoot.GetSection("API_KEY").GetChildren().Select(x => x.Value).ToList()!
-
+                ApiKeys = ConfigurationRoot.GetSection(Constants.ApiKeyProperty).GetChildren().Select(x => x.Value).ToList()!
             });
         }
 
