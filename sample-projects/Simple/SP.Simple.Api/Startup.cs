@@ -1,6 +1,8 @@
-﻿using Lamar;
+﻿using JasperFx.Core.Reflection;
+using Lamar;
 using LSCore.Contracts.SettingsModels;
 using LSCore.Framework;
+using Newtonsoft.Json;
 using SP.Simple.Contracts;
 using SP.Simple.Contracts.MockData.Products;
 
@@ -46,6 +48,11 @@ namespace SP.Simple.Api
                 Host = ConfigurationRoot["MINIO_HOST"]!,
                 Port = ConfigurationRoot["MINIO_PORT"]!,
                 SecretKey = ConfigurationRoot["MINIO_SECRET_KEY"]!
+            });
+            services.For<LSCoreApiKeysSettings>().Use(new LSCoreApiKeysSettings()
+            {
+                ApiKeys = ConfigurationRoot.GetSection("API_KEY").GetChildren().Select(x => x.Value).ToList()!
+
             });
         }
 

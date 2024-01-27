@@ -109,8 +109,10 @@ namespace LSCore.Framework
 
             applicationBuilder.UseSwagger();
             applicationBuilder.UseSwaggerUI();
-            
+
             //applicationBuilder.UseHttpsRedirection();
+            if (_apiKeyAuthentication)
+                applicationBuilder.UseMiddleware<LSCoreApiKeyAuthorizationMiddleware>();
 
             if (_addAuthentication)
             {
@@ -120,8 +122,6 @@ namespace LSCore.Framework
                 if(AfterAuthenticationMiddleware != null)
                     AfterAuthenticationMiddleware(applicationBuilder);
 
-                if(_apiKeyAuthentication)
-                    applicationBuilder.UseMiddleware<LSCoreApiKeyAuthenticationMiddleware>(ConfigurationRoot["API_KEY"]);
             }
 
             applicationBuilder.UseEndpoints((routes) =>
