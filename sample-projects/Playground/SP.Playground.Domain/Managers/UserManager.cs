@@ -1,16 +1,16 @@
-﻿using SP.Playground.Repository.Includes.Users;
+﻿using SP.Playground.Contracts.Enums.SortColumnCodes;
+using SP.Playground.Repository.Includes.Users;
+using SP.Playground.Contracts.Requests.Users;
 using SP.Playground.Repository.Filters.Users;
 using SP.Playground.Contracts.Dtos.Users;
 using SP.Playground.Contracts.IManagers;
 using SP.Playground.Contracts.Entities;
 using Microsoft.Extensions.Logging;
 using LSCore.Contracts.Extensions;
+using LSCore.Contracts.Responses;
 using SP.Playground.Repository;
 using LSCore.Domain.Managers;
 using LSCore.Contracts.Http;
-using LSCore.Contracts.Responses;
-using SP.Playground.Contracts.Requests.Users;
-using SP.Playground.Contracts.Enums.SortColumnCodes;
 
 namespace SP.Playground.Domain.Managers
 {
