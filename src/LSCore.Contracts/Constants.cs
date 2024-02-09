@@ -3,6 +3,8 @@
     public static class LSCoreContractsConstants
     {
         public const string ApiKeyCustomHeader = "X-Api-Auth";
+        public const string UndefinedContextUsername = "UNDEFINED";
+
         public static class ClaimNames
         {
             public const string CustomUsername = "custom:username";

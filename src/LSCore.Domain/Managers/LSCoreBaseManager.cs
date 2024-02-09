@@ -1,21 +1,23 @@
-﻿using FluentValidation;
-using LSCore.Contracts;
+﻿using static LSCore.Contracts.Extensions.LSCoreHttpResponseExtensions;
 using LSCore.Contracts.Enums.ValidationCodes;
-using LSCore.Contracts.Extensions;
-using LSCore.Contracts.Http;
 using LSCore.Contracts.Http.Interfaces;
-using LSCore.Contracts.IManagers;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using LSCore.Contracts.Interfaces;
+using LSCore.Contracts.Extensions;
+using LSCore.Contracts.IManagers;
+using Microsoft.AspNetCore.Http;
 using LSCore.Contracts.Requests;
 using LSCore.Domain.Extensions;
 using LSCore.Domain.Validators;
-using Microsoft.AspNetCore.Http;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
-using Minio.DataModel.Notification;
-using Omu.ValueInjecter;
 using System.Linq.Expressions;
-using static LSCore.Contracts.Extensions.LSCoreHttpResponseExtensions;
+using LSCore.Contracts.Http;
+using Omu.ValueInjecter;
+using FluentValidation;
+using LSCore.Contracts;
+using LSCore.Contracts.SettingsModels;
+using Minio.DataModel.Notification;
+using LSCore.Contracts.Entities;
 
 namespace LSCore.Domain.Managers
 {
@@ -24,7 +26,7 @@ namespace LSCore.Domain.Managers
         private readonly ILogger<TManager> _logger;
         private readonly DbContext? _dbContext;
 
-        public LSCoreContextUser CurrentUser { get; set; }
+        public LSCoreContextUser? CurrentUser { get; private set; }
 
         public LSCoreBaseManager(ILogger<TManager> logger)
         {
@@ -40,7 +42,7 @@ namespace LSCore.Domain.Managers
 
         public void SetContext(HttpContext httpContext)
         {
-            if (!httpContext.User.Identity.IsAuthenticated)
+            if (!httpContext.User.Identity!.IsAuthenticated)
                 return;
 
             var claims = httpContext.User?.Claims.ToList();
@@ -48,7 +50,7 @@ namespace LSCore.Domain.Managers
                 return;
 
             CurrentUser = new LSCoreContextUser();
-            CurrentUser.Username = claims.FirstOrDefault(x => x.Type == LSCoreContractsConstants.ClaimNames.CustomUsername)?.Value.ToString() ?? "UNDEFINED";
+            CurrentUser.Username = claims.FirstOrDefault(x => x.Type == LSCoreContractsConstants.ClaimNames.CustomUsername)?.Value.ToString() ?? LSCoreContractsConstants.UndefinedContextUsername;
             CurrentUser.Id = Convert.ToInt32(claims.FirstOrDefault(x => x.Type == LSCoreContractsConstants.ClaimNames.CustomUserId)?.Value);
         }
 
@@ -64,7 +66,7 @@ namespace LSCore.Domain.Managers
             try
             {
                 if (_dbContext == null)
-                    return LSCoreResponse<TEntity>.InternalServerError();
+                    return LSCoreResponse<TEntity>.BadRequest(string.Format(LSCoreCommonValidationCodes.COMM_006.GetDescription()!, nameof(_dbContext)));
 
                 var response = new LSCoreResponse<TEntity>();
                 if (request.IsRequestInvalid(response))
@@ -116,9 +118,9 @@ namespace LSCore.Domain.Managers
 
                 return new LSCoreResponse<TEntity>(entity);
             }
-            catch
+            catch(Exception ex)
             {
-                // ToDo: Log exception
+                _logger.LogError(ex, ex.Message);
                 return LSCoreResponse<TEntity>.InternalServerError();
             }
         }
@@ -143,9 +145,9 @@ namespace LSCore.Domain.Managers
 
                 return new LSCoreResponse<TEntity>(entity);
             }
-            catch
+            catch(Exception ex)
             {
-                // ToDo: Log exception
+                _logger.LogError(ex, ex.Message);
                 return LSCoreResponse<TEntity>.InternalServerError();
             }
         }
@@ -171,9 +173,9 @@ namespace LSCore.Domain.Managers
 
                 return new LSCoreResponse<TEntity>(entity);
             }
-            catch
+            catch(Exception ex)
             {
-                // ToDo: Log exception
+                _logger.LogError(ex, ex.Message);
                 return LSCoreResponse<TEntity>.InternalServerError();
             }
         }
@@ -183,20 +185,23 @@ namespace LSCore.Domain.Managers
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
-        public LSCoreResponse<IQueryable<T>> Queryable<T>() where T : class
+        public LSCoreResponse<IQueryable<TEntity>> Queryable<TEntity>()
+            where TEntity : LSCoreEntity
         {
             try
             {
                 if (_dbContext == null)
-                    return LSCoreResponse<IQueryable<T>>.BadRequest(string.Format(LSCoreCommonValidationCodes.COMM_006.GetDescription()!, nameof(_dbContext)));
+                    return LSCoreResponse<IQueryable<TEntity>>.BadRequest(string.Format(LSCoreCommonValidationCodes.COMM_006.GetDescription()!, nameof(_dbContext)));
 
-                return new LSCoreResponse<IQueryable<T>>(_dbContext.Set<T>()
-                    .AsQueryable());
+                var query = _dbContext.Set<TEntity>()
+                    .AsQueryable();
+
+                return new LSCoreResponse<IQueryable<TEntity>>(query);
             }
-            catch
+            catch(Exception ex)
             {
-                // ToDo: Log exception
-                return LSCoreResponse<IQueryable<T>>.InternalServerError();
+                _logger.LogError(ex, ex.Message);
+                return LSCoreResponse<IQueryable<TEntity>>.InternalServerError();
             }
         }
 
@@ -205,35 +210,36 @@ namespace LSCore.Domain.Managers
         /// </summary>
         /// <param name="predicate"></param>
         /// <returns></returns>
-        public LSCoreResponse<T> First<T>(Expression<Func<T, bool>> predicate) where T : class
+        public LSCoreResponse<TEntity> First<TEntity>(Expression<Func<TEntity, bool>> predicate)
+            where TEntity : LSCoreEntity
         {
             try
             {
                 if (_dbContext == null)
-                    return LSCoreResponse<T>.BadRequest(string.Format(LSCoreCommonValidationCodes.COMM_006.GetDescription()!, nameof(_dbContext)));
+                    return LSCoreResponse<TEntity>.BadRequest(string.Format(LSCoreCommonValidationCodes.COMM_006.GetDescription()!, nameof(_dbContext)));
 
-                var response = new LSCoreResponse<T>();
+                var response = new LSCoreResponse<TEntity>();
 
-                var querableResponse = Queryable<T>();
+                var querableResponse = Queryable<TEntity>();
                 response.Merge(querableResponse);
                 if (response.NotOk)
                     return response;
 
                 var entity = querableResponse.Payload!.FirstOrDefault(predicate);
                 if (entity == null)
-                    return LSCoreResponse<T>.NotFound();
+                    return LSCoreResponse<TEntity>.NotFound();
 
-                return new LSCoreResponse<T>(entity);
+                return new LSCoreResponse<TEntity>(entity);
             }
-            catch
+            catch(Exception ex)
             {
-                // ToDo: Log exception
-                return LSCoreResponse<T>.InternalServerError();
+                _logger.LogError(ex, ex.Message);
+                return LSCoreResponse<TEntity>.InternalServerError();
             }
         }
 
         public LSCoreResponse<TPayload> First<TEntity, TPayload>(Expression<Func<TEntity, bool>> predicate)
-            where TEntity : class
+            where TEntity : LSCoreEntity
         {
             var response = new LSCoreResponse<TPayload>();
             var entityResponse = First(predicate);
@@ -242,7 +248,7 @@ namespace LSCore.Domain.Managers
             if (response.NotOk)
                 return response;
 
-            response.Payload = entityResponse.Payload.ToDto<TPayload, TEntity>();
+            response.Payload = entityResponse.Payload!.ToDto<TPayload, TEntity>();
             return response;
         }
 
@@ -253,7 +259,7 @@ namespace LSCore.Domain.Managers
         /// <param name="entity"></param>
         public LSCoreResponse HardDelete<TEntity>(TEntity entity) where TEntity : class
         {
-            _dbContext
+            _dbContext!
                 .Set<TEntity>()
                 .Remove(entity);
 
@@ -352,8 +358,8 @@ namespace LSCore.Domain.Managers
         }
     }
 
-    public class LSCoreBaseManager<TManager, TEntity> : LSCoreBaseManager<TManager> where TEntity
-        : class, ILSCoreEntity, new()
+    public class LSCoreBaseManager<TManager, TEntity> : LSCoreBaseManager<TManager>
+        where TEntity : LSCoreEntity, ILSCoreEntity, new()
     {
         private readonly ILogger<TManager> _logger;
         private readonly DbContext _dbContext;
@@ -389,7 +395,7 @@ namespace LSCore.Domain.Managers
             if (response.NotOk)
                 return response;
 
-            return responseMapper(saveResponse.Payload);
+            return responseMapper(saveResponse.Payload!);
         }
 
         /// <summary>
@@ -403,6 +409,7 @@ namespace LSCore.Domain.Managers
         /// Gets manager entity table as queryable
         /// </summary>
         /// <returns></returns>
+        [Obsolete("Use Queryable(LSCoreQueryableOptions<TEntity>? options) instead")]
         public LSCoreResponse<IQueryable<TEntity>> Queryable(Expression<Func<TEntity, bool>> predicate)
         {
             var response = new LSCoreResponse<IQueryable<TEntity>>();
