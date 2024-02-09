@@ -49,6 +49,8 @@ namespace LSCore.Framework
                 s.ConnectImplementationsToTypesClosing(typeof(ILSCoreCommand<>));
                 s.ConnectImplementationsToTypesClosing(typeof(IValidator<>));
                 s.ConnectImplementationsToTypesClosing(typeof(ILSCoreMap<,>));
+                s.ConnectImplementationsToTypesClosing(typeof(ILSCoreFilter<>));
+                s.ConnectImplementationsToTypesClosing(typeof(ILSCoreIncludes<>));
                 s.ConnectImplementationsToTypesClosing(typeof(ILSCoreDtoMapper<,>));
 
                 if (AdditionalScanOptions != null)

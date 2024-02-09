@@ -1,7 +1,7 @@
 ﻿using LSCore.Contracts.Http.Interfaces;
+using System.Runtime.CompilerServices;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
-using System.Runtime.CompilerServices;
 
 namespace LSCore.Contracts.Extensions
 {

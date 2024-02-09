@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\src\LSCore.Domain\LSCore.Domain.csproj" />
+    <ProjectReference Include="..\SP.Playground.Contracts\SP.Playground.Contracts.csproj" />
+    <ProjectReference Include="..\SP.Playground.Repository\SP.Playground.Repository.csproj" />
+  </ItemGroup>
+
+</Project>

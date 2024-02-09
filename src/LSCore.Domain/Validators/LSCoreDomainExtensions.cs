@@ -1,6 +1,5 @@
-﻿using FluentValidation;
-using LSCore.Contracts.Http.Interfaces;
-using LSCore.Contracts.IValidators;
+﻿using LSCore.Contracts.Http.Interfaces;
+using FluentValidation;
 
 namespace LSCore.Domain.Validators
 {
