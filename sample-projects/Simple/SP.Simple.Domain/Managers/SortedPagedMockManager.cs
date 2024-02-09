@@ -1,10 +1,10 @@
-﻿using LSCore.Contracts.Extensions;
-using LSCore.Contracts.Http;
-using LSCore.Contracts.Responses;
-using SP.Simple.Contracts.Dtos.SortedPagedMock;
+﻿using SP.Simple.Contracts.Requests.SortedPagedMock;
 using SP.Simple.Contracts.Enums.SortColumnCodes;
+using SP.Simple.Contracts.Dtos.SortedPagedMock;
 using SP.Simple.Contracts.IManagers;
-using SP.Simple.Contracts.Requests.SortedPagedMock;
+using LSCore.Contracts.Extensions;
+using LSCore.Contracts.Responses;
+using LSCore.Contracts.Http;
 
 namespace SP.Simple.Domain.Managers
 {
