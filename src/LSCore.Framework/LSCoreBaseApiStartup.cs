@@ -1,4 +1,5 @@
 ﻿using Lamar;
+using LSCore.Domain.Middlewares;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
@@ -12,13 +13,15 @@ namespace LSCore.Framework
     {
         private readonly bool _addAuthentication;
         private readonly bool _useCustomAuthorizationPolicy;
+        private readonly bool _apiKeyAuthentication;
 
         public Func<IApplicationBuilder, IApplicationBuilder>? AfterAuthenticationMiddleware { get; set; } = null;
 
-        public LSCoreBaseApiStartup(string projectName, bool addAuthentication = true, bool useCustomAuthorizationPolicy = false) : base(projectName)
+        public LSCoreBaseApiStartup(string projectName, bool addAuthentication = true, bool useCustomAuthorizationPolicy = false, bool apiKeyAuthentication = false) : base(projectName)
         {
             _addAuthentication = addAuthentication;
             _useCustomAuthorizationPolicy = useCustomAuthorizationPolicy;
+            _apiKeyAuthentication = apiKeyAuthentication;
         }
 
         public override void ConfigureServices(IServiceCollection services)
@@ -51,6 +54,7 @@ namespace LSCore.Framework
                     {
                         { jwtSecurityScheme, Array.Empty<string>() }
                     });
+
                 }
             });
             services.AddControllers();
@@ -107,6 +111,8 @@ namespace LSCore.Framework
             applicationBuilder.UseSwaggerUI();
 
             //applicationBuilder.UseHttpsRedirection();
+            if (_apiKeyAuthentication)
+                applicationBuilder.UseMiddleware<LSCoreApiKeyAuthorizationMiddleware>();
 
             if (_addAuthentication)
             {
@@ -115,6 +121,7 @@ namespace LSCore.Framework
 
                 if(AfterAuthenticationMiddleware != null)
                     AfterAuthenticationMiddleware(applicationBuilder);
+
             }
 
             applicationBuilder.UseEndpoints((routes) =>

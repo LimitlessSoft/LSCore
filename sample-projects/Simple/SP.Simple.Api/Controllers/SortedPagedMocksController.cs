@@ -1,9 +1,9 @@
-﻿using LSCore.Contracts.Http;
-using LSCore.Contracts.Responses;
-using Microsoft.AspNetCore.Mvc;
+﻿using SP.Simple.Contracts.Requests.SortedPagedMock;
 using SP.Simple.Contracts.Dtos.SortedPagedMock;
 using SP.Simple.Contracts.IManagers;
-using SP.Simple.Contracts.Requests.SortedPagedMock;
+using LSCore.Contracts.Responses;
+using Microsoft.AspNetCore.Mvc;
+using LSCore.Contracts.Http;
 
 namespace SP.Simple.Api.Controllers
 {

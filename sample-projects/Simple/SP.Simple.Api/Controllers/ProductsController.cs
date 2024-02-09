@@ -1,8 +1,8 @@
-﻿using LSCore.Contracts.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using SP.Simple.Contracts.Requests.Products;
 using SP.Simple.Contracts.Dtos.Products;
 using SP.Simple.Contracts.IManagers;
-using SP.Simple.Contracts.Requests.Products;
+using Microsoft.AspNetCore.Mvc;
+using LSCore.Contracts.Http;
 
 namespace SP.Simple.Api.Controllers
 {

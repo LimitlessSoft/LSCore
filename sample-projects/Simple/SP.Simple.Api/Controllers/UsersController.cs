@@ -1,9 +1,8 @@
-﻿using LSCore.Contracts.Http;
+﻿using SP.Simple.Contracts.Requests.Users;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
 using SP.Simple.Contracts.IManagers;
-using SP.Simple.Contracts.Requests.Users;
+using Microsoft.AspNetCore.Mvc;
+using LSCore.Contracts.Http;
 
 namespace SP.Simple.Api.Controllers
 {

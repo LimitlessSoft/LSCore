@@ -1,10 +1,10 @@
-﻿using LSCore.Contracts.Http;
-using LSCore.Domain.Extensions;
-using SP.Simple.Contracts.Dtos.Products;
-using SP.Simple.Contracts.Entities;
-using SP.Simple.Contracts.IManagers;
+﻿using SP.Simple.Contracts.Requests.Products;
 using SP.Simple.Contracts.MockData.Products;
-using SP.Simple.Contracts.Requests.Products;
+using SP.Simple.Contracts.Dtos.Products;
+using SP.Simple.Contracts.IManagers;
+using SP.Simple.Contracts.Entities;
+using LSCore.Domain.Extensions;
+using LSCore.Contracts.Http;
 
 namespace SP.Simple.Domain.Managers
 {

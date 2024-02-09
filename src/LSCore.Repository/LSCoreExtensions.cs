@@ -22,7 +22,7 @@ namespace LSCore.Repository
             services.AddEntityFrameworkNpgsql()
                 .AddDbContext<TDbContext>((services, options) =>
                 {
-                    options.ConfigureDbContext(configurationRoot, typeof(TStartup).Namespace).UseInternalServiceProvider(services);
+                    options.ConfigureDbContext(configurationRoot, typeof(TStartup).Namespace!).UseInternalServiceProvider(services);
                 });
         }
 
