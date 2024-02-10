@@ -7,6 +7,7 @@ using LSCore.Contracts.Interfaces;
 using LSCore.Contracts.Extensions;
 using LSCore.Contracts.IManagers;
 using Microsoft.AspNetCore.Http;
+using LSCore.Contracts.Entities;
 using LSCore.Contracts.Requests;
 using LSCore.Domain.Extensions;
 using LSCore.Domain.Validators;
@@ -15,9 +16,6 @@ using LSCore.Contracts.Http;
 using Omu.ValueInjecter;
 using FluentValidation;
 using LSCore.Contracts;
-using LSCore.Contracts.SettingsModels;
-using Minio.DataModel.Notification;
-using LSCore.Contracts.Entities;
 
 namespace LSCore.Domain.Managers
 {
@@ -186,7 +184,7 @@ namespace LSCore.Domain.Managers
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
         public LSCoreResponse<IQueryable<TEntity>> Queryable<TEntity>()
-            where TEntity : LSCoreEntity
+            where TEntity : class, ILSCoreEntity
         {
             try
             {
@@ -211,7 +209,7 @@ namespace LSCore.Domain.Managers
         /// <param name="predicate"></param>
         /// <returns></returns>
         public LSCoreResponse<TEntity> First<TEntity>(Expression<Func<TEntity, bool>> predicate)
-            where TEntity : LSCoreEntity
+            where TEntity : class, ILSCoreEntity
         {
             try
             {
@@ -239,7 +237,7 @@ namespace LSCore.Domain.Managers
         }
 
         public LSCoreResponse<TPayload> First<TEntity, TPayload>(Expression<Func<TEntity, bool>> predicate)
-            where TEntity : LSCoreEntity
+            where TEntity : class, ILSCoreEntity
         {
             var response = new LSCoreResponse<TPayload>();
             var entityResponse = First(predicate);
