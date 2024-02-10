@@ -11,6 +11,8 @@ namespace SP.Playground.Repository
     {
         public List<UserEntity> Users { get; set; }
         public List<CityEntity> Cities { get; set; }
+        public List<StreetEntity> Streets { get; set; }
+        public List<HouseEntity> Houses { get; set; }
 
         public SPPlaygroundDbContext(DbContextOptions otpions) : base(otpions)
         {
@@ -21,6 +23,8 @@ namespace SP.Playground.Repository
         {
             modelBuilder.Entity<UserEntity>().AddMap(new UserEntityMap());
             modelBuilder.Entity<CityEntity>().AddMap(new CityEntityMap());
+            modelBuilder.Entity<StreetEntity>().AddMap(new StreetEntityMap());
+            modelBuilder.Entity<HouseEntity>().AddMap(new HouseEntityMap());
         }
 
         public IQueryable<T> AsQueryable<T>() where T : class =>

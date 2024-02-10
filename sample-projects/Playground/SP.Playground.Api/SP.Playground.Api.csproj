@@ -29,6 +29,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="DataSeeds\Down\HousesSeed_001.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="DataSeeds\HousesSeed_001.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="DataSeeds\Down\StreetsSeed_001.sql">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

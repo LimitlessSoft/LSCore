@@ -10,5 +10,7 @@ namespace SP.Playground.Contracts.Entities
 
         [NotMapped]
         public CityEntity City { get; set; }
+        [NotMapped]
+        public List<HouseEntity> Houses { get; set; }
     }
 }
