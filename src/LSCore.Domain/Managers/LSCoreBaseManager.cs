@@ -357,7 +357,7 @@ namespace LSCore.Domain.Managers
     }
 
     public class LSCoreBaseManager<TManager, TEntity> : LSCoreBaseManager<TManager>
-        where TEntity : LSCoreEntity, ILSCoreEntity, new()
+        where TEntity : class, ILSCoreEntity, new()
     {
         private readonly ILogger<TManager> _logger;
         private readonly DbContext _dbContext;
