@@ -157,7 +157,7 @@ namespace LSCore.Domain.Managers
         /// <param name="entity"></param>
         /// <returns></returns>
         /// <exception cref="ArgumentNullException"></exception>
-        public LSCoreResponse<TEntity> Insert<TEntity>(TEntity entity) where TEntity : class
+        public LSCoreResponse<TEntity> InsertNonLSCoreEntity<TEntity>(TEntity entity) where TEntity : class
         {
             try
             {
@@ -179,9 +179,28 @@ namespace LSCore.Domain.Managers
         }
 
         /// <summary>
+        /// Inserts LSCoreEntity into database
+        /// </summary>
+        /// <typeparam name="TEntity"></typeparam>
+        /// <param name="entity"></param>
+        /// <param name="assignCreatedBy"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        public LSCoreResponse<TEntity> Insert<TEntity>(TEntity entity, bool assignCreatedBy = true) where TEntity : class, ILSCoreEntity
+        {
+            entity.CreatedAt = DateTime.UtcNow;
+            
+            if(assignCreatedBy)
+                entity.CreatedBy = CurrentUser?.Id ?? 0;
+
+            return InsertNonLSCoreEntity(entity);
+        }
+
+        /// <summary>
         /// Gets T entity table as queryable
         /// </summary>
         /// <typeparam name="T"></typeparam>
+        /// <typeparam name="TEntity"></typeparam>
         /// <returns></returns>
         public LSCoreResponse<IQueryable<TEntity>> Queryable<TEntity>()
             where TEntity : class, ILSCoreEntity
