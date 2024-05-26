@@ -1,1 +1,0 @@
-﻿DELETE FROM "UserEntity" WHERE "Id" BETWEEN 0 AND 30;

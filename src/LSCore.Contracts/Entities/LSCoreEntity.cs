@@ -4,7 +4,7 @@ namespace LSCore.Contracts.Entities
 {
     public class LSCoreEntity : ILSCoreEntity
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
         public bool IsActive { get; set; }
         public DateTime CreatedAt { get; set; }
         public int CreatedBy { get; set; }

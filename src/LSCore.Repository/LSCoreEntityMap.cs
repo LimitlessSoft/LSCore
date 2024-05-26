@@ -1,19 +1,21 @@
-﻿using LSCore.Contracts.Interfaces;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using LSCore.Contracts.Interfaces;
 
 namespace LSCore.Repository
 {
     /// <summary>
     /// Used to map entity fields for the database.
-    /// By default Id, CreatedAt, IsActive, UpdatedAt and UpdatedBy are mapped.
+    /// By default, Id, CreatedAt, IsActive, UpdatedAt and UpdatedBy are mapped.
     /// To add custom mapping, override Map(EntityTypeBuilder&lt;<typeparamref name="TEntity"/>&gt; entityTypeBuilder)
     /// </summary>
     /// <typeparam name="TEntity"></typeparam>
-    public class LSCoreEntityMap<TEntity> : ILSCoreEntityMap<TEntity>
+    public abstract class LSCoreEntityMap<TEntity> : ILSCoreEntityMap<TEntity>
         where TEntity : class, ILSCoreEntity
     {
-        public virtual EntityTypeBuilder<TEntity> Map(EntityTypeBuilder<TEntity> entityTypeBuilder)
+        public abstract Action<EntityTypeBuilder<TEntity>> Mapper { get; }
+
+        public EntityTypeBuilder<TEntity> Map(EntityTypeBuilder<TEntity> entityTypeBuilder)
         {
             entityTypeBuilder
                 .HasKey(x => x.Id);
@@ -36,9 +38,10 @@ namespace LSCore.Repository
                 .IsRequired(false);
 
             foreach (var property in typeof(TEntity).GetProperties())
-            {
-                if (property.PropertyType == typeof(DateTime)) entityTypeBuilder.Property(property.PropertyType, property.Name).HasColumnType("timestamp");
-            }
+                if (property.PropertyType == typeof(DateTime))
+                    entityTypeBuilder.Property(property.PropertyType, property.Name).HasColumnType("timestamp");
+            
+            Mapper(entityTypeBuilder);
 
             return entityTypeBuilder;
         }

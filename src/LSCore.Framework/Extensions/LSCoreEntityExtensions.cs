@@ -5,10 +5,10 @@ namespace LSCore.Framework.Extensions
 {
     public static class LSCoreEntityExtensions
     {
-        public static TDto ToDto<TDto, TEntity>(this TEntity sender)
-            where TEntity : class
+        public static TDestination ToDto<TSource, TDestination>(this TSource sender)
+            where TSource : class
         {
-            var dtoMapper = LSCoreDomainConstants.Container?.TryGetInstance<ILSCoreDtoMapper<TDto, TEntity>>();
+            var dtoMapper = LSCoreDomainConstants.Container?.TryGetInstance<ILSCoreDtoMapper<TSource, TDestination>>();
             if(dtoMapper == null)
                 throw new ArgumentNullException(nameof(dtoMapper));
 
