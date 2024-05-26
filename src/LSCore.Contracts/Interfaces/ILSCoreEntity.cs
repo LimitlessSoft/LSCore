@@ -2,7 +2,7 @@
 {
     public interface ILSCoreEntity : ILSCoreEntityBase
     {
-        int Id { get; set; }
+        new long Id { get; set; }
         bool IsActive { get; set; }
         DateTime CreatedAt { get; set; }
         int CreatedBy { get; set; }

@@ -2,6 +2,6 @@
 {
     public interface ILSCoreEntityBase
     {
-        int Id { get; set; }
+        long Id { get; set; }
     }
 }

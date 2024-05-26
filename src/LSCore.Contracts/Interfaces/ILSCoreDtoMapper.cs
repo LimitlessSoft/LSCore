@@ -1,7 +1,7 @@
 ﻿namespace LSCore.Contracts.Interfaces
 {
-    public interface ILSCoreDtoMapper<TDto, TEntity>
+    public interface ILSCoreDtoMapper<in TSource, out TDestination>
     {
-        public TDto ToDto(TEntity sender);
+        public TDestination ToDto(TSource sender);
     }
 }

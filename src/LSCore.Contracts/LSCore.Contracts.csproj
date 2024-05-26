@@ -1,14 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
     <RepositoryUrl>https://github.com/LimitlessSoft/LSCore</RepositoryUrl>
-    <Version>1.1.3</Version>
+    <Version>1.2.0</Version>
     <Description>Object models used by other LSCore packets</Description>
   </PropertyGroup>
 
@@ -25,13 +25,15 @@
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
-		<PackageReference Include="Microsoft.Extensions.Logging" Version="7.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.0" />
 		<PackageReference Include="ValueInjecter" Version="3.2.0" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Responses\" />
+	  <Reference Include="Microsoft.EntityFrameworkCore">
+	    <HintPath>..\..\..\..\.nuget\packages\microsoft.entityframeworkcore\8.0.5\lib\net8.0\Microsoft.EntityFrameworkCore.dll</HintPath>
+	  </Reference>
 	</ItemGroup>
 
 </Project>

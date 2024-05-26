@@ -1,1 +1,0 @@
-﻿DELETE FROM "HouseEntity" WHERE "Id" BETWEEN 0 AND 15;

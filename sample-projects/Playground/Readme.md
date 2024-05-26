@@ -1,3 +1,0 @@
-This project is used to test out code without any order or much documentation.
-
-Project has implemented database (Postgres) and it is included in `.Api` project (instead of separate `DbMigration` one). It has seeds for the test data so starting up database is pretty simple. Deploy postgresql image on docker or host somewhere on cloud and inside .appsettings populate values for `POSTGRES_PORT`, `POSTGRES_HOST`, `POSTGRES_PASSWORD`, `POSTGRES_USER`, `POSTGRES_DATABASE_NAME` after wich all you need to do is call `Update-Database` and database will be created and populated with seed data.

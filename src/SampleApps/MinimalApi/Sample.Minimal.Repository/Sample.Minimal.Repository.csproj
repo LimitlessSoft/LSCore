@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\LSCore.Repository\LSCore.Repository.csproj" />
+      <ProjectReference Include="..\Sample.Minimal.Contracts\Sample.Minimal.Contracts.csproj" />
+    </ItemGroup>
+
+</Project>
