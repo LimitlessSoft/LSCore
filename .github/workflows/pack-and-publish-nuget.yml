@@ -20,6 +20,7 @@ jobs:
         
       - name: Publish Contracts
         run: dotnet nuget push src/LSCore.Contracts/bin/Release/*.nupkg --api-key ${{ secrets.NUGET_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+
   pack-and-publish-domain:
     runs-on: ubuntu-latest
     steps:
@@ -31,6 +32,7 @@ jobs:
         
       - name: Publish Domain
         run: dotnet nuget push src/LSCore.Domain/bin/Release/*.nupkg --api-key ${{ secrets.NUGET_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+
   pack-and-publish-repository:
     runs-on: ubuntu-latest
     steps:
@@ -42,6 +44,7 @@ jobs:
         
       - name: Publish Repository
         run: dotnet nuget push src/LSCore.Repository/bin/Release/*.nupkg --api-key ${{ secrets.NUGET_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+        
   pack-and-publish-framework:
     runs-on: ubuntu-latest
     steps:
