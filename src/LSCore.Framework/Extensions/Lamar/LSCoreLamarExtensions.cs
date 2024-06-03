@@ -22,13 +22,4 @@ public static class LSCoreLamarExtensions
         services.ConnectImplementationsToTypesClosing(typeof(ILSCoreIncludes<>));
         services.ConnectImplementationsToTypesClosing(typeof(ILSCoreDtoMapper<,>));
     }
-    
-    /// <summary>
-    /// Adds needed resources for the LSCore authorization
-    /// </summary>
-    /// <param name="services"></param>
-    public static void LSCoreAddAuthorization(this IServiceCollection services)
-    {
-        services.AddScoped<LSCoreContextUser>();
-    }
 }
