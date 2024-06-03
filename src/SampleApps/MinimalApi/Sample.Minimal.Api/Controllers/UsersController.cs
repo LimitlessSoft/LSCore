@@ -1,6 +1,6 @@
+using Sample.Minimal.Contracts.IManagers;
 using LSCore.Contracts.Requests;
 using Microsoft.AspNetCore.Mvc;
-using Sample.Minimal.Contracts.IManagers;
 
 namespace Sample.Minimal.Api.Controllers;
 

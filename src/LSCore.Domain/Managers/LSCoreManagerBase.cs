@@ -19,6 +19,7 @@ namespace LSCore.Domain.Managers
         private readonly ILSCoreDbContext? _dbContext;
 
         public LSCoreContextUser? CurrentUser { get; }
+        
 
         protected LSCoreManagerBase(ILogger<TManager> logger)
         {
@@ -30,6 +31,20 @@ namespace LSCore.Domain.Managers
         {
             _logger = logger;
             _dbContext = dbContext;
+        }
+
+        protected LSCoreManagerBase(ILogger<TManager> logger, LSCoreContextUser currentUser)
+        {
+            _logger = logger;
+            _dbContext = null;
+            CurrentUser = currentUser;
+        }
+
+        protected LSCoreManagerBase(ILogger<TManager> logger, ILSCoreDbContext dbContext, LSCoreContextUser currentUser)
+        {
+            _logger = logger;
+            _dbContext = dbContext;
+            CurrentUser = currentUser;
         }
 
         /// <summary>
