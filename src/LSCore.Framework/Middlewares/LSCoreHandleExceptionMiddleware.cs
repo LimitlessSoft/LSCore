@@ -27,7 +27,7 @@ public class LSCoreHandleExceptionMiddleware(RequestDelegate next, ILogger<LSCor
                 context.Response.StatusCode = (int)HttpStatusCode.Forbidden;
                 break;
             
-            case LSCoreNotAuthenticatedException:
+            case LSCoreUnauthenticatedException:
                 context.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
                 break;
             

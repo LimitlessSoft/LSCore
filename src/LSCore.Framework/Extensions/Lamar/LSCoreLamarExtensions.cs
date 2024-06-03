@@ -1,6 +1,9 @@
 using LSCore.Contracts.Interfaces;
 using Lamar.Scanning.Conventions;
 using FluentValidation;
+using LSCore.Contracts;
+using LSCore.Framework.Middlewares;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace LSCore.Framework.Extensions.Lamar;
 
@@ -18,5 +21,14 @@ public static class LSCoreLamarExtensions
         services.ConnectImplementationsToTypesClosing(typeof(ILSCoreFilter<>));
         services.ConnectImplementationsToTypesClosing(typeof(ILSCoreIncludes<>));
         services.ConnectImplementationsToTypesClosing(typeof(ILSCoreDtoMapper<,>));
+    }
+    
+    /// <summary>
+    /// Adds needed resources for the LSCore authorization
+    /// </summary>
+    /// <param name="services"></param>
+    public static void LSCoreAddAuthorization(this IServiceCollection services)
+    {
+        services.AddScoped<LSCoreContextUser>();
     }
 }
