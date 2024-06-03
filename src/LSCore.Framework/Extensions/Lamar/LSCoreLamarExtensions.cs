@@ -1,9 +1,6 @@
 using LSCore.Contracts.Interfaces;
 using Lamar.Scanning.Conventions;
 using FluentValidation;
-using LSCore.Contracts;
-using LSCore.Framework.Middlewares;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace LSCore.Framework.Extensions.Lamar;
 
