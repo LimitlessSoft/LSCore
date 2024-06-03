@@ -4,7 +4,6 @@ using LSCore.Contracts.Interfaces;
 using LSCore.Contracts.Extensions;
 using LSCore.Contracts.Exceptions;
 using LSCore.Contracts.IManagers;
-using Microsoft.AspNetCore.Http;
 using LSCore.Contracts.Requests;
 using LSCore.Domain.Extensions;
 using Omu.ValueInjecter;
@@ -19,7 +18,7 @@ namespace LSCore.Domain.Managers
         private readonly ILogger<TManager> _logger;
         private readonly ILSCoreDbContext? _dbContext;
 
-        public LSCoreContextUser? CurrentUser { get; private set; }
+        public LSCoreContextUser? CurrentUser { get; }
 
         protected LSCoreManagerBase(ILogger<TManager> logger)
         {
@@ -31,22 +30,6 @@ namespace LSCore.Domain.Managers
         {
             _logger = logger;
             _dbContext = dbContext;
-        }
-
-        public void SetContext(HttpContext httpContext)
-        {
-            if (!httpContext.User.Identity!.IsAuthenticated)
-                return;
-
-            var claims = httpContext.User?.Claims.ToList();
-            if (claims == null)
-                return;
-
-            CurrentUser = new LSCoreContextUser
-            {
-                Username = claims.FirstOrDefault(x => x.Type == LSCoreContractsConstants.ClaimNames.CustomUsername)?.Value.ToString() ?? LSCoreContractsConstants.UndefinedContextUsername,
-                Id = Convert.ToInt32(claims.FirstOrDefault(x => x.Type == LSCoreContractsConstants.ClaimNames.CustomUserId)?.Value)
-            };
         }
 
         /// <summary>
@@ -193,6 +176,31 @@ namespace LSCore.Domain.Managers
 
             return InsertNonLSCoreEntity(entity);
         }
+        
+        /// <summary>
+        /// Inserts LSCoreEntity list into database
+        /// </summary>
+        /// <param name="entities"></param>
+        /// <param name="assignCreatedBy"></param>
+        /// <typeparam name="TEntity"></typeparam>
+        /// <returns></returns>
+        public List<TEntity> Insert<TEntity>(List<TEntity> entities, bool assignCreatedBy = true) where TEntity : class, ILSCoreEntity
+        {
+            entities.ForEach(x =>
+            {
+                x.CreatedAt = DateTime.UtcNow;
+                
+                if(assignCreatedBy)
+                    x.CreatedBy = CurrentUser?.Id ?? 0;
+            });
+
+            _dbContext!
+                .Set<TEntity>()
+                .AddRange(entities);
+            
+            _dbContext.SaveChanges();
+            return entities;
+        }
 
         /// <summary>
         /// Gets T entity table as queryable
@@ -230,6 +238,20 @@ namespace LSCore.Domain.Managers
             _dbContext!
                 .Set<TEntity>()
                 .Remove(entity);
+
+            _dbContext.SaveChanges();
+        }
+        
+        /// <summary>
+        /// Deletes records from the database
+        /// </summary>
+        /// <param name="entities"></param>
+        /// <typeparam name="TEntity"></typeparam>
+        protected void HardDelete<TEntity>(IEnumerable<TEntity> entities) where TEntity : class
+        {
+            _dbContext!
+                .Set<TEntity>()
+                .RemoveRange(entities);
 
             _dbContext.SaveChanges();
         }
