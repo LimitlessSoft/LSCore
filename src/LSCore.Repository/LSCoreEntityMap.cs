@@ -13,9 +13,30 @@ namespace LSCore.Repository
     public abstract class LSCoreEntityMap<TEntity> : ILSCoreEntityMap<TEntity>
         where TEntity : class, ILSCoreEntity
     {
+        private bool _suppressDefaultMapping { get; set; } = false;
         public abstract Action<EntityTypeBuilder<TEntity>> Mapper { get; }
 
+        protected LSCoreEntityMap()
+        {
+            
+        }
+        
+        protected LSCoreEntityMap(bool suppressDefaultMapping)
+        {
+            _suppressDefaultMapping = suppressDefaultMapping;
+        }
+
         public EntityTypeBuilder<TEntity> Map(EntityTypeBuilder<TEntity> entityTypeBuilder)
+        {
+            if (_suppressDefaultMapping == false)
+                MapDefaultFields(entityTypeBuilder);
+
+            Mapper(entityTypeBuilder);
+
+            return entityTypeBuilder;
+        }
+        
+        private void MapDefaultFields(EntityTypeBuilder<TEntity> entityTypeBuilder)
         {
             entityTypeBuilder
                 .HasKey(x => x.Id);
@@ -40,10 +61,6 @@ namespace LSCore.Repository
             foreach (var property in typeof(TEntity).GetProperties())
                 if (property.PropertyType == typeof(DateTime))
                     entityTypeBuilder.Property(property.PropertyType, property.Name).HasColumnType("timestamp");
-            
-            Mapper(entityTypeBuilder);
-
-            return entityTypeBuilder;
         }
     }
 }
