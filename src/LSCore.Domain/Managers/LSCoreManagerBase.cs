@@ -299,6 +299,17 @@ namespace LSCore.Domain.Managers
             entity.IsActive = false;
             Update(entity);
         }
+        
+        /// <summary>
+        /// Updates records is_active to true
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <typeparam name="TEntity"></typeparam>
+        public void Restore<TEntity>(TEntity entity) where TEntity : class, ILSCoreEntity
+        {
+            entity.IsActive = true;
+            Update(entity);
+        }
     }
 
     public class LSCoreManagerBase<TManager, TEntity> (ILogger<TManager> logger, ILSCoreDbContext dbContext)
