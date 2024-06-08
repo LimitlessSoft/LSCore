@@ -7,7 +7,7 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageLicenseFile>README.md</PackageLicenseFile>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
-    <Version>1.2.3</Version>
+    <Version>1.2.4</Version>
     <RepositoryUrl>https://github.com/LimitlessSoft/LSCore</RepositoryUrl>
     <Description>Logic implementation of the LSCore framework</Description>
   </PropertyGroup>
