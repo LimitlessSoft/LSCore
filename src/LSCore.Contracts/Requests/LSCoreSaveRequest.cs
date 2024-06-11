@@ -1,20 +1,19 @@
-﻿namespace LSCore.Contracts.Requests
+﻿namespace LSCore.Contracts.Requests;
+
+public class LSCoreSaveRequest
 {
-    public class LSCoreSaveRequest
+    public long? Id { get; set; }
+
+    public LSCoreSaveRequest()
     {
-        public int? Id { get; set; }
 
-        public LSCoreSaveRequest()
-        {
-
-        }
-
-        public LSCoreSaveRequest(int? Id)
-        {
-            this.Id = Id;
-        }
-
-        public bool IsNew { get => !Id.HasValue; }
-        public bool IsOld { get => Id.HasValue; }
     }
+
+    public LSCoreSaveRequest(long? Id)
+    {
+        this.Id = Id;
+    }
+
+    public bool IsNew => !Id.HasValue;
+    public bool IsOld => Id.HasValue;
 }
