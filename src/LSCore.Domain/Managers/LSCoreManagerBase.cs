@@ -276,7 +276,7 @@ namespace LSCore.Domain.Managers
         /// </summary>
         /// <typeparam name="TEntity"></typeparam>
         /// <param name="id"></param>
-        protected void HardDelete<TEntity>(int id)
+        protected void HardDelete<TEntity>(long id)
             where TEntity : class, ILSCoreEntityBase
         {
             var entity = _dbContext?
@@ -355,7 +355,7 @@ namespace LSCore.Domain.Managers
         /// </summary>
         /// <typeparam name="TEntity"></typeparam>
         /// <param name="id"></param>
-        public void HardDelete(int id) =>
+        public void HardDelete(long id) =>
             base.HardDelete<TEntity>(id);
     }
 }
