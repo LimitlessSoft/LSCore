@@ -67,6 +67,6 @@ const run = () => {
 		}
 
 		console.log()
-		console.log("Version successfully upgraded!")
+		console.log(`Version successfully upgraded to ${config.nextVersion}!`)
 	});
 }
