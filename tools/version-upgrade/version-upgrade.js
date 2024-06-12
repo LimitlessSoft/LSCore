@@ -34,7 +34,7 @@ const run = () => {
 
 	const parser = new XMLParser(xmlOptions)
 
-	const srcPath = '../src/'
+	const srcPath = '../../src/'
 
 	const projects = fs.readdirSync(srcPath).filter(x => x.indexOf('LSCore') >= 0)
 
