@@ -7,7 +7,7 @@
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
     <RepositoryUrl>https://github.com/LimitlessSoft/LSCore</RepositoryUrl>
-    <Version>1.2.113</Version>
+    <Version>1.2.114</Version>
     <Description>Object models used by other LSCore packets</Description>
   </PropertyGroup>
   <ItemGroup>
