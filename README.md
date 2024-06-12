@@ -27,3 +27,7 @@ Code merged into `main` is automatically packed and pushed to nuget
 ![Nuget](https://img.shields.io/nuget/dt/LSCore.Repository?label=LSCore.Repository%20nuget)
 
 
+# Upgrading nuget version
+All projects have synchronized versions. When development is done, to upgrade versions go to `/tools/version-upgrade` and run `node version-upgrade.js`
+This tool will update version number inside all projects and commit upgrade with appropriate message
+Important!!! - run from withing the folder!
