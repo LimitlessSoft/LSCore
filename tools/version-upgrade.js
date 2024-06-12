@@ -65,5 +65,7 @@ const run = () => {
 		if (error) {
 			throw error;
 		}
+
+		console.log("Version successfully upgraded!")
 	});
 }
