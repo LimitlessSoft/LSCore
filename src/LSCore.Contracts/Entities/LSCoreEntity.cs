@@ -1,14 +1,13 @@
 ﻿using LSCore.Contracts.Interfaces;
 
-namespace LSCore.Contracts.Entities
+namespace LSCore.Contracts.Entities;
+
+public class LSCoreEntity : ILSCoreEntity
 {
-    public class LSCoreEntity : ILSCoreEntity
-    {
-        public long Id { get; set; }
-        public bool IsActive { get; set; }
-        public DateTime CreatedAt { get; set; }
-        public int CreatedBy { get; set; }
-        public int? UpdatedBy { get; set; }
-        public DateTime? UpdatedAt { get; set; }
-    }
+    public long Id { get; set; }
+    public bool IsActive { get; set; }
+    public DateTime CreatedAt { get; set; }
+    public long CreatedBy { get; set; }
+    public long? UpdatedBy { get; set; }
+    public DateTime? UpdatedAt { get; set; }
 }
