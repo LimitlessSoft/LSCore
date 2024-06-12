@@ -5,7 +5,7 @@ const xmlOptions = {
 	ignoreAttributes: false,
 	format: true,
 	unpairedTags: ["PackageReference", "ProjectReference"],
-	suppressUnpairedNode: true,
+	suppressUnpairedNode: false,
 }
 
 var config = {}
@@ -55,7 +55,7 @@ const run = () => {
 		const builder = new XMLBuilder(xmlOptions);
 		let xmlDataStr = builder.build(parsed);
 
-		fs.writeFileSync('./version-upgrade.config', JSON.stringify({ currentVersion: config.currentVersion }))
+		fs.writeFileSync('./version-upgrade.config', JSON.stringify({ currentVersion: config.nextVersion }))
 
 		fs.writeFileSync(`${projectPath}/${csprojFile}`, xmlDataStr)
 	}
