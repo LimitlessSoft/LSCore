@@ -53,7 +53,7 @@ const run = () => {
 		const builder = new XMLBuilder(options);
 		let xmlDataStr = builder.build(parsed);
 
-		fs.writeFileSync('./version-upgrade.config', { currentVersion: config.currentVersion })
+		fs.writeFileSync('./version-upgrade.config', JSON.stringify({ currentVersion: config.currentVersion }))
 
 		fs.writeFileSync(`${projectPath}/temp.csproj`, xmlDataStr)
 	}
