@@ -55,6 +55,6 @@ const run = () => {
 
 		fs.writeFileSync('./version-upgrade.config', JSON.stringify({ currentVersion: config.currentVersion }))
 
-		fs.writeFileSync(`${projectPath}/temp.csproj`, xmlDataStr)
+		fs.writeFileSync(`${projectPath}/${csprojFile}`, xmlDataStr)
 	}
 }
