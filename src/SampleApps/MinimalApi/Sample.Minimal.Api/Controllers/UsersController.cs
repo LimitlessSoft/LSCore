@@ -1,3 +1,4 @@
+using Sample.Minimal.Contracts.Requests.Users;
 using Sample.Minimal.Contracts.IManagers;
 using LSCore.Contracts.Requests;
 using Microsoft.AspNetCore.Mvc;
@@ -17,4 +18,10 @@ public class UsersController (IUserManager userManager)
     [Route("/users/{Id}")]
     public IActionResult GetUser([FromRoute] LSCoreIdRequest request) =>
         Ok(userManager.GetSingular(request));
+    
+    [HttpGet]
+    [Route("/users-sortable-and-pageable")]
+    public IActionResult GetUsersSortableAndPageable([FromQuery] LSCoreSortableAndPageableRequest request) =>
+        Ok(userManager.GetMultipleSortedAndPaged(request));
+    
 }

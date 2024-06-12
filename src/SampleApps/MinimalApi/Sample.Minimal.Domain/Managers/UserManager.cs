@@ -1,12 +1,15 @@
-using LSCore.Contracts.Exceptions;
-using LSCore.Contracts.Requests;
-using LSCore.Domain.Extensions;
+using Sample.Minimal.Contracts.SortColumnCodes;
+using Sample.Minimal.Contracts.Requests.Users;
+using Sample.Minimal.Contracts.Dtos.Users;
 using Sample.Minimal.Contracts.IManagers;
 using Sample.Minimal.Contracts.Entities;
 using Microsoft.Extensions.Logging;
+using LSCore.Contracts.Exceptions;
+using LSCore.Contracts.Responses;
+using LSCore.Contracts.Requests;
 using Sample.Minimal.Repository;
+using LSCore.Domain.Extensions;
 using LSCore.Domain.Managers;
-using Sample.Minimal.Contracts.Dtos.Users;
 
 namespace Sample.Minimal.Domain.Managers;
 
@@ -32,4 +35,9 @@ public class UserManager : LSCoreManagerBase<UserEntity>, IUserManager
             .FirstOrDefault(x => x.Id == request.Id)?
             .ToDto<UserEntity, UserDto>()
         ?? throw new LSCoreNotFoundException();
+
+    public LSCoreSortedAndPagedResponse<UserDto> GetMultipleSortedAndPaged(LSCoreSortableAndPageableRequest request) =>
+        Queryable<UserEntity>()
+            .Where(x => x.IsActive)
+            .ToSortedAndPagedResponse<UserEntity, UsersSortColumnCodes.Users, UserDto>(request, UsersSortColumnCodes.UsersSortRules);
 }
