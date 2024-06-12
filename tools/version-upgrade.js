@@ -1,5 +1,5 @@
 const fs = require('fs')
-const { XMLParser } = require('fast-xml-parser')
+const { XMLParser, XMLBuilder } = require('fast-xml-parser')
 
 var config = {}
 
@@ -25,7 +25,7 @@ fs.exists('./version-upgrade.config', (e) => {
 
 const run = () => {
 
-	const parser = new XMLParser()
+	const parser = new XMLParser({ ignoreAttributes: false })
 
 	const srcPath = '../src/'
 
@@ -44,6 +44,17 @@ const run = () => {
 		let parsed = parser.parse(csprojContent)
 
 		parsed.Project.PropertyGroup.Version = config.nextVersion
-		console.log(parsed.Project.PropertyGroup.Version)
+
+		const options = {
+			format: true,
+			ignoreAttributes : false
+		};
+
+		const builder = new XMLBuilder(options);
+		let xmlDataStr = builder.build(parsed);
+
+		fs.writeFileSync('./version-upgrade.config', { currentVersion: config.currentVersion })
+
+		fs.writeFileSync(`${projectPath}/temp.csproj`, xmlDataStr)
 	}
 }
