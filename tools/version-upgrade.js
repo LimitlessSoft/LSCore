@@ -4,7 +4,8 @@ const { XMLParser, XMLBuilder } = require('fast-xml-parser')
 const xmlOptions = {
 	ignoreAttributes: false,
 	format: true,
-	unpairedTags: ["PackageReference", "ProjectReference"]
+	unpairedTags: ["PackageReference", "ProjectReference"],
+	suppressUnpairedNode: true,
 }
 
 var config = {}
