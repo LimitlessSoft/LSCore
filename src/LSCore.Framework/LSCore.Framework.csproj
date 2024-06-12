@@ -1,5 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
@@ -7,11 +6,10 @@
     <RepositoryUrl>https://github.com/LimitlessSoft/LSCore</RepositoryUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <Version>1.2.8</Version>
+    <Version>1.2.15</Version>
     <Description>Framewrok used to build fast scalable .NET Web APIs</Description>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
   </PropertyGroup>
-
   <ItemGroup>
     <None Include="..\..\LICENSE">
       <Pack>True</Pack>
@@ -22,19 +20,16 @@
       <PackagePath>\</PackagePath>
     </None>
   </ItemGroup>
-
   <ItemGroup>
-    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.9.1" />
-    <PackageReference Include="Lamar.Microsoft.DependencyInjection" Version="13.0.4" />
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.5" />
-    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.5" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
-    <PackageReference Include="ValueInjecter" Version="3.2.0" />
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.9.1"/>
+    <PackageReference Include="Lamar.Microsoft.DependencyInjection" Version="13.0.4"/>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.5"/>
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.5"/>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2"/>
+    <PackageReference Include="ValueInjecter" Version="3.2.0"/>
   </ItemGroup>
-
   <ItemGroup>
-    <ProjectReference Include="..\LSCore.Contracts\LSCore.Contracts.csproj" />
-    <ProjectReference Include="..\LSCore.Domain\LSCore.Domain.csproj" />
+    <ProjectReference Include="..\LSCore.Contracts\LSCore.Contracts.csproj"/>
+    <ProjectReference Include="..\LSCore.Domain\LSCore.Domain.csproj"/>
   </ItemGroup>
-
 </Project>
