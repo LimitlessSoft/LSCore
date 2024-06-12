@@ -61,7 +61,7 @@ const run = () => {
 	fs.writeFileSync('./version-upgrade.config', JSON.stringify({ currentVersion: config.nextVersion }))
 
 	const { execFile } = require('child_process');
-	const child = execFile(`./version-upgrade.sh ${config.nextVersion}`, (error, stdout, stderror) => {
+	const child = execFile(`./version-upgrade.sh`, (error, stdout, stderror) => {
 		if (error) {
 			throw error;
 		}
