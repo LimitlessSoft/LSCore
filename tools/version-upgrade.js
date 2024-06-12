@@ -8,7 +8,7 @@ fs.exists('./version-upgrade.config', (e) => {
 		config = JSON.parse(fs.readFileSync('./version-upgrade.config'))
 	} else {
 		config = {
-			currentVersion: 'v0.0.1'
+			currentVersion: '0.0.1'
 		}
 		fs.writeFileSync('./version-upgrade.config', JSON.stringify(config))
 	}
