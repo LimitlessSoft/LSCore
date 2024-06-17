@@ -15,11 +15,11 @@ public class LSCoreHandleExceptionMiddleware(RequestDelegate next, ILogger<LSCor
         }
         catch (Exception ex)
         {
-            HandleException(context, ex);
+            await HandleExceptionAsync(context, ex);
         }
     }
 
-    private void HandleException(HttpContext context, Exception exception)
+    private async Task HandleExceptionAsync(HttpContext context, Exception exception)
     {
         switch (exception)
         {
@@ -32,8 +32,8 @@ public class LSCoreHandleExceptionMiddleware(RequestDelegate next, ILogger<LSCor
                 break;
             
             case LSCoreBadRequestException:
-                context.Response.WriteAsync(exception.Message);
-                context.Response.StatusCode = (int)HttpStatusCode.BadRequest;
+                context.Response.StatusCode = 400;
+                await context.Response.WriteAsync(exception.Message);
                 break;
             
             case LSCoreNotFoundException:
