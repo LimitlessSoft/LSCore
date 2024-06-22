@@ -9,7 +9,6 @@ public static class ClassExtensions
     public static void Validate<T>(this T sender)
         where T : class
     {
-        // Get LSCoreValidatorBase<T> instance
         var validator = LSCoreDomainConstants.Container!.TryGetInstance<LSCoreValidatorBase<T>>();
         if (validator == null)
             throw new NullReferenceException(nameof(validator));
