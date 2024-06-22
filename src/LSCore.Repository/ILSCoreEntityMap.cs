@@ -1,11 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace LSCore.Repository
+namespace LSCore.Repository;
+
+public interface ILSCoreEntityMap<TEntity>
+    where TEntity : class
 {
-    public interface ILSCoreEntityMap<TEntity>
-        where TEntity : class
-    {
-        Action<EntityTypeBuilder<TEntity>> Mapper { get; }
-        EntityTypeBuilder<TEntity> Map(EntityTypeBuilder<TEntity> entityTypeBuilder);
-    }
+    Action<EntityTypeBuilder<TEntity>> Mapper { get; }
+    EntityTypeBuilder<TEntity> Map(EntityTypeBuilder<TEntity> entityTypeBuilder);
 }
