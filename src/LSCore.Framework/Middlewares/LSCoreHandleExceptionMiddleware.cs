@@ -1,7 +1,7 @@
-using System.Net;
 using LSCore.Contracts.Exceptions;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Http;
+using System.Net;
 
 namespace LSCore.Framework.Middlewares;
 
