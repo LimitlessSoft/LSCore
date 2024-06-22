@@ -5,6 +5,8 @@ A .NET libraries which makes building your API faster and easier.
 
 Check out sample-projects to see detailed implemetations
 
+Join discord for discussions: https://discord.gg/PTWERkBV
+
 # Contribution
 To contribute fork this project, branch from `develop`, make change and make PR onto `develop` branch
 Since there is no established protocol, your change may not be accepted.
