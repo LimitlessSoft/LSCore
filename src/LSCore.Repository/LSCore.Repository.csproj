@@ -7,7 +7,7 @@
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <Version>1.2.116</Version>
+    <Version>1.2.117</Version>
     <Description>Package used to manage databases using EF inside LSCore ecosystem</Description>
   </PropertyGroup>
   <ItemGroup>
@@ -21,7 +21,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.6"/>
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="8.0.0"/>
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.4"/>
   </ItemGroup>
