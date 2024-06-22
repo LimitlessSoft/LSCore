@@ -21,10 +21,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.9.1"/>
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.9.2" />
     <PackageReference Include="Lamar.Microsoft.DependencyInjection" Version="13.0.4"/>
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.5"/>
-    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.5"/>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.6" />
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.6" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2"/>
     <PackageReference Include="ValueInjecter" Version="3.2.0"/>
   </ItemGroup>
