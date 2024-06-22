@@ -313,10 +313,14 @@ public abstract class LSCoreManagerBase<TManager>
     }
 }
 
-public class LSCoreManagerBase<TManager, TEntity> (ILogger<TManager> logger, ILSCoreDbContext dbContext)
-    : LSCoreManagerBase<TManager>(logger, dbContext)
+public class LSCoreManagerBase<TManager, TEntity> : LSCoreManagerBase<TManager>
     where TEntity : class, ILSCoreEntity, new()
 {
+    public LSCoreManagerBase(ILogger<TManager> logger, ILSCoreDbContext dbContext)
+        : base(logger, dbContext) { }
+    public LSCoreManagerBase(ILogger<TManager> logger, ILSCoreDbContext dbContext, LSCoreContextUser currentUser)
+        : base(logger, dbContext, currentUser) { }
+    
     /// <summary>
     /// Adds or save entity to database
     /// </summary>
