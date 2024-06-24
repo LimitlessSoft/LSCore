@@ -19,7 +19,18 @@ fs.exists('./version-upgrade.config', (e) => {
 		}
 		fs.writeFileSync('./version-upgrade.config', JSON.stringify(config))
 	}
+	// 1.1.9
+	let currentPatch = parseInt(config.currentVersion.substring(config.currentVersion.length - 1, config.currentVersion.length))
+	if(currentPatch === 9) {
+		let minor = parseInt(config.currentVersion.substring(config.currentVersion.length - 3, config.currentVersion.length - 2)) + 1
+		config.nextVersion = config.currentVersion.substring(0, config.currentVersion.length - 3) + minor + '.0'
+		console.log("Config loaded!")
+		console.log(config)
+		console.log()
 
+		run()
+		return
+	}
 	let patch = parseInt(config.currentVersion.substring(config.currentVersion.length - 1, config.currentVersion.length)) + 1
 	config.nextVersion = config.currentVersion.substring(0, config.currentVersion.length - 1) + patch
 	console.log("Config loaded!")
