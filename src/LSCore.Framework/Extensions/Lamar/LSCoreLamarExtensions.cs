@@ -15,8 +15,6 @@ public static class LSCoreLamarExtensions
         services.AssembliesAndExecutablesFromApplicationBaseDirectory((a) => a.GetName()!.Name!.StartsWith("LSCore"));
         
         services.ConnectImplementationsToTypesClosing(typeof(IValidator<>));
-        services.ConnectImplementationsToTypesClosing(typeof(ILSCoreFilter<>));
-        services.ConnectImplementationsToTypesClosing(typeof(ILSCoreIncludes<>));
         services.ConnectImplementationsToTypesClosing(typeof(ILSCoreDtoMapper<,>));
     }
 }

@@ -15,7 +15,7 @@ public static class LSCoreExtensions
     [Obsolete("Configure database inside your Project.cs or Startup.cs file")]
     public static void ConfigureNpgsqlDatabase<TDbContext, TStartup>(this IConfigurationRoot configurationRoot, IServiceCollection services)
         where TDbContext : DbContext
-        where TStartup : ILSCoreMigratable
+        where TStartup : class
     {
         AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
         services.AddEntityFrameworkNpgsql()
