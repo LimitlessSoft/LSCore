@@ -80,6 +80,7 @@ public abstract class LSCoreManagerBase<TManager>
                     entity.ToDto<TEntity, TRequest>();
 
                 entity.Id = ++lastId;
+                entity.IsActive = true;
                 entity.CreatedAt = DateTime.UtcNow;
                 entity.CreatedBy = CurrentUser?.Id ?? 0;
 
