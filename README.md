@@ -7,6 +7,8 @@ Check out sample-projects to see detailed implemetations
 
 Join discord for discussions: https://discord.gg/PTWERkBV
 
+Project has some missing parts since I am moving them from internal projects to here, so expect more things in future. If you have some idea which you want to include, feel free to contribute.
+
 # Activity
 ![GitHub last commit (branch)](https://img.shields.io/github/last-commit/LimitlessSoft/LSCore/develop?label=Last%20develop%20commit)
 ![GitHub Release](https://img.shields.io/github/v/release/LimitlessSoft/LSCore)
