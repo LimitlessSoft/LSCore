@@ -5,6 +5,11 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <Version>1.4.0</Version>
+        <RepositoryUrl>https://github.com/LimitlessSoft/LSCore</RepositoryUrl>
+        <PackageLicenseFile>LICENSE</PackageLicenseFile>
+        <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <Description>Package used as Dependency Injection resolution inside LSCore ecosystem</Description>
     </PropertyGroup>
 
     <ItemGroup>
