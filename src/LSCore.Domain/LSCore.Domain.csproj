@@ -6,7 +6,7 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageLicenseFile>README.md</PackageLicenseFile>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
-    <Version>1.3.2</Version>
+    <Version>1.4.0</Version>
     <RepositoryUrl>https://github.com/LimitlessSoft/LSCore</RepositoryUrl>
     <Description>Logic implementation of the LSCore framework</Description>
   </PropertyGroup>
@@ -18,10 +18,10 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LSCore.Contracts\LSCore.Contracts.csproj"/>
+    <ProjectReference Include="..\LSCore.DependencyInjection\LSCore.DependencyInjection.csproj" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.5"/>
-    <PackageReference Include="Lamar" Version="13.0.4"/>
     <PackageReference Include="FluentValidation" Version="11.9.2"/>
   </ItemGroup>
   <ItemGroup>

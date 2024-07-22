@@ -8,6 +8,7 @@ using LSCore.Contracts.Requests;
 using LSCore.Domain.Extensions;
 using Omu.ValueInjecter;
 using LSCore.Contracts;
+using LSCore.DependencyInjection;
 
 // ReSharper disable MemberCanBePrivate.Global
 
@@ -62,9 +63,12 @@ public abstract class LSCoreManagerBase<TManager>
                     string.Format(LSCoreCommonValidationCodes.COMM_006.GetDescription()!, nameof(_dbContext)));
 
             request.Validate();
-
-            var entityMapper = (ILSCoreDtoMapper<TEntity, TRequest>?)LSCoreDomainConstants.Container?.TryGetInstance(typeof(ILSCoreDtoMapper<TEntity, TRequest>));
-
+            
+            if(Container.ServiceProvider == null)
+                throw new Exception("To be able to use Save method, you must call IHost.UseLSCoreDependencyInjection() as first method after you build application.");
+            
+            var entityMapper = (ILSCoreDtoMapper<TEntity, TRequest>?)Container.ServiceProvider!.GetService(typeof(ILSCoreDtoMapper<TEntity, TRequest>));
+            
             var entity = new TEntity();
             if (!request.Id.HasValue)
             {
@@ -73,17 +77,17 @@ public abstract class LSCoreManagerBase<TManager>
                     .OrderByDescending(x => x.Id)
                     .Select(x => x.Id)
                     .FirstOrDefault();
-
+            
                 if (entityMapper == null)
                     entity.InjectFrom(request);
                 else
                     entity.ToDto<TEntity, TRequest>();
-
+            
                 entity.Id = ++lastId;
                 entity.IsActive = true;
                 entity.CreatedAt = DateTime.UtcNow;
                 entity.CreatedBy = CurrentUser?.Id ?? 0;
-
+            
                 _dbContext.Set<TEntity>()
                     .Add(entity);
             }
@@ -91,23 +95,23 @@ public abstract class LSCoreManagerBase<TManager>
             {
                 entity = _dbContext.Set<TEntity>()
                     .FirstOrDefault(x => x.Id == request.Id);
-
+            
                 if (entity == null)
                     throw new LSCoreNotFoundException();
-
+            
                 if (entityMapper == null)
                     entity.InjectFrom(request);
                 else
                     entity.ToDto<TEntity, TRequest>();
-
+            
                 entity.UpdatedAt = DateTime.UtcNow;
                 entity.UpdatedBy = CurrentUser?.Id ?? 0;
-
+            
                 _dbContext.Set<TEntity>()
                     .Update(entity);
             }
             _dbContext.SaveChanges();
-
+            
             return entity;
         }
         catch(Exception ex)
