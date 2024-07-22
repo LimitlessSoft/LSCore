@@ -56,3 +56,15 @@ jobs:
 
       - name: Publish Framework
         run: dotnet nuget push src/LSCore.Framework/bin/Release/*.nupkg --api-key ${{ secrets.NUGET_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+  
+  pack-and-publish-dependency-injection:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Pack DependencyInjection
+        run: dotnet pack src/LSCore.DependencyInjection/LSCore.DependencyInjection.csproj -c Release
+
+      - name: Publish DependencyInjection
+        run: dotnet nuget push src/LSCore.DependencyInjection/bin/Release/*.nupkg --api-key ${{ secrets.NUGET_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
