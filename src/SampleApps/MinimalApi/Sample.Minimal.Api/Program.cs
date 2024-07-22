@@ -1,8 +1,5 @@
-using Lamar;
-using Lamar.Microsoft.DependencyInjection;
-using LSCore.Domain;
+using LSCore.DependencyInjection.Extensions;
 using Sample.Minimal.Contracts.Constants;
-using LSCore.Framework.Extensions.Lamar;
 using LSCore.Framework.Middlewares;
 using LSCore.Framework.Extensions;
 using Sample.Minimal.Repository;
@@ -15,38 +12,24 @@ builder.Configuration
     .AddJsonFile(Constants.General.AppSettings, optional: false, reloadOnChange: true)
     .AddEnvironmentVariables();
 
-// Using lamar as DI container
-builder.Host.UseLamar((_, registry) =>
+builder.Services.AddSingleton<IConfigurationRoot>(builder.Configuration);
+
+builder.AddLSCoreDependencyInjection((options) =>
 {
-    // All services registration should go here
-    
-    // Register configuration root
-    builder.Services.AddSingleton<IConfigurationRoot>(builder.Configuration);
-    
-    // Register services
-    registry.Scan(x =>
-    {
-        x.TheCallingAssembly();
-        x.AssembliesAndExecutablesFromApplicationBaseDirectory((a) => a.GetName()!.Name!.StartsWith("Sample.Minimal"));
-        
-        x.WithDefaultConventions();
-        x.LSCoreServicesLamarScan();
-    });
-    
-    // Register database
-    registry.RegisterDatabase(builder.Configuration);
-
-    registry.AddControllers();
-    registry.AddEndpointsApiExplorer();
-    registry.AddSwaggerGen();
+    options.Scan.AssemblyAndExecutablesFromApplicationBaseDirectory(assembly => assembly?.GetName()?.Name?.StartsWith("Sample.Minimal") ?? false);
 });
+ // Register database
+builder.Services.RegisterDatabase(builder.Configuration);
 
-// Add dotnet logging
+builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
 builder.LSCoreAddLogging();
 
 var app = builder.Build();
 
-LSCoreDomainConstants.Container = app.Services.GetService<IContainer>();
+app.UseLSCoreDependencyInjection();
 
 // Add exception handling middleware
 // It is used to handle exceptions globally
