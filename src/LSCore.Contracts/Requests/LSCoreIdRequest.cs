@@ -1,7 +1,16 @@
-﻿namespace LSCore.Contracts.Requests
+﻿namespace LSCore.Contracts.Requests;
+
+public class LSCoreIdRequest
 {
-    public class LSCoreIdRequest
+    public long Id { get; set; }
+    
+    public LSCoreIdRequest()
     {
-        public long Id { get; set; }
+        
+    }
+    
+    public LSCoreIdRequest(long id)
+    {
+        Id = id;
     }
 }
