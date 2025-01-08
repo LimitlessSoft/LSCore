@@ -47,7 +47,6 @@ public abstract class LSCoreEntityMap<TEntity> : ILSCoreEntityMap<TEntity>
 
         entityTypeBuilder
             .Property(x => x.IsActive)
-            .HasDefaultValue(true)
             .IsRequired();
 
         entityTypeBuilder
@@ -57,9 +56,5 @@ public abstract class LSCoreEntityMap<TEntity> : ILSCoreEntityMap<TEntity>
         entityTypeBuilder
             .Property(x => x.UpdatedBy)
             .IsRequired(false);
-
-        foreach (var property in typeof(TEntity).GetProperties())
-            if (property.PropertyType == typeof(DateTime))
-                entityTypeBuilder.Property(property.PropertyType, property.Name).HasColumnType("timestamp");
     }
 }

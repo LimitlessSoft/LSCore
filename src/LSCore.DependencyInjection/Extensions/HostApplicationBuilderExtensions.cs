@@ -7,15 +7,23 @@ namespace LSCore.DependencyInjection.Extensions;
 
 public static class HostApplicationBuilderExtensions
 {
-    public static void AddLSCoreDependencyInjection(this IHostApplicationBuilder builder)
-    {
-        builder.AddLSCoreDependencyInjection(null);
-    }
-    
+    /// <summary>
+    /// Scans assemblies and executables from the application base directory and adds services following options.
+    /// Check out LSCoreDependencyInjectionOptions for default options.
+    /// </summary>
+    /// <param name="builder"></param>
+    /// <param name="projectRootName">Having DDD structure, pass only root of the project so all assemblies starting with that name will be scanned.
+    /// Example is MyProject.Api & MyProject.Contracts - only MyProject should be passed as projectRootName.</param>
+    /// <param name="options">Use to extend and manually scan for other assemblies</param>
     public static void AddLSCoreDependencyInjection(this IHostApplicationBuilder builder,
-        Action<LSCoreDependencyInjectionOptions>? options)
+        string projectRootName,
+        Action<LSCoreDependencyInjectionOptions>? options = null)
     {
-        options?.Invoke(new LSCoreDependencyInjectionOptions());
+        var opts = new LSCoreDependencyInjectionOptions();
+        opts.Scan.AssemblyAndExecutablesFromApplicationBaseDirectory((x) =>
+            x.GetName().Name!.StartsWith(projectRootName));
+        
+        options?.Invoke(opts);
         
         #region Apply options
         if (Constants.IncludeCallingAssembly)
