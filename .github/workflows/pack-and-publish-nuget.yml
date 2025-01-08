@@ -10,7 +10,7 @@ jobs:
 # ===========================
 
   pack-and-publish-contracts:
-    runs-on: ubuntu-latest
+    runs-on: bitnami/dotnet-sdk
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -22,7 +22,7 @@ jobs:
         run: dotnet nuget push src/LSCore.Contracts/bin/Release/*.nupkg --api-key ${{ secrets.NUGET_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
 
   pack-and-publish-domain:
-    runs-on: ubuntu-latest
+    runs-on: bitnami/dotnet-sdk
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -34,7 +34,7 @@ jobs:
         run: dotnet nuget push src/LSCore.Domain/bin/Release/*.nupkg --api-key ${{ secrets.NUGET_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
 
   pack-and-publish-repository:
-    runs-on: ubuntu-latest
+    runs-on: bitnami/dotnet-sdk
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -46,7 +46,7 @@ jobs:
         run: dotnet nuget push src/LSCore.Repository/bin/Release/*.nupkg --api-key ${{ secrets.NUGET_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
         
   pack-and-publish-framework:
-    runs-on: ubuntu-latest
+    runs-on: bitnami/dotnet-sdk
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -58,7 +58,7 @@ jobs:
         run: dotnet nuget push src/LSCore.Framework/bin/Release/*.nupkg --api-key ${{ secrets.NUGET_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
   
   pack-and-publish-dependency-injection:
-    runs-on: ubuntu-latest
+    runs-on: bitnami/dotnet-sdk
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
