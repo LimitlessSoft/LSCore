@@ -1,5 +1,6 @@
 using System.Text;
 using LSCore.Contracts;
+using LSCore.Contracts.IManagers;
 using LSCore.Framework.Middlewares;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -56,5 +57,29 @@ public static class LSCoreWebApplicationBuilderExtensions
     public static void UseLSCoreHandleException(this WebApplication app)
     {
         app.UseMiddleware<LSCoreHandleExceptionMiddleware>();
+    }
+
+    /// <summary>
+    /// Register ILSCoreHasPermissionManager to be used in LSCoreAuthorizationHasPermissionMiddleware.
+    /// </summary>
+    /// <param name="builder"></param>
+    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="TPermissionEnum"></typeparam>
+    public static void AddLSCoreAuthorizationHasPermission<T, TPermissionEnum>(this WebApplicationBuilder builder)
+        where T : class, ILSCoreHasPermissionManager<TPermissionEnum> where TPermissionEnum : Enum
+    {
+        builder.Services.AddScoped<ILSCoreHasPermissionManager<TPermissionEnum>, T>();
+    }
+    
+    /// <summary>
+    /// Used if you want to use [LSCoreAuthorizePermission(Permissions.Permission1, Permissions.Permission2...)] on endpoints.
+    /// Dependency Injection required for ILSCoreHasPermissionManager to be registered.
+    /// </summary>
+    /// <param name="app"></param>
+    /// <typeparam name="T"></typeparam>
+    public static void UseLSCoreAuthorizationHasPermission<T>(this WebApplication app)
+        where T : Enum
+    {
+        app.UseMiddleware<LSCoreAuthorizationHasPermissionMiddleware<T>>();
     }
 }

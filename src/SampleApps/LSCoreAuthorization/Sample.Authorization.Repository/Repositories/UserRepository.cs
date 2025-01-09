@@ -1,7 +1,7 @@
 using LSCore.Contracts.Exceptions;
 using LSCore.Contracts.Interfaces;
-using LSCore.Contracts.Interfaces.Repositories;
 using Sample.Authorization.Contracts.Entities;
+using Sample.Authorization.Contracts.Enums;
 using Sample.Authorization.Contracts.Interfaces.Repositories;
 
 namespace Sample.Authorization.Repository.Repositories;
@@ -15,10 +15,11 @@ public class UserRepository : IUserRepository
             Id = 1,
             Username = "admin",
             Password = "password",
-            IsActive = true
+            IsActive = true,
+            Permissions = [Permission.Access]
         }
     ];
-
+    
     public ILSCoreAuthorizable Get(string username)
     {
         var entity = GetOrDefault(username);
@@ -27,7 +28,7 @@ public class UserRepository : IUserRepository
         
         return entity;
     }
-    
+
     public UserEntity Get(long id) => _users.First(x => x.IsActive && x.Id == id);
 
     public void SetRefreshToken(long id, string refreshToken)
@@ -37,10 +38,15 @@ public class UserRepository : IUserRepository
     }
     
     public UserEntity? GetOrDefault(string username) => _users.FirstOrDefault(x => x.IsActive && x.Username == username);
+    public UserEntity? GetOrDefault(long id) =>
+        _users.FirstOrDefault(x => x.IsActive && x.Id == id);
 
     public void SetPassword(string username, string password)
     {
         var entity = Get(username);
         entity.Password = password;
     }
+
+    public HashSet<Permission> GetPermissions(long id) =>
+        Get(id).Permissions.ToHashSet();
 }

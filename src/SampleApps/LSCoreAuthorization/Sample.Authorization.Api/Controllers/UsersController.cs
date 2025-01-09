@@ -1,6 +1,7 @@
 using LSCore.Framework.Attributes;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Sample.Authorization.Contracts.Enums;
 using Sample.Authorization.Contracts.Interfaces.IManagers;
 using Sample.Authorization.Contracts.Requests.Users;
 
@@ -27,8 +28,14 @@ public class UsersController(IUserManager userManager) : ControllerBase
         Ok(userManager.GetMe());
     
     [HttpGet]
-    [LSCoreAuthorize]
+    [LSCoreAuthorizePermission<Permission>(Permission.Access)]
     [Route("/authenticated-only")]
     public IActionResult GetAuthenticatedOnly() =>
+        Ok();
+    
+    [HttpGet]
+    [LSCoreAuthorizePermission<Permission>(Permission.SecondPermission)]
+    [Route("/authenticated-only-rejected")]
+    public IActionResult GetAuthenticatedOnlyRejected() =>
         Ok();
 }

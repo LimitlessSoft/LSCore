@@ -2,6 +2,7 @@ using LSCore.Contracts;
 using LSCore.Contracts.Configurations;
 using LSCore.Domain.Managers;
 using Sample.Authorization.Contracts.Dtos.Users;
+using Sample.Authorization.Contracts.Enums;
 using Sample.Authorization.Contracts.Interfaces.IManagers;
 using Sample.Authorization.Contracts.Interfaces.Repositories;
 using Sample.Authorization.Contracts.Requests.Users;
@@ -27,5 +28,11 @@ public class UserManager (
         {
             Username = user.Username
         };
+    }
+
+    public bool HasPermission(long userId, params Permission[] permissions)
+    {
+        var user = userRepository.GetOrDefault(userId);
+        return user != null && permissions.Any(permission => user.Permissions.Contains(permission));
     }
 }
