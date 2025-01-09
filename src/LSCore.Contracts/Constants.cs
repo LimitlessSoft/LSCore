@@ -7,8 +7,7 @@
 
         public static class ClaimNames
         {
-            public const string CustomUsername = "custom:username";
-            public const string CustomUserId = "custom:userid";
+            public const string CustomIdentifier = "custom:identifier";
         }
 
         public static class ImageTypesMIME
