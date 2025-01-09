@@ -6,16 +6,17 @@ using LSCore.Contracts;
 
 namespace LSCore.Framework.Middlewares;
 
-public class LSCoreUseContextUser(RequestDelegate next, ILogger<LSCoreUseContextUser> logger)
+public class LSCoreAuthorizationMiddleware(RequestDelegate next, ILogger<LSCoreAuthorizationMiddleware> logger)
 {
     public async Task Invoke(HttpContext context)
     {
-        
         var currentUser = context.RequestServices.GetService<LSCoreContextUser>();
 
         if (context.User.Identity?.IsAuthenticated == true)
         {
-            currentUser!.Id = int.Parse(context.User.FindFirstValue(LSCoreContractsConstants.ClaimNames.CustomUserId)!);
+            var jwtIdentifier = context.User.FindFirstValue(LSCoreContractsConstants.ClaimNames.CustomIdentifier);
+            if (!string.IsNullOrWhiteSpace(jwtIdentifier))
+                currentUser!.Id = int.Parse(jwtIdentifier);
         }
 
         await next(context);
