@@ -15,6 +15,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
         
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '9.0.x'
+        
       - name: Pack Contracts
         run: dotnet pack src/LSCore.Contracts/LSCore.Contracts.csproj -c Release
         
@@ -26,6 +31,11 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '9.0.x'
         
       - name: Pack Domain
         run: dotnet pack src/LSCore.Domain/LSCore.Domain.csproj -c Release
@@ -38,6 +48,11 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '9.0.x'
         
       - name: Pack Repository
         run: dotnet pack src/LSCore.Repository/LSCore.Repository.csproj -c Release
@@ -50,6 +65,11 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '9.0.x'
         
       - name: Pack Framework
         run: dotnet pack src/LSCore.Framework/LSCore.Framework.csproj -c Release
@@ -62,6 +82,11 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '9.0.x'
 
       - name: Pack DependencyInjection
         run: dotnet pack src/LSCore.DependencyInjection/LSCore.DependencyInjection.csproj -c Release
