@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\LSCore.Domain\LSCore.Domain.csproj" />
+      <ProjectReference Include="..\Sample.Authorization.Contracts\Sample.Authorization.Contracts.csproj" />
+    </ItemGroup>
+
+</Project>

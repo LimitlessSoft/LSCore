@@ -23,6 +23,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.AutoIoC.Domain", "sr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.AutoIoC.Api", "src\SampleApps\AutoIoC\Sample.AutoIoC.Api\Sample.AutoIoC.Api.csproj", "{6030EA7E-F4F3-461B-9259-976117E09C5A}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LSCoreAuthorization", "LSCoreAuthorization", "{328F53C4-0A83-4FFE-92D8-690D66E973BF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.Authorization.Api", "src\SampleApps\LSCoreAuthorization\Sample.Authorization.Api\Sample.Authorization.Api.csproj", "{AF51C77B-2C81-447A-966E-D7796A978BAD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.Authorization.Contracts", "src\SampleApps\LSCoreAuthorization\Sample.Authorization.Contracts\Sample.Authorization.Contracts.csproj", "{9007E2E3-8BBB-43A2-B51A-3524D4172E5C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.Authorization.Domain", "src\SampleApps\LSCoreAuthorization\Sample.Authorization.Domain\Sample.Authorization.Domain.csproj", "{68E79015-8209-4963-BAB8-7447ACE7426C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.Authorization.Repository", "src\SampleApps\LSCoreAuthorization\Sample.Authorization.Repository\Sample.Authorization.Repository.csproj", "{018CD316-3972-4A4C-8419-F3D0CB45B785}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +71,22 @@ Global
 		{6030EA7E-F4F3-461B-9259-976117E09C5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6030EA7E-F4F3-461B-9259-976117E09C5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6030EA7E-F4F3-461B-9259-976117E09C5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF51C77B-2C81-447A-966E-D7796A978BAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF51C77B-2C81-447A-966E-D7796A978BAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF51C77B-2C81-447A-966E-D7796A978BAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF51C77B-2C81-447A-966E-D7796A978BAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9007E2E3-8BBB-43A2-B51A-3524D4172E5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9007E2E3-8BBB-43A2-B51A-3524D4172E5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9007E2E3-8BBB-43A2-B51A-3524D4172E5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9007E2E3-8BBB-43A2-B51A-3524D4172E5C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68E79015-8209-4963-BAB8-7447ACE7426C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68E79015-8209-4963-BAB8-7447ACE7426C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68E79015-8209-4963-BAB8-7447ACE7426C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68E79015-8209-4963-BAB8-7447ACE7426C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{018CD316-3972-4A4C-8419-F3D0CB45B785}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{018CD316-3972-4A4C-8419-F3D0CB45B785}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{018CD316-3972-4A4C-8419-F3D0CB45B785}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{018CD316-3972-4A4C-8419-F3D0CB45B785}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -70,6 +96,11 @@ Global
 		{24638955-B32F-4649-900C-73B79551598A} = {AA87A89A-F649-4DD5-AF23-A895A411FFD0}
 		{01E93086-4516-42AB-8A8B-029509771EB2} = {AA87A89A-F649-4DD5-AF23-A895A411FFD0}
 		{6030EA7E-F4F3-461B-9259-976117E09C5A} = {AA87A89A-F649-4DD5-AF23-A895A411FFD0}
+		{328F53C4-0A83-4FFE-92D8-690D66E973BF} = {2F74C5B6-2B02-4D70-A0BC-3F03073648C3}
+		{AF51C77B-2C81-447A-966E-D7796A978BAD} = {328F53C4-0A83-4FFE-92D8-690D66E973BF}
+		{9007E2E3-8BBB-43A2-B51A-3524D4172E5C} = {328F53C4-0A83-4FFE-92D8-690D66E973BF}
+		{68E79015-8209-4963-BAB8-7447ACE7426C} = {328F53C4-0A83-4FFE-92D8-690D66E973BF}
+		{018CD316-3972-4A4C-8419-F3D0CB45B785} = {328F53C4-0A83-4FFE-92D8-690D66E973BF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5179C6D7-D96E-4F30-9097-A760B4368BCC}

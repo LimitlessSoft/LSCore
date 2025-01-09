@@ -4,5 +4,5 @@ namespace LSCore.Contracts.IManagers;
 
 public interface ILSCoreAuthorizeManager
 {
-    LSCoreJwtDto Authorize(string username, string password);
+    LSCoreJwtDto Authorize<T>(T identifier, string password);
 }

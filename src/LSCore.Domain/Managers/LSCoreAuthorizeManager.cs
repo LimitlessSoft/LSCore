@@ -15,19 +15,19 @@ public class LSCoreAuthorizeManager(
     ILSCoreAuthorizableEntityRepository authorizableEntityRepository)
     : ILSCoreAuthorizeManager
 {
-    public virtual LSCoreJwtDto Authorize(string username, string password)
+    public virtual LSCoreJwtDto Authorize<T>(T identifier, string password)
     {
-        var authorizableEntity = authorizableEntityRepository.Get(username);
+        var authorizableEntity = authorizableEntityRepository.Get(identifier);
         if (authorizableEntity == null)
             throw new LSCoreNotFoundException();
 
         if (!BCrypt.Net.BCrypt.EnhancedVerify(password, authorizableEntity.Password))
             throw new LSCoreForbiddenException();
 
-        var accessToken = GenerateJwt(username, TimeSpan.FromMinutes(30));
-        var refreshToken = GenerateJwt(username, TimeSpan.FromDays(7));
+        var accessToken = GenerateJwt(identifier!.ToString(), TimeSpan.FromMinutes(30));
+        var refreshToken = GenerateJwt(identifier, TimeSpan.FromDays(7));
      
-        authorizableEntityRepository.SetRefreshToken(username, refreshToken);
+        authorizableEntityRepository.SetRefreshToken(identifier, refreshToken);
         
         return new LSCoreJwtDto
         {
@@ -36,13 +36,13 @@ public class LSCoreAuthorizeManager(
         };
     }
 
-    private string GenerateJwt(string username, TimeSpan expirationInterval)
+    private string GenerateJwt<T>(T identifier, TimeSpan expirationInterval)
     {
         var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(authorizationConfiguration.SecurityKey));
-        var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.RsaSha256);
+        var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
         var claims = new []
         {
-            new Claim(JwtRegisteredClaimNames.Sub, username),
+            new Claim(JwtRegisteredClaimNames.Sub, identifier!.ToString()!),
             new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
         };
 
