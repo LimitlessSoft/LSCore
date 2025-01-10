@@ -1,4 +1,7 @@
+using LSCore.Framework.Attributes;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Sample.Authorization.Contracts.Enums;
 using Sample.Authorization.Contracts.Interfaces.IManagers;
 using Sample.Authorization.Contracts.Requests.Users;
 
@@ -10,7 +13,7 @@ public class UsersController(IUserManager userManager) : ControllerBase
     [Route("/set-password")]
     public IActionResult SetPassword([FromBody] UsersSetPasswordRequest request)
     {
-        userManager.SetPassword(request.Password);
+        userManager.SetPassword(request);
         return Ok();
     }
     
@@ -18,4 +21,33 @@ public class UsersController(IUserManager userManager) : ControllerBase
     [Route("/authorize")]
     public IActionResult AuthorizeUser([FromBody] UsersAuthorizeRequest request) =>
         Ok(userManager.Authorize(request.Username, request.Password));
+    
+    [HttpGet]
+    [Route("/me")]
+    public IActionResult GetMe() =>
+        Ok(userManager.GetMe());
+    
+    [HttpGet]
+    [LSCoreAuthorizePermission<Permission>(Permission.Access)]
+    [Route("/authenticated-only")]
+    public IActionResult GetAuthenticatedOnly() =>
+        Ok();
+    
+    [HttpGet]
+    [LSCoreAuthorizePermission<Permission>(Permission.SecondPermission)]
+    [Route("/authenticated-only-rejected")]
+    public IActionResult GetAuthenticatedOnlyRejected() =>
+        Ok();
+    
+    [HttpGet]
+    [LSCoreAuthorizeRole<Role>(Role.User)]
+    [Route("/authenticated-only-role")]
+    public IActionResult GetAuthenticatedOnlyRole() =>
+        Ok();
+    
+    [HttpGet]
+    [LSCoreAuthorizeRole<Role>(Role.Administrator)]
+    [Route("/authenticated-only-role-rejected")]
+    public IActionResult GetAuthenticatedOnlyRoleRejected() =>
+        Ok();
 }
