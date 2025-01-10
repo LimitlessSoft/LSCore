@@ -1,5 +1,6 @@
 using System.Text;
 using LSCore.Contracts;
+using LSCore.Contracts.Configurations;
 using LSCore.Contracts.IManagers;
 using LSCore.Framework.Middlewares;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -25,16 +26,19 @@ public static class LSCoreWebApplicationBuilderExtensions
         
         return builder.Logging;
     }
-    
+
     /// <summary>
     /// Used if you want authentication & authorization
     /// [Authorize] prevents non-authorized access
-    /// Catch LSCoreContextUser object through DI to get current user if authorization token is passed and verified
+    /// Catch LSCoreContextUser object through DI to get current user if authorization token is passed and verified.
+    /// Implement ILSCoreAuthorizeManager and use Authorize method to authenticate and authorize users and get Jwt in return.
     /// </summary>
     /// <param name="builder"></param>
-    public static void AddLSCoreAuthorization(this WebApplicationBuilder builder)
+    /// <param name="configuration"></param>
+    public static void AddLSCoreAuthorization(this WebApplicationBuilder builder, LSCoreAuthorizationConfiguration configuration)
     {
         builder.Services.AddScoped<LSCoreContextUser>();
+        builder.Services.AddSingleton(configuration);
         builder.Services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -45,9 +49,9 @@ public static class LSCoreWebApplicationBuilderExtensions
             {
                 options.TokenValidationParameters = new TokenValidationParameters()
                 {
-                    ValidIssuer = "http://localhost:5000",
-                    ValidAudience = "http://localhost:5000",
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("this is a security key with min size of 256 bits")),
+                    ValidIssuer = configuration.Issuer,
+                    ValidAudience = configuration.Audience,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration.SecurityKey)),
                     ValidateIssuer = true,
                     ValidateAudience = true,
                     ValidateLifetime = false,

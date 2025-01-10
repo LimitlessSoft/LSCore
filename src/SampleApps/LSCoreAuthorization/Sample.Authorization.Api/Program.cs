@@ -11,25 +11,20 @@ builder.Services.AddControllers();
 // Standard LSCore
 builder.AddLSCoreDependencyInjection("Sample.Authorization");
 
-// Used for Jwt generation
-builder.Services.AddSingleton(new LSCoreAuthorizationConfiguration
+builder.AddLSCoreAuthorization(new LSCoreAuthorizationConfiguration
 {
     Audience = "http://localhost:5000",
     Issuer = "http://localhost:5000",
     SecurityKey = "this is a security key with min size of 256 bits"
 });
 
-builder.AddLSCoreAuthorization();
-
 builder.AddLSCoreAuthorizationHasPermission<UserManager, Permission>();
 builder.AddLSCoreAuthorizationHasRole<UserManager, Role>();
 
 var app = builder.Build();
 
-// Standard LSCore
 app.UseLSCoreHandleException();
 
-// Used if you want authentication & authorization
 app.UseLSCoreAuthorization();
 
 app.UseLSCoreAuthorizationHasPermission<Permission>();
