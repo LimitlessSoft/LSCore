@@ -26,10 +26,8 @@ builder.AddLSCoreAuthorizationHasRole<UserManager, Role>();
 
 var app = builder.Build();
 
-// Standard LSCore
 app.UseLSCoreHandleException();
 
-// Used if you want authentication & authorization
 app.UseLSCoreAuthorization();
 
 app.UseLSCoreAuthorizationHasPermission<Permission>();

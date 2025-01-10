@@ -29,7 +29,8 @@ public static class LSCoreWebApplicationBuilderExtensions
     /// <summary>
     /// Used if you want authentication & authorization
     /// [Authorize] prevents non-authorized access
-    /// Catch LSCoreContextUser object through DI to get current user if authorization token is passed and verified
+    /// Catch LSCoreContextUser object through DI to get current user if authorization token is passed and verified.
+    /// Implement ILSCoreAuthorizeManager and use Authorize method to authenticate and authorize users and get Jwt in return.
     /// </summary>
     /// <param name="builder"></param>
     public static void AddLSCoreAuthorization(this WebApplicationBuilder builder)
