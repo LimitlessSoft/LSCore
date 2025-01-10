@@ -10,4 +10,5 @@ public class UserEntity : LSCoreEntity, ILSCoreAuthorizable
     public string Password { get; set; }
     public string? RefreshToken { get; set; }
     public List<Permission> Permissions { get; set; }
+    public List<Role> Roles { get; set; }
 }

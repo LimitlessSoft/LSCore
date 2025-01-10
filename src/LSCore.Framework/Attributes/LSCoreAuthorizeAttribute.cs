@@ -13,10 +13,10 @@ public class LSCoreAuthorizeAttribute : AuthorizeAttribute;
 /// If user has any of the permissions, then the request is authorized.
 /// </summary>
 /// <param name="permissions"></param>
-/// <typeparam name="T"></typeparam>
-public class LSCoreAuthorizePermissionAttribute<T> (params T[] permissions) : LSCoreAuthorizeAttribute where T : Enum
+/// <typeparam name="TPermissionEnum"></typeparam>
+public class LSCoreAuthorizePermissionAttribute<TPermissionEnum> (params TPermissionEnum[] permissions) : LSCoreAuthorizeAttribute where TPermissionEnum : Enum
 {
-    public T[] Permissions { get; } = permissions;
+    public TPermissionEnum[] Permissions { get; } = permissions;
 }
 
 /// <summary>
@@ -24,8 +24,8 @@ public class LSCoreAuthorizePermissionAttribute<T> (params T[] permissions) : LS
 /// If user has any of the roles, then the request is authorized.
 /// </summary>
 /// <param name="roles"></param>
-/// <typeparam name="T"></typeparam>
-public class LSCoreAuthorizeRoleAttribute<T> (params T[] roles) : LSCoreAuthorizeAttribute where T : Enum
+/// <typeparam name="TRoleEnum"></typeparam>
+public class LSCoreAuthorizeRoleAttribute<TRoleEnum> (params TRoleEnum[] roles) : LSCoreAuthorizeAttribute where TRoleEnum : Enum
 {
-    public new T[] Roles { get; } = roles;
+    public new TRoleEnum[] Roles { get; } = roles;
 }

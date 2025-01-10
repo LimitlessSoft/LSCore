@@ -16,7 +16,8 @@ public class UserRepository : IUserRepository
             Username = "admin",
             Password = "password",
             IsActive = true,
-            Permissions = [Permission.Access]
+            Permissions = [Permission.Access],
+            Roles = [Role.User]
         }
     ];
     

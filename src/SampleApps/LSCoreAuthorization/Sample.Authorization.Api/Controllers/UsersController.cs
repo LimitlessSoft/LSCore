@@ -38,4 +38,16 @@ public class UsersController(IUserManager userManager) : ControllerBase
     [Route("/authenticated-only-rejected")]
     public IActionResult GetAuthenticatedOnlyRejected() =>
         Ok();
+    
+    [HttpGet]
+    [LSCoreAuthorizeRole<Role>(Role.User)]
+    [Route("/authenticated-only-role")]
+    public IActionResult GetAuthenticatedOnlyRole() =>
+        Ok();
+    
+    [HttpGet]
+    [LSCoreAuthorizeRole<Role>(Role.Administrator)]
+    [Route("/authenticated-only-role-rejected")]
+    public IActionResult GetAuthenticatedOnlyRoleRejected() =>
+        Ok();
 }

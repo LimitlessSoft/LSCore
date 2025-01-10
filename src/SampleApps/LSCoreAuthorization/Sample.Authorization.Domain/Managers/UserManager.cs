@@ -35,4 +35,10 @@ public class UserManager (
         var user = userRepository.GetOrDefault(userId);
         return user != null && permissions.Any(permission => user.Permissions.Contains(permission));
     }
+
+    public bool HasRole(long userId, params Role[] permissions)
+    {
+        var user = userRepository.GetOrDefault(userId);
+        return user != null && permissions.Any(permission => user.Roles.Contains(permission));
+    }
 }

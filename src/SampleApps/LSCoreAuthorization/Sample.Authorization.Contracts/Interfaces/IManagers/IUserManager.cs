@@ -5,7 +5,7 @@ using Sample.Authorization.Contracts.Requests.Users;
 
 namespace Sample.Authorization.Contracts.Interfaces.IManagers;
 
-public interface IUserManager : ILSCoreAuthorizeManager, ILSCoreHasPermissionManager<Permission>
+public interface IUserManager : ILSCoreAuthorizeManager, ILSCoreHasPermissionManager<Permission>, ILSCoreHasRoleManager<Role>
 {
     void SetPassword(UsersSetPasswordRequest request);
     UsersGetMeDto GetMe();
