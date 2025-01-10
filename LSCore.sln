@@ -33,6 +33,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.Authorization.Domain
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.Authorization.Repository", "src\SampleApps\LSCoreAuthorization\Sample.Authorization.Repository\Sample.Authorization.Repository.csproj", "{018CD316-3972-4A4C-8419-F3D0CB45B785}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LSCore.Build", "src\LSCore.Build\LSCore.Build.csproj", "{1626BAD4-0241-4236-BAFB-B7B5DBD57F2B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +89,10 @@ Global
 		{018CD316-3972-4A4C-8419-F3D0CB45B785}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{018CD316-3972-4A4C-8419-F3D0CB45B785}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{018CD316-3972-4A4C-8419-F3D0CB45B785}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1626BAD4-0241-4236-BAFB-B7B5DBD57F2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1626BAD4-0241-4236-BAFB-B7B5DBD57F2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1626BAD4-0241-4236-BAFB-B7B5DBD57F2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1626BAD4-0241-4236-BAFB-B7B5DBD57F2B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
