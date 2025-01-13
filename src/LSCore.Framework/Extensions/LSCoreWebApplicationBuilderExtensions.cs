@@ -131,4 +131,28 @@ public static class LSCoreWebApplicationBuilderExtensions
     {
         app.UseMiddleware<LSCoreAuthorizationHasRoleMiddleware<TRoleEnum>>();
     }
+    
+    /// <summary>
+    /// Add LSCoreApiKeyConfiguration to be used in LSCoreApiKeyAuthorizationMiddleware.
+    /// For request to be authorized, it must contain a header with key and value as specified in LSCoreApiKeyConfiguration.
+    /// Header used is <see cref="LSCoreContractsConstants.ApiKeyCustomHeader"/>
+    /// Pair with <see cref="UseLSCoreApiKeyAuthorization"/> in Program.cs to authorize requests based on LSCoreApiKeyConfiguration.
+    /// </summary>
+    /// <param name="builder"></param>
+    /// <param name="keyConfiguration"></param>
+    public static void AddLSCoreApiKeyAuthorization(this WebApplicationBuilder builder, LSCoreApiKeyConfiguration keyConfiguration)
+    {
+        builder.Services.AddSingleton(keyConfiguration);
+    }
+    
+    /// <summary>
+    /// Used if you want to process LSCoreApiKeyConfiguration and authorize requests based on it.
+    /// For request to be authorized, it must contain a header with key and value as specified in LSCoreApiKeyConfiguration.
+    /// Use <see cref="AddLSCoreApiKeyAuthorization"/> in Program.cs to register LSCoreApiKeyConfiguration.
+    /// </summary>
+    /// <param name="app"></param>
+    public static void UseLSCoreApiKeyAuthorization(this WebApplication app)
+    {
+        app.UseMiddleware<LSCoreApiKeyAuthorizationMiddleware>();
+    }
 }
