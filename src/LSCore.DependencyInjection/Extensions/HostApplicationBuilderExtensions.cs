@@ -78,7 +78,7 @@ public static class HostApplicationBuilderExtensions
         if (type is not { IsClass: true } || type.IsAbstract || type.IsGenericType) return;
 
         if (type.BaseType?.IsGenericType != true
-            || type.BaseType.GetGenericTypeDefinition().Name.Contains("LSCoreValidatorBase")) return;
+            || !type.BaseType.GetGenericTypeDefinition().Name.Contains("LSCoreValidatorBase")) return;
         
         builder.Services.AddTransient(type.BaseType, type);
     }
