@@ -41,8 +41,9 @@ public class LSCoreDependencyInjectionScanningOptions
     
     /// <summary>
     /// Define a predicate to filter the assemblies and executables that will be scanned.
+    /// Rules defined here are applied after the default rule which is to scan all assemblies starting with the project root name.
     /// </summary>
     /// <param name="predicate"></param>
-    public void AssemblyAndExecutablesFromApplicationBaseDirectory(Func<Assembly, bool> predicate) =>
-        Constants.AssemblyAndExecutablesFromApplicationBaseDirectory = predicate;
+    public void SetShouldScanAssemblyPredicate(Func<Assembly, bool> predicate) =>
+        Constants.ShouldScanAssemblyPredicate = predicate;
 }

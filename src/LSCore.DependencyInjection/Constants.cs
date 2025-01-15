@@ -11,5 +11,5 @@ internal static class Constants
     public static bool IncludeCallingAssembly { get; set; } = true;
     public static bool IncludeLSCoreDtoMappers { get; set; } = true;
     public static bool IncludeLSCoreValidators { get; set; } = true;
-    public static Func<Assembly, bool>? AssemblyAndExecutablesFromApplicationBaseDirectory { get ; set ; }
+    public static Func<Assembly, bool>? ShouldScanAssemblyPredicate { get ; set ; }
 }
