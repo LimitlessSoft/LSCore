@@ -7,8 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\LSCore.Framework\LSCore.Framework.csproj" />
-      <ProjectReference Include="..\ApiKeyAuth.Domain\ApiKeyAuth.Domain.csproj" />
+      <ProjectReference Include="..\..\..\LSCore.Framework\LSCore.Framework.csproj" />
     </ItemGroup>
 
 </Project>

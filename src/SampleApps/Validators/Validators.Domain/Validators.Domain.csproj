@@ -5,9 +5,10 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
     </PropertyGroup>
-
+    
     <ItemGroup>
-      <ProjectReference Include="..\..\LSCore.Contracts\LSCore.Contracts.csproj" />
+      <ProjectReference Include="..\..\..\LSCore.Domain\LSCore.Domain.csproj" />
+      <ProjectReference Include="..\Validators.Contracts\Validators.Contracts.csproj" />
     </ItemGroup>
 
 </Project>
