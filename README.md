@@ -26,7 +26,7 @@ Project has some missing parts since I am moving them from internal projects to 
 ![Nuget](https://img.shields.io/nuget/dt/LSCore.Repository?label=LSCore.Repository%20nuget)
 
 # Contribution
-To contribute, fork this project, branch from `develop`, make change and make PR onto `develop` branch
+To contribute, fork this project, branch from `advance/X.X.X (indicating next version/patch)`, make change and make PR into that branch branch
 Best thing to do is create issue and discuss change there until someone create protocol for the contributiors.
 Since there is no established protocol, your change may not be accepted.
 Code merged into `main` is automatically packed and pushed to nuget
