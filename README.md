@@ -24,6 +24,9 @@ Project has some missing parts since I am moving them from internal projects to 
 ![Nuget](https://img.shields.io/nuget/v/LSCore.Repository?label=LSCore.Repository%20nuget)
 ![Nuget](https://img.shields.io/nuget/dt/LSCore.Repository?label=LSCore.Repository%20nuget)
 
+# Documentation
+There is not actual documentation but wiki and sample projects (inside src/SampleApps). If you have any question, open issue and will disccuss it there.
+
 # Contribution
 To contribute, fork this project, branch from `advance/X.X.X (indicating next version/patch)`, make change and make PR into that branch branch
 Best thing to do is create issue and discuss change there until someone create protocol for the contributiors.
