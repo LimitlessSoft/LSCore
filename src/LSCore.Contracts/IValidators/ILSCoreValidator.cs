@@ -1,12 +1,11 @@
-﻿namespace LSCore.Contracts.IValidators
+﻿namespace LSCore.Contracts.IValidators;
+
+public interface ILSCoreValidator
 {
-    public interface ILSCoreValidator
-    {
 
-    }
+}
 
-    public interface ILSCoreValidator<TRequest> : ILSCoreValidator
-    {
+public interface ILSCoreValidator<TRequest> : ILSCoreValidator
+{
 
-    }
 }
