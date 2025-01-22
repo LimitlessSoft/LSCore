@@ -7,7 +7,7 @@
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <Version>9.0.6</Version>
+    <Version>9.0.7</Version>
     <Description>Package used to manage databases using EF inside LSCore ecosystem</Description>
   </PropertyGroup>
   <ItemGroup>
