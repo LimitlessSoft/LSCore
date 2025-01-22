@@ -9,9 +9,9 @@ public class LSCoreSaveRequest
 
     }
 
-    public LSCoreSaveRequest(long? Id)
+    public LSCoreSaveRequest(long? id)
     {
-        this.Id = Id;
+        this.Id = id;
     }
 
     public bool IsNew => !Id.HasValue;

@@ -2,7 +2,7 @@
 
 namespace LSCore.Contracts.Requests;
 
-public class LSCoreSortableAndPageableRequest<TSortColumn>
+public abstract class LSCoreSortableAndPageableRequest<TSortColumn>
     : LSCoreSortableRequest<TSortColumn>, ILSCorePageable
     where TSortColumn : struct
 {

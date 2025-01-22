@@ -1,8 +1,7 @@
-﻿namespace LSCore.Contracts.Interfaces
+﻿namespace LSCore.Contracts.Interfaces;
+
+public interface ILSCorePageable
 {
-    public interface ILSCorePageable
-    {
-        int PageSize { get; set; }
-        int CurrentPage { get; set; }
-    }
+    int PageSize { get; set; }
+    int CurrentPage { get; set; }
 }

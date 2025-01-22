@@ -20,7 +20,7 @@ public static class HostApplicationBuilderExtensions
         Action<LSCoreDependencyInjectionOptions>? options = null)
     {
         var opts = new LSCoreDependencyInjectionOptions();
-        opts.Scan.AssemblyAndExecutablesFromApplicationBaseDirectory((x) =>
+        opts.Scan.SetShouldScanAssemblyPredicate((x) =>
             x.GetName().Name!.StartsWith(projectRootName));
         
         options?.Invoke(opts);
@@ -29,10 +29,10 @@ public static class HostApplicationBuilderExtensions
         if (Constants.IncludeCallingAssembly)
             Constants.Configuration.AssembliesToBeScanned.Add(Assembly.GetCallingAssembly());
         
-        if (Constants.AssemblyAndExecutablesFromApplicationBaseDirectory != null)
+        if (Constants.ShouldScanAssemblyPredicate != null)
             Constants.Configuration.AssembliesToBeScanned.AddRange(Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory, "*.dll")
                 .Select(Assembly.LoadFrom)
-                .Where(Constants.AssemblyAndExecutablesFromApplicationBaseDirectory));
+                .Where(Constants.ShouldScanAssemblyPredicate));
         #endregion
         
         builder.InitializeLSCoreDependencyInjection();
