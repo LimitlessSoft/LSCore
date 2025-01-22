@@ -21,7 +21,7 @@ public class LSCoreAuthorizeManager(
     {
         var authorizableEntity = authorizableEntityRepository.Get(username);
         if (authorizableEntity == null)
-            throw new LSCoreNotFoundException();
+            throw new LSCoreForbiddenException();
 
         try
         {
@@ -34,8 +34,8 @@ public class LSCoreAuthorizeManager(
             throw new LSCoreForbiddenException();
         }
 
-        var accessToken = GenerateJwt(authorizableEntity.Id, TimeSpan.FromMinutes(30));
-        var refreshToken = GenerateJwt(authorizableEntity.Id, TimeSpan.FromDays(7));
+        var accessToken = GenerateJwt(authorizableEntity.Id, TimeSpan.FromMinutes(authorizationConfiguration.AccessTokenExpirationMinutes));
+        var refreshToken = GenerateJwt(authorizableEntity.Id, TimeSpan.FromDays(authorizationConfiguration.RefreshTokenExpirationDays));
      
         authorizableEntityRepository.SetRefreshToken(authorizableEntity.Id, refreshToken);
         
@@ -43,6 +43,27 @@ public class LSCoreAuthorizeManager(
         {
             AccessToken = accessToken,
             RefreshToken = refreshToken
+        };
+    }
+    
+    public virtual LSCoreJwtDto Refresh(string refreshToken)
+    {
+        if(string.IsNullOrWhiteSpace(refreshToken))
+            throw new LSCoreForbiddenException();
+        
+        var authorizableEntity = authorizableEntityRepository.GetByRefreshToken(refreshToken);
+        if (authorizableEntity == null)
+            throw new LSCoreForbiddenException();
+
+        var accessToken = GenerateJwt(authorizableEntity.Id, TimeSpan.FromMinutes(authorizationConfiguration.AccessTokenExpirationMinutes));
+        var newRefreshToken = GenerateJwt(authorizableEntity.Id, TimeSpan.FromDays(authorizationConfiguration.RefreshTokenExpirationDays));
+        
+        authorizableEntityRepository.SetRefreshToken(authorizableEntity.Id, newRefreshToken);
+        
+        return new LSCoreJwtDto
+        {
+            AccessToken = accessToken,
+            RefreshToken = newRefreshToken
         };
     }
 

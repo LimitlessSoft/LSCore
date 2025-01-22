@@ -2,6 +2,8 @@ using System.Text;
 using LSCore.Contracts;
 using LSCore.Contracts.Configurations;
 using LSCore.Contracts.IManagers;
+using LSCore.Contracts.Interfaces.Repositories;
+using LSCore.Domain.Managers;
 using LSCore.Framework.Middlewares;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -35,7 +37,9 @@ public static class LSCoreWebApplicationBuilderExtensions
     /// </summary>
     /// <param name="builder"></param>
     /// <param name="configuration"></param>
-    public static void AddLSCoreAuthorization(this WebApplicationBuilder builder, LSCoreAuthorizationConfiguration configuration)
+    public static void AddLSCoreAuthorization<TAuthHandler, TAuthorizableRepository>(this WebApplicationBuilder builder, LSCoreAuthorizationConfiguration configuration)
+        where TAuthHandler : LSCoreAuthorizeManager
+        where TAuthorizableRepository : class, ILSCoreAuthorizableEntityRepository
     {
         builder.Services.AddScoped<LSCoreContextUser>();
         builder.Services.AddSingleton(configuration);
@@ -52,13 +56,17 @@ public static class LSCoreWebApplicationBuilderExtensions
                     ValidIssuer = configuration.Issuer,
                     ValidAudience = configuration.Audience,
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration.SecurityKey)),
+                    RequireExpirationTime = true,
+                    ClockSkew = configuration.TokenSkew,
                     ValidateIssuer = true,
                     ValidateAudience = true,
-                    ValidateLifetime = false,
+                    ValidateLifetime = true,
                     ValidateIssuerSigningKey = true
                 };
             });
         builder.Services.AddAuthorization();
+        builder.Services.AddScoped<LSCoreAuthorizeManager, TAuthHandler>();
+        builder.Services.AddScoped<ILSCoreAuthorizableEntityRepository, TAuthorizableRepository>();
     }
     
     /// <summary>

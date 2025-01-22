@@ -37,7 +37,12 @@ public class UserRepository : IUserRepository
         var entity = Get(id);
         entity.RefreshToken = refreshToken;
     }
-    
+
+    public ILSCoreAuthorizable? GetByRefreshToken(string refreshToken)
+    {
+        return _users.FirstOrDefault(x => x.IsActive && x.RefreshToken == refreshToken);
+    }
+
     public UserEntity? GetOrDefault(string username) => _users.FirstOrDefault(x => x.IsActive && x.Username == username);
     public UserEntity? GetOrDefault(long id) =>
         _users.FirstOrDefault(x => x.IsActive && x.Id == id);

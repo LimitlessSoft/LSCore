@@ -47,6 +47,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Validators.Contracts", "src
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Validators.Api", "src\SampleApps\Validators\Validators.Api\Validators.Api.csproj", "{38A256F9-C8E0-4AB0-AAF4-C4AE15B8F215}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AuthorizationSimple", "AuthorizationSimple", "{C2621B68-5FDA-49B2-9AB3-1273160D5059}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.AuthorizationSimple.Api", "src\SampleApps\AuthorizationSimple\Sample.AuthorizationSimple.Api\Sample.AuthorizationSimple.Api.csproj", "{4430BF7D-5CE9-4EC4-B259-F75116BD8788}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -121,6 +125,10 @@ Global
 		{38A256F9-C8E0-4AB0-AAF4-C4AE15B8F215}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{38A256F9-C8E0-4AB0-AAF4-C4AE15B8F215}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{38A256F9-C8E0-4AB0-AAF4-C4AE15B8F215}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4430BF7D-5CE9-4EC4-B259-F75116BD8788}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4430BF7D-5CE9-4EC4-B259-F75116BD8788}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4430BF7D-5CE9-4EC4-B259-F75116BD8788}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4430BF7D-5CE9-4EC4-B259-F75116BD8788}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -141,6 +149,8 @@ Global
 		{02CF739E-D126-4C8A-9A1D-4CCCCF0A5475} = {E8FD6ED1-A9E8-4C7E-B93E-242331337959}
 		{40D8D313-D35D-474E-BC5A-6621B64CD3D2} = {E8FD6ED1-A9E8-4C7E-B93E-242331337959}
 		{38A256F9-C8E0-4AB0-AAF4-C4AE15B8F215} = {E8FD6ED1-A9E8-4C7E-B93E-242331337959}
+		{C2621B68-5FDA-49B2-9AB3-1273160D5059} = {2F74C5B6-2B02-4D70-A0BC-3F03073648C3}
+		{4430BF7D-5CE9-4EC4-B259-F75116BD8788} = {C2621B68-5FDA-49B2-9AB3-1273160D5059}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5179C6D7-D96E-4F30-9097-A760B4368BCC}
