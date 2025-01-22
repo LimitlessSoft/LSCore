@@ -1,4 +1,3 @@
-
 namespace LSCore.DependencyInjection;
 
 public static class Container

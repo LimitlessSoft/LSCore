@@ -1,20 +1,16 @@
 ﻿using System.Reflection;
 
-namespace LSCore.Contracts.Extensions
+namespace LSCore.Contracts.Extensions;
+
+public static class LSCoreEnumExtensions
 {
-    public static class LSCoreEnumExtensions
+    public static string? GetDescriptionOrDefault(this Enum value)
     {
-        public static string? GetDescription(this Enum value)
-        {
-            if (value == null)
-                return null;
+        var fi = value.GetType().GetField(value.ToString(), BindingFlags.Public | BindingFlags.Static);
 
-            var fi = value.GetType().GetField(value.ToString(), BindingFlags.Public | BindingFlags.Static);
-
-            if (fi == null)
-                return null;
-
-            return fi.GetDescription();
-        }
+        return fi == null ? null : fi.GetDescription();
     }
+
+    public static string GetDescription(this Enum value) =>
+        value.GetDescriptionOrDefault()!;
 }

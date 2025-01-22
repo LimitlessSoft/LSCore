@@ -1,7 +1,6 @@
-﻿namespace LSCore.Contracts.Interfaces
+﻿namespace LSCore.Contracts.Interfaces;
+
+public interface ILSCoreEntityBase
 {
-    public interface ILSCoreEntityBase
-    {
-        long Id { get; set; }
-    }
+    long Id { get; set; }
 }
