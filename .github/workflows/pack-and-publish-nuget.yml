@@ -1,6 +1,6 @@
 name: Pack and publish nuget packages
 on:
-  workflow_run:
+  workflow_dispatch:
   push:
     branches: [ "main" ]
 
