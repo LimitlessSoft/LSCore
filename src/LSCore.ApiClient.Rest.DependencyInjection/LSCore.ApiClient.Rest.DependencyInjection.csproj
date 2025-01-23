@@ -1,19 +1,16 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
-    <PropertyGroup>
-        <TargetFramework>net9.0</TargetFramework>
-        <ImplicitUsings>enable</ImplicitUsings>
-        <Nullable>enable</Nullable>
-    </PropertyGroup>
-
-    <ItemGroup>
-      <Reference Include="Microsoft.AspNetCore">
-        <HintPath>..\..\..\..\.dotnet\shared\Microsoft.AspNetCore.App\9.0.0\Microsoft.AspNetCore.dll</HintPath>
-      </Reference>
-    </ItemGroup>
-
-    <ItemGroup>
-      <ProjectReference Include="..\LSCore.ApiClient.Rest\LSCore.ApiClient.Rest.csproj" />
-    </ItemGroup>
-
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <Version>9.0.8</Version>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.AspNetCore">
+      <HintPath>..\..\..\..\.dotnet\shared\Microsoft.AspNetCore.App\9.0.0\Microsoft.AspNetCore.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LSCore.ApiClient.Rest\LSCore.ApiClient.Rest.csproj"/>
+  </ItemGroup>
 </Project>
