@@ -60,6 +60,7 @@ jobs:
       - name: Publish Repository
         run: dotnet nuget push src/LSCore.Repository/bin/Release/*.nupkg --api-key ${{ secrets.NUGET_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
         
+  
   pack-and-publish-framework:
     runs-on: ubuntu-latest
     steps:
@@ -93,3 +94,38 @@ jobs:
 
       - name: Publish DependencyInjection
         run: dotnet nuget push src/LSCore.DependencyInjection/bin/Release/*.nupkg --api-key ${{ secrets.NUGET_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+        
+  
+  pack-and-publish-api-client-rest:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '9.0.x'
+
+      - name: Pack DependencyInjection
+        run: dotnet pack src/LSCore.ApiClient.Rest/LSCore.ApiClient.Rest.csproj -c Release
+
+      - name: Publish DependencyInjection
+        run: dotnet nuget push src/LSCore.ApiClient.Rest/bin/Release/*.nupkg --api-key ${{ secrets.NUGET_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+        
+  pack-and-publish-api-client-rest-di:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '9.0.x'
+
+      - name: Pack DependencyInjection
+        run: dotnet pack src/LSCore.ApiClient.Rest.DependencyInjection/LSCore.ApiClient.Rest.DependencyInjection.csproj -c Release
+
+      - name: Publish DependencyInjection
+        run: dotnet nuget push src/LSCore.ApiClient.Rest.DependencyInjection/bin/Release/*.nupkg --api-key ${{ secrets.NUGET_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
