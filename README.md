@@ -7,6 +7,7 @@ Check out sample-projects to see detailed implemetations.
 
 Here is video explaning core features like authorization, authentication, dto mappings, validators, IoC resolving, Sortable and Pageable requests/responses
 [Youtube link](https://www.youtube.com/watch?v=yW86OPxZ2ng)
+Number of features NOT shown in video: 4
 
 Join discord for discussions: https://discord.gg/PTWERkBV
 

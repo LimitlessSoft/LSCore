@@ -4,9 +4,11 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <Configuration>Release</Configuration>
-    <Version>9.0.7</Version>
+    <Version>9.0.8</Version>
   </PropertyGroup>
   <ItemGroup>
+    <ProjectReference Include="..\LSCore.ApiClient.Rest.DependencyInjection\LSCore.ApiClient.Rest.DependencyInjection.csproj"/>
+    <ProjectReference Include="..\LSCore.ApiClient.Rest\LSCore.ApiClient.Rest.csproj"/>
     <ProjectReference Include="..\LSCore.Contracts\LSCore.Contracts.csproj"/>
     <ProjectReference Include="..\LSCore.DependencyInjection\LSCore.DependencyInjection.csproj"/>
     <ProjectReference Include="..\LSCore.Domain\LSCore.Domain.csproj"/>
