@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\..\LSCore.ApiClient.Rest\LSCore.ApiClient.Rest.csproj" />
+      <ProjectReference Include="..\ACR.UsersMicroservice.Dtos\ACR.UsersMicroservice.Dtos.csproj" />
+      <ProjectReference Include="..\ACR.UsersMicroservice.Requests\ACR.UsersMicroservice.Requests.csproj" />
+    </ItemGroup>
+
+</Project>
