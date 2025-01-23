@@ -2,8 +2,13 @@
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
+    <RepositoryUrl>https://github.com/LimitlessSoft/LSCore</RepositoryUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <Nullable>enable</Nullable>
+    <Description>Package used to simply expose your microservice Rest APIs</Description>
     <Version>9.0.8</Version>
+    <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\LSCore.Contracts\LSCore.Contracts.csproj"/>
