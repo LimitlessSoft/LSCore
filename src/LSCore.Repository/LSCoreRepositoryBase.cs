@@ -45,6 +45,14 @@ public class LSCoreRepositoryBase<TEntity>(ILSCoreDbContext dbContext) : ILSCore
         dbContext.SaveChanges();
     }
 
+    public virtual void UpdateOrInsert(TEntity entity)
+    {
+        if(entity.Id == 0)
+            Insert(entity);
+        else
+            Update(entity);
+    }
+    
     public virtual void SoftDelete(long id) =>
         SoftDelete(Get(id));
 
