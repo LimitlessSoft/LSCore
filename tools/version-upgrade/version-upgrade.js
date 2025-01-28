@@ -10,6 +10,8 @@ const xmlOptions = {
 
 var config = {}
 
+var args = process.argv.slice(2)
+
 fs.exists('./version-upgrade.config', (e) => {
 	if(e) {
 		config = JSON.parse(fs.readFileSync('./version-upgrade.config'))
@@ -19,20 +21,17 @@ fs.exists('./version-upgrade.config', (e) => {
 		}
 		fs.writeFileSync('./version-upgrade.config', JSON.stringify(config))
 	}
-	// 1.1.9
-	let currentPatch = parseInt(config.currentVersion.substring(config.currentVersion.length - 1, config.currentVersion.length))
-	if(currentPatch === 9) {
-		let minor = parseInt(config.currentVersion.substring(config.currentVersion.length - 3, config.currentVersion.length - 2)) + 1
-		config.nextVersion = config.currentVersion.substring(0, config.currentVersion.length - 3) + minor + '.0'
-		console.log("Config loaded!")
-		console.log(config)
-		console.log()
-
-		run()
-		return
-	}
-	let patch = parseInt(config.currentVersion.substring(config.currentVersion.length - 1, config.currentVersion.length)) + 1
-	config.nextVersion = config.currentVersion.substring(0, config.currentVersion.length - 1) + patch
+	
+	let split = config.currentVersion.split('.')
+	let currentPatch = parseInt(split[2])
+	let currentMinor = parseInt(split[1])
+	
+	// if args contains --upgrade-minor, upgrade minor version
+	if(args.indexOf('--upgrade-minor') >= 0)
+		config.nextVersion = `${split[0]}.${currentMinor + 1}.0`
+	else
+		config.nextVersion = `${split[0]}.${currentMinor}.${currentPatch + 1}`
+	
 	console.log("Config loaded!")
 	console.log(config)
 	console.log()

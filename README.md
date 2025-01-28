@@ -40,4 +40,5 @@ Code merged into `main` is automatically packed and pushed to nuget
 # Upgrading nuget version
 All projects have synchronized versions. When development is done, to upgrade versions go to `/tools/version-upgrade` and run `node version-upgrade.js`
 This tool will update version number inside all projects and commit upgrade with appropriate message
+If you want to upgrade minor version, add --upgrade-minor at the end of the command
 Important!!! - run from withing the folder!
