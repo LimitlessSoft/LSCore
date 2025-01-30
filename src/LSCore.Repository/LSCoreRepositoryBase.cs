@@ -23,10 +23,13 @@ public class LSCoreRepositoryBase<TEntity>(ILSCoreDbContext dbContext) : ILSCore
     public virtual void Insert(IEnumerable<TEntity> entities)
     {
         var lsCoreEntities = entities.ToList();
-        
+
         foreach (var entity in lsCoreEntities)
+        {
             entity.CreatedAt = DateTime.UtcNow;
-        
+            entity.IsActive = true;
+        }
+
         dbContext.Set<TEntity>().AddRange(lsCoreEntities);
         dbContext.SaveChanges();
     }
