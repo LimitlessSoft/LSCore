@@ -17,24 +17,27 @@ public class LSCoreRepositoryBase<TEntity>(ILSCoreDbContext dbContext) : ILSCore
     public virtual IQueryable<TEntity> GetMultiple() =>
         dbContext.Set<TEntity>().Where(x => x.IsActive);
 
-    public void Insert(TEntity entity) =>
+    public virtual void Insert(TEntity entity) =>
         Insert([entity]);
 
-    public void Insert(IEnumerable<TEntity> entities)
+    public virtual void Insert(IEnumerable<TEntity> entities)
     {
         var lsCoreEntities = entities.ToList();
-        
+
         foreach (var entity in lsCoreEntities)
+        {
             entity.CreatedAt = DateTime.UtcNow;
-        
+            entity.IsActive = true;
+        }
+
         dbContext.Set<TEntity>().AddRange(lsCoreEntities);
         dbContext.SaveChanges();
     }
 
-    public void Update(TEntity entity) =>
+    public virtual void Update(TEntity entity) =>
         Update([entity]);
 
-    public void Update(IEnumerable<TEntity> entities)
+    public virtual void Update(IEnumerable<TEntity> entities)
     {
         var lsCoreEntities = entities.ToList();
 
@@ -45,25 +48,33 @@ public class LSCoreRepositoryBase<TEntity>(ILSCoreDbContext dbContext) : ILSCore
         dbContext.SaveChanges();
     }
 
-    public void SoftDelete(long id) =>
+    public virtual void UpdateOrInsert(TEntity entity)
+    {
+        if(entity.Id == 0)
+            Insert(entity);
+        else
+            Update(entity);
+    }
+    
+    public virtual void SoftDelete(long id) =>
         SoftDelete(Get(id));
 
-    public void HardDelete(long id) =>
+    public virtual void HardDelete(long id) =>
         HardDelete(Get(id));
     
-    public void SoftDelete(TEntity entity) =>
+    public virtual void SoftDelete(TEntity entity) =>
         SoftDelete([entity]);
 
-    public void HardDelete(TEntity entity) =>
+    public virtual void HardDelete(TEntity entity) =>
         HardDelete([entity]);
 
-    public void SoftDelete(IEnumerable<long> ids) =>
+    public virtual void SoftDelete(IEnumerable<long> ids) =>
         SoftDelete(dbContext.Set<TEntity>().Where(x => ids.Contains(x.Id)));
 
-    public void HardDelete(IEnumerable<long> ids) =>
+    public virtual void HardDelete(IEnumerable<long> ids) =>
         HardDelete(dbContext.Set<TEntity>().Where(x => ids.Contains(x.Id)));
 
-    public void SoftDelete(IEnumerable<TEntity> entities)
+    public virtual void SoftDelete(IEnumerable<TEntity> entities)
     {
         foreach (var entity in entities)
         {
@@ -74,7 +85,7 @@ public class LSCoreRepositoryBase<TEntity>(ILSCoreDbContext dbContext) : ILSCore
         dbContext.SaveChanges();
     }
 
-    public void HardDelete(IEnumerable<TEntity> entities)
+    public virtual void HardDelete(IEnumerable<TEntity> entities)
     {
         dbContext.Set<TEntity>().RemoveRange(entities);
         dbContext.SaveChanges();

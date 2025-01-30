@@ -11,6 +11,7 @@ public interface ILSCoreRepositoryBase<TEntity> where TEntity : LSCoreEntity
     void Insert(IEnumerable<TEntity> entities);
     void Update(TEntity entity);
     void Update(IEnumerable<TEntity> entities);
+    void UpdateOrInsert(TEntity entity);
     void SoftDelete(long id);
     void HardDelete(long id);
     void SoftDelete(TEntity entity);
