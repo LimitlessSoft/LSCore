@@ -7,7 +7,7 @@
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <Nullable>enable</Nullable>
     <Description>Package used to simply expose your microservice Rest APIs</Description>
-    <Version>9.0.12</Version>
+    <Version>9.0.13</Version>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
   </PropertyGroup>
   <ItemGroup>
