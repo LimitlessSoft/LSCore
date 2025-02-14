@@ -77,10 +77,16 @@ public static class HostApplicationBuilderExtensions
     {
         if (type is not { IsClass: true } || type.IsAbstract || type.IsGenericType) return;
 
-        if (type.BaseType?.IsGenericType != true
-            || !type.BaseType.GetGenericTypeDefinition().Name.Contains("LSCoreValidatorBase")) return;
-        
-        builder.Services.AddTransient(type.BaseType, type);
+        var baseType = type.BaseType;
+        while (baseType != null)
+        {
+            if (baseType.IsGenericType && baseType.GetGenericTypeDefinition().Name.Contains("LSCoreValidatorBase"))
+            {
+                builder.Services.AddTransient(baseType, type);
+                return;
+            }
+            baseType = baseType.BaseType;
+        }
     }
     
     public static void UseLSCoreDependencyInjection(this IHost host)
