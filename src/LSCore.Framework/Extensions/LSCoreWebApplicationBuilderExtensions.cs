@@ -77,7 +77,6 @@ public static class LSCoreWebApplicationBuilderExtensions
     {
         app.UseAuthentication();
         app.UseAuthorization();
-
         app.UseMiddleware<LSCoreAuthorizationMiddleware>();
     }
     

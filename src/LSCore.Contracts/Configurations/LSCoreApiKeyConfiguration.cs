@@ -1,6 +1,6 @@
 namespace LSCore.Contracts.Configurations;
 
-public class LSCoreApiKeyConfiguration
+public class LSCoreApiKeyConfiguration : LSCoreAuthorizationConfigurationBase
 {
     /// <summary>
     /// Set of API keys that are allowed to access the API.
