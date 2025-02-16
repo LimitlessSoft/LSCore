@@ -22,7 +22,7 @@ public class LSCoreAuthorizationMiddleware(RequestDelegate next, LSCoreAuthoriza
         
         #region Parse Jwt and populate LSCoreContextUser for this request
         var currentUser = context.RequestServices.GetRequiredService<LSCoreContextUser>();
-        if (context.User.Identity?.IsAuthenticated == true && context.User.Identity.AuthenticationType == "Bearer")
+        if (context.User.Identity?.IsAuthenticated == true && context.User.Identity.AuthenticationType == "AuthenticationTypes.Federation")
         {
             var jwtIdentifier = context.User.FindFirstValue(LSCoreContractsConstants.ClaimNames.CustomIdentifier);
             if (!string.IsNullOrWhiteSpace(jwtIdentifier))
