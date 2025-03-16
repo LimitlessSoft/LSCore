@@ -5,10 +5,10 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
     </PropertyGroup>
-
+    
     <ItemGroup>
-        <ProjectReference Include="..\..\LSCore.Exceptions\LSCore.Exceptions\LSCore.Exceptions.csproj" />
-        <ProjectReference Include="..\LSCore.Auth.Contracts\LSCore.Auth.Contracts.csproj" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.0"/>
+        <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="9.0.0"/>
     </ItemGroup>
 
 </Project>

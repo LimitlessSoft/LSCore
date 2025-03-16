@@ -17,7 +17,7 @@
       <ProjectReference Include="..\..\..\LSCore.Auth\LSCore.Auth.UserPass.Contracts\LSCore.Auth.UserPass.Contracts.csproj" />
       <ProjectReference Include="..\..\..\LSCore.Auth\LSCore.Auth.UserPass.DependencyInjection\LSCore.Auth.UserPass.DependencyInjection.csproj" />
       <ProjectReference Include="..\..\..\LSCore.Auth\LSCore.Auth.UserPass.Domain\LSCore.Auth.UserPass.Domain.csproj" />
-      <ProjectReference Include="..\..\..\LSCore.Exceptions.DependencyInjection\LSCore.Exceptions.DependencyInjection.csproj" />
+      <ProjectReference Include="..\..\..\LSCore.Exceptions\LSCore.Exceptions.DependencyInjection\LSCore.Exceptions.DependencyInjection.csproj" />
     </ItemGroup>
 
 </Project>

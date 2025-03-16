@@ -1,0 +1,1 @@
+Call /register EP with any username/password combination. Now call same EP with same username and see error.

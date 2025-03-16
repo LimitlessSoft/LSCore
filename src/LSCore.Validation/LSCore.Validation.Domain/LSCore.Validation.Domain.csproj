@@ -8,7 +8,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\LSCore.DependencyInjection\LSCore.DependencyInjection.csproj" />
-      <ProjectReference Include="..\..\LSCore.Exceptions\LSCore.Exceptions.csproj" />
+      <ProjectReference Include="..\..\LSCore.Exceptions\LSCore.Exceptions\LSCore.Exceptions.csproj" />
       <ProjectReference Include="..\LSCore.Validation.Contracts\LSCore.Validation.Contracts.csproj" />
     </ItemGroup>
 

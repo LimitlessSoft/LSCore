@@ -7,7 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\LSCore.Exceptions\LSCore.Exceptions.csproj" />
+      <ProjectReference Include="..\..\LSCore.Exceptions\LSCore.Exceptions\LSCore.Exceptions.csproj" />
       <ProjectReference Include="..\LSCore.Auth.Contracts\LSCore.Auth.Contracts.csproj" />
     </ItemGroup>
 

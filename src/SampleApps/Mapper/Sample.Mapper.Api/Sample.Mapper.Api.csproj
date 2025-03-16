@@ -14,9 +14,10 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\..\LSCore.Auth\LSCore.Auth.Key.Contracts\LSCore.Auth.Key.Contracts.csproj" />
-      <ProjectReference Include="..\..\..\LSCore.Auth\LSCore.Auth.Key.DependencyInjection\LSCore.Auth.Key.DependencyInjection.csproj" />
+      <ProjectReference Include="..\..\..\LSCore.DependencyInjection\LSCore.DependencyInjection.csproj" />
       <ProjectReference Include="..\..\..\LSCore.Exceptions\LSCore.Exceptions.DependencyInjection\LSCore.Exceptions.DependencyInjection.csproj" />
+      <ProjectReference Include="..\..\..\LSCore.Exceptions\LSCore.Exceptions\LSCore.Exceptions.csproj" />
+      <ProjectReference Include="..\..\..\LSCore.Mapper\LSCore.Mapper.Domain\LSCore.Mapper.Domain.csproj" />
     </ItemGroup>
 
 </Project>
