@@ -2,24 +2,14 @@
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
-    <RepositoryUrl>https://github.com/LimitlessSoft/LSCore</RepositoryUrl>
-    <PackageReadmeFile>README.md</PackageReadmeFile>
-    <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <Nullable>enable</Nullable>
-    <Description>Package used to simply expose your microservice Rest APIs</Description>
-    <Version>9.0.15</Version>
+    <RepositoryUrl>https://github.com/LimitlessSoft/LSCore</RepositoryUrl>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <Version>9.0.15</Version>
+    <Description>Package used to simply expose your microservice Rest APIs</Description>
   </PropertyGroup>
-  <ItemGroup>
-    <None Include="..\..\LICENSE">
-      <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
-    </None>
-    <None Include="..\..\README.md">
-      <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
-    </None>
-  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\LSCore.Auth\LSCore.Auth.Key.Contracts\LSCore.Auth.Key.Contracts.csproj" />
     <ProjectReference Include="..\..\LSCore.Exceptions\LSCore.Exceptions\LSCore.Exceptions.csproj" />

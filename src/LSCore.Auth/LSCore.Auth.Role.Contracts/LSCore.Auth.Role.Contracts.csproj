@@ -1,14 +1,17 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
     <PropertyGroup>
         <TargetFramework>net9.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <RepositoryUrl>https://github.com/LimitlessSoft/LSCore</RepositoryUrl>
+        <PackageLicenseFile>LICENSE</PackageLicenseFile>
+        <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <Version>9.0.15</Version>
+        <Description>Package containing contracts used by LSCore.Auth.Role.</Description>
     </PropertyGroup>
-
     <ItemGroup>
         <ProjectReference Include="..\..\LSCore.Exceptions\LSCore.Exceptions\LSCore.Exceptions.csproj" />
         <ProjectReference Include="..\LSCore.Auth.Contracts\LSCore.Auth.Contracts.csproj" />
     </ItemGroup>
-
 </Project>

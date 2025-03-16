@@ -1,15 +1,18 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
     <PropertyGroup>
         <TargetFramework>net9.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <RepositoryUrl>https://github.com/LimitlessSoft/LSCore</RepositoryUrl>
+        <PackageLicenseFile>LICENSE</PackageLicenseFile>
+        <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <Version>9.0.15</Version>
+        <Description>Package containing implementations of LSCore.Auth.UserPass.</Description>
     </PropertyGroup>
-
     <ItemGroup>
       <ProjectReference Include="..\LSCore.Auth.UserPass.Contracts\LSCore.Auth.UserPass.Contracts.csproj" />
     </ItemGroup>
-
     <ItemGroup>
       <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
       <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.6.0" />

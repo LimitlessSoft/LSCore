@@ -14,16 +14,4 @@
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.0"/>
     <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="9.0.0"/>
   </ItemGroup>
-  <ItemGroup>
-    <None Include="..\..\LICENSE">
-      <Pack>True</Pack>
-      <PackagePath>/</PackagePath>
-      <Link>LICENSE</Link>
-    </None>
-    <None Include="..\..\README.md">
-      <Pack>True</Pack>
-      <PackagePath>/</PackagePath>
-      <Link>README.md</Link>
-    </None>
-  </ItemGroup>
 </Project>

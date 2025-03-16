@@ -1,3 +1,6 @@
+> [!IMPORTANT]
+> Version 9.1.0 is being worked on and will be released withing next month. Big change is everything from Framework, Contracts and Domain is now being separated into different assemblies. Upgrading from current 9.0.* to 9.1.* may require some changes in your codebase besides referencing those assemblies.
+
 # LSCore
 ### Free and open-source .NET Api framework
 
@@ -42,3 +45,4 @@ All projects have synchronized versions. When development is done, to upgrade ve
 This tool will update version number inside all projects and commit upgrade with appropriate message
 If you want to upgrade minor version, add --upgrade-minor at the end of the command
 Important!!! - run from withing the folder!
+
