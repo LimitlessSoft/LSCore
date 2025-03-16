@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <FrameworkReference Include="Microsoft.AspNetCore.App"/>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\LSCore.Auth.Permission.Contracts\LSCore.Auth.Permission.Contracts.csproj" />
+      <ProjectReference Include="..\LSCore.Auth.Permission.Domain\LSCore.Auth.Permission.Domain.csproj" />
+    </ItemGroup>
+
+</Project>
