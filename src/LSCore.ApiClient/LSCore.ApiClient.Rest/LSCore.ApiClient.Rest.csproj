@@ -11,6 +11,20 @@
     <Description>Package used to simply expose your microservice Rest APIs</Description>
   </PropertyGroup>
   <ItemGroup>
+    <None Include="..\..\LICENSE">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\..\README.md">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\..\LSCore.Auth\LSCore.Auth.Key.Contracts\LSCore.Auth.Key.Contracts.csproj" />
     <ProjectReference Include="..\..\LSCore.Exceptions\LSCore.Exceptions\LSCore.Exceptions.csproj" />
   </ItemGroup>

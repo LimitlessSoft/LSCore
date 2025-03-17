@@ -7,8 +7,6 @@
     <Version>9.0.15</Version>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\LSCore.ApiClient.Rest.DependencyInjection\LSCore.ApiClient.Rest.DependencyInjection.csproj"/>
-    <ProjectReference Include="..\LSCore.ApiClient.Rest\LSCore.ApiClient.Rest.csproj"/>
     <ProjectReference Include="..\LSCore.ApiClient\LSCore.ApiClient.Rest.DependencyInjection\LSCore.ApiClient.Rest.DependencyInjection.csproj" />
     <ProjectReference Include="..\LSCore.ApiClient\LSCore.ApiClient.Rest\LSCore.ApiClient.Rest.csproj" />
     <ProjectReference Include="..\LSCore.Auth\LSCore.Auth.Key.DependencyInjection\LSCore.Auth.Key.DependencyInjection.csproj" />
@@ -28,7 +26,6 @@
     <ProjectReference Include="..\LSCore.Mapper\LSCore.Mapper.Contracts\LSCore.Mapper.Contracts.csproj" />
     <ProjectReference Include="..\LSCore.Mapper\LSCore.Mapper.Domain\LSCore.Mapper.Domain.csproj" />
     <ProjectReference Include="..\LSCore.Repository\LSCore.Repository.Contracts\LSCore.Repository.Contracts.csproj" />
-    <ProjectReference Include="..\LSCore.Repository\LSCore.Repository.csproj"/>
     <ProjectReference Include="..\LSCore.Repository\LSCore.Repository\LSCore.Repository.csproj" />
     <ProjectReference Include="..\LSCore.SortAndPage\LSCore.SortAndPage.Contracts\LSCore.SortAndPage.Contracts.csproj" />
     <ProjectReference Include="..\LSCore.SortAndPage\LSCore.SortAndPage.Domain\LSCore.SortAndPage.Domain.csproj" />
