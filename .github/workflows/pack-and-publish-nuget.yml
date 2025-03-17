@@ -463,3 +463,20 @@ jobs:
         
       - name: Publish
         run: dotnet nuget push src/LSCore.Common/LSCore.Common.Extensions/bin/Release/*.nupkg --api-key ${{ secrets.NUGET_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+
+  pack-and-publish-common-contracts:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '9.0.x'
+        
+      - name: Pack
+        run: dotnet pack src/LSCore.Common/LSCore.Common.Contracts/LSCore.Common.Contracts.csproj -c Release
+        
+      - name: Publish
+        run: dotnet nuget push src/LSCore.Common/LSCore.Common.Contracts/bin/Release/*.nupkg --api-key ${{ secrets.NUGET_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
