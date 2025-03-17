@@ -10,4 +10,18 @@
         <Version>9.0.15</Version>
         <Description>Package containing contracts used by LSCore.SortAndPage.</Description>
     </PropertyGroup>
+    <ItemGroup>
+        <None Include="..\..\LICENSE">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+            <Pack>True</Pack>
+            <PackagePath>\</PackagePath>
+        </None>
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="..\..\README.md">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+            <Pack>True</Pack>
+            <PackagePath>\</PackagePath>
+        </Content>
+    </ItemGroup>
 </Project>

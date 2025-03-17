@@ -11,6 +11,20 @@
         <Description>Package containing implementations of LSCore.Validation.</Description>
     </PropertyGroup>
     <ItemGroup>
+        <None Include="..\..\LICENSE">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+            <Pack>True</Pack>
+            <PackagePath>\</PackagePath>
+        </None>
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="..\..\README.md">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+            <Pack>True</Pack>
+            <PackagePath>\</PackagePath>
+        </Content>
+    </ItemGroup>
+    <ItemGroup>
       <ProjectReference Include="..\..\LSCore.DependencyInjection\LSCore.DependencyInjection.csproj" />
       <ProjectReference Include="..\..\LSCore.Exceptions\LSCore.Exceptions\LSCore.Exceptions.csproj" />
       <ProjectReference Include="..\LSCore.Validation.Contracts\LSCore.Validation.Contracts.csproj" />

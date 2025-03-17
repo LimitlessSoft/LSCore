@@ -11,6 +11,20 @@
         <Description>Package containing implementations of LSCore.SortAndPage.</Description>
     </PropertyGroup>
     <ItemGroup>
+        <None Include="..\..\LICENSE">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+            <Pack>True</Pack>
+            <PackagePath>\</PackagePath>
+        </None>
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="..\..\README.md">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+            <Pack>True</Pack>
+            <PackagePath>\</PackagePath>
+        </Content>
+    </ItemGroup>
+    <ItemGroup>
       <ProjectReference Include="..\LSCore.SortAndPage.Contracts\LSCore.SortAndPage.Contracts.csproj" />
     </ItemGroup>
 </Project>
