@@ -34,7 +34,7 @@ jobs:
           dotnet-version: '9.0.x'
         
       - name: Pack
-        run: dotnet pack dotnet pack src/LSCore.ApiClient/LSCore.ApiClient.Rest.DependencyInjection/LSCore.ApiClient.Rest.DependencyInjection.csproj -c Release
+        run: dotnet pack src/LSCore.ApiClient/LSCore.ApiClient.Rest.DependencyInjection/LSCore.ApiClient.Rest.DependencyInjection.csproj -c Release
         
       - name: Publish
         run: dotnet nuget push src/LSCore.ApiClient/LSCore.ApiClient.Rest.DependencyInjection/bin/Release/*.nupkg --api-key ${{ secrets.NUGET_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
