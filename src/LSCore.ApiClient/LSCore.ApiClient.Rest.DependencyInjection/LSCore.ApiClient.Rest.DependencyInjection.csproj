@@ -7,7 +7,7 @@
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <Version>9.0.15</Version>
+    <Version>9.1.0</Version>
     <Description>Package containing Dependency Injection resolution of the LSCore.ApiClient.Rest.</Description>
   </PropertyGroup>
   <ItemGroup>
@@ -25,7 +25,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <FrameworkReference Include="Microsoft.AspNetCore.App"/>
+    <FrameworkReference Include="Microsoft.AspNetCore.App"></FrameworkReference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LSCore.ApiClient.Rest\LSCore.ApiClient.Rest.csproj"/>

@@ -7,7 +7,7 @@
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <Version>9.0.15</Version>
+    <Version>9.1.0</Version>
     <Description>Package used to manage repository layer.</Description>
   </PropertyGroup>
   <ItemGroup>
@@ -25,7 +25,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\LSCore.Exceptions\LSCore.Exceptions\LSCore.Exceptions.csproj" />
-    <ProjectReference Include="..\LSCore.Repository.Contracts\LSCore.Repository.Contracts.csproj" />
+    <ProjectReference Include="..\..\LSCore.Exceptions\LSCore.Exceptions\LSCore.Exceptions.csproj"/>
+    <ProjectReference Include="..\LSCore.Repository.Contracts\LSCore.Repository.Contracts.csproj"/>
   </ItemGroup>
 </Project>
