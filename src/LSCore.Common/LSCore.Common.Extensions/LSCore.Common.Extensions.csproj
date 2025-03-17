@@ -7,8 +7,8 @@
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <Version>9.1.1</Version>
-    <Description>Package containing all sorts of useful extensions which haven't found way to the separate packages</Description>
+    <Version>9.1.2</Version>
+    <Description>Package containing all sorts of useful extensions which haven&apos;t found way to the separate packages</Description>
   </PropertyGroup>
   <ItemGroup>
     <None Include="..\..\LICENSE">
