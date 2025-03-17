@@ -1,5 +1,5 @@
 > [!IMPORTANT]
-> Version 9.1.0 is being worked on and will be released withing next month. Big change is everything from Framework, Contracts and Domain is now being separated into different assemblies. Upgrading from current 9.0.* to 9.1.* may require some changes in your codebase besides referencing those assemblies.
+> Version 9.1.0 has just been released, however documentaiton is still being updated
 
 # LSCore
 Free and open-source .NET Api framework
