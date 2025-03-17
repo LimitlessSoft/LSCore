@@ -1,6 +1,6 @@
 namespace LSCore.Common.Contracts;
 
-public class IdRequest
+public class LSCoreIdRequest
 {
 	public long Id { get; set; }
 }
