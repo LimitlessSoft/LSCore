@@ -117,6 +117,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SortAndPage", "SortAndPage"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.SortAndPage.Api", "src\SampleApps\SortAndPage\Sample.SortAndPage.Api\Sample.SortAndPage.Api.csproj", "{66173BBF-B507-426E-8F55-30244F7C32C7}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LSCore.Common", "LSCore.Common", "{3979B82D-24D1-44CC-8106-CABF9F15D02D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LSCore.Common.Extensions", "src\LSCore.Common\LSCore.Common.Extensions\LSCore.Common.Extensions.csproj", "{C28F7365-E945-44AE-8DD4-F8EBF4CFF134}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -267,6 +271,10 @@ Global
 		{66173BBF-B507-426E-8F55-30244F7C32C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{66173BBF-B507-426E-8F55-30244F7C32C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{66173BBF-B507-426E-8F55-30244F7C32C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C28F7365-E945-44AE-8DD4-F8EBF4CFF134}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C28F7365-E945-44AE-8DD4-F8EBF4CFF134}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C28F7365-E945-44AE-8DD4-F8EBF4CFF134}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C28F7365-E945-44AE-8DD4-F8EBF4CFF134}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -320,5 +328,6 @@ Global
 		{BF622954-8102-4FC5-9B78-98DDF6E086A3} = {6C5ABFCC-4AE4-4369-9CD3-B1C7A8EE873B}
 		{352F13BE-7AAC-4CF8-A99E-02E69491360A} = {2F74C5B6-2B02-4D70-A0BC-3F03073648C3}
 		{66173BBF-B507-426E-8F55-30244F7C32C7} = {352F13BE-7AAC-4CF8-A99E-02E69491360A}
+		{C28F7365-E945-44AE-8DD4-F8EBF4CFF134} = {3979B82D-24D1-44CC-8106-CABF9F15D02D}
 	EndGlobalSection
 EndGlobal
