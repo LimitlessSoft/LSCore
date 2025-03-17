@@ -9,6 +9,8 @@ public class UserRegisterRequestValidator : LSCoreValidatorBase<UserRegisterRequ
 {
 	public UserRegisterRequestValidator(IUserRepository userRepository)
 	{
+		// You will never catch IUserRepository since usually it is scoped and validators are singleton/transient
+		// Instead, force yourself to use factory for your dbcontext, and then extract things here
 		RuleFor(x => x.Username)
 			.Must(username => userRepository.UsernameOccupied(username) == false)
 			.WithMessage("User with given username already exists");
