@@ -14,7 +14,7 @@ public static class Extensions
 		TAuthPasswordManager,
 		TLSCoreIdentityRepository
 	>(this WebApplicationBuilder builder, LSCoreAuthUserPassConfiguration configuration)
-		where TAuthPasswordManager : class, ILSCoreAuthPasswordManager<TEntityIdentifier>
+		where TAuthPasswordManager : class, ILSCoreAuthUserPassManager<TEntityIdentifier>
 		where TLSCoreIdentityRepository : class,
 			ILSCoreAuthUserPassIdentityEntityRepository<TEntityIdentifier>
 	{
@@ -41,7 +41,7 @@ public static class Extensions
 			});
 		builder.Services.AddAuthorization();
 		builder.Services.AddScoped<
-			ILSCoreAuthPasswordManager<TEntityIdentifier>,
+			ILSCoreAuthUserPassManager<TEntityIdentifier>,
 			TAuthPasswordManager
 		>();
 		builder.Services.AddScoped<

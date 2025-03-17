@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Sample.AuthCombined.Api.Controllers;
 
-public class UsersController(ILSCoreAuthPasswordManager<string> authPasswordManager)
+public class UsersController(ILSCoreAuthUserPassManager<string> authPasswordManager)
 	: ControllerBase
 {
 	[HttpPost]

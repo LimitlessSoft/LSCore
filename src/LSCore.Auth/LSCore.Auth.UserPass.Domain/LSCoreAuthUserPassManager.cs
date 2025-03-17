@@ -13,7 +13,7 @@ namespace LSCore.Auth.UserPass.Domain;
 public class LSCoreAuthUserPassManager<TEntityIdentifier>(
 	ILSCoreAuthUserPassIdentityEntityRepository<TEntityIdentifier> userPassIdentityEntityRepository,
 	LSCoreAuthUserPassConfiguration configuration
-) : ILSCoreAuthPasswordManager<TEntityIdentifier>
+) : ILSCoreAuthUserPassManager<TEntityIdentifier>
 {
 	public LSCoreJwt Authenticate(TEntityIdentifier identifier, string password)
 	{
