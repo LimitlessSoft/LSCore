@@ -5,12 +5,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-
-# ===========================
-# Packing
-# ===========================
-
-  pack-and-publish-contracts:
+  pack-and-publish-api-client:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -21,112 +16,433 @@ jobs:
         with:
           dotnet-version: '9.0.x'
         
-      - name: Pack Contracts
-        run: dotnet pack src/LSCore.Contracts/LSCore.Contracts.csproj -c Release
+      - name: Pack
+        run: dotnet pack src/LSCore.ApiClient/LSCore.ApiClient.Rest/LSCore.ApiClient.Rest.csproj -c Release
         
-      - name: Publish Contracts
-        run: dotnet nuget push src/LSCore.Contracts/bin/Release/*.nupkg --api-key ${{ secrets.NUGET_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+      - name: Publish
+        run: dotnet nuget push src/LSCore.ApiClient/LSCore.ApiClient.Rest/bin/Release/*.nupkg --api-key ${{ secrets.NUGET_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
 
-  pack-and-publish-domain:
+  pack-and-publish-api-client:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-
+        
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: '9.0.x'
         
-      - name: Pack Domain
-        run: dotnet pack src/LSCore.Domain/LSCore.Domain.csproj -c Release
+      - name: Pack
+        run: dotnet pack dotnet pack src/LSCore.ApiClient/LSCore.ApiClient.Rest.DependencyInjection/LSCore.ApiClient.Rest.DependencyInjection.csproj -c Release
         
-      - name: Publish Domain
-        run: dotnet nuget push src/LSCore.Domain/bin/Release/*.nupkg --api-key ${{ secrets.NUGET_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+      - name: Publish
+        run: dotnet nuget push src/LSCore.ApiClient/LSCore.ApiClient.Rest.DependencyInjection/bin/Release/*.nupkg --api-key ${{ secrets.NUGET_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+
+  pack-and-publish-auth-contracts:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '9.0.x'
+        
+      - name: Pack
+        run: dotnet pack src/LSCore.Auth/LSCore.Auth.Contracts/LSCore.Auth.Contracts.csproj -c Release
+        
+      - name: Publish
+        run: dotnet nuget push src/LSCore.Auth/LSCore.Auth.Contracts/bin/Release/*.nupkg --api-key ${{ secrets.NUGET_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+
+  pack-and-publish-auth-key-contracts:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '9.0.x'
+        
+      - name: Pack
+        run: dotnet pack src/LSCore.Auth/LSCore.Auth.Key.Contracts/LSCore.Auth.Key.Contracts.csproj -c Release
+        
+      - name: Publish
+        run: dotnet nuget push src/LSCore.Auth/LSCore.Auth.Key.Contracts/bin/Release/*.nupkg --api-key ${{ secrets.NUGET_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+
+  pack-and-publish-auth-key-dependency-injection:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '9.0.x'
+        
+      - name: Pack
+        run: dotnet pack src/LSCore.Auth/LSCore.Auth.Key.DependencyInjection/LSCore.Auth.Key.DependencyInjection.csproj -c Release
+        
+      - name: Publish
+        run: dotnet nuget push src/LSCore.Auth/LSCore.Auth.Key.DependencyInjection/bin/Release/*.nupkg --api-key ${{ secrets.NUGET_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+
+  pack-and-publish-auth-permission-contracts:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '9.0.x'
+        
+      - name: Pack
+        run: dotnet pack src/LSCore.Auth/LSCore.Auth.Permission.Contracts/LSCore.Auth.Permission.Contracts.csproj -c Release
+        
+      - name: Publish
+        run: dotnet nuget push src/LSCore.Auth/LSCore.Auth.Permission.Contracts/bin/Release/*.nupkg --api-key ${{ secrets.NUGET_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+
+  pack-and-publish-auth-permission-dependency-injection:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '9.0.x'
+        
+      - name: Pack
+        run: dotnet pack src/LSCore.Auth/LSCore.Auth.Permission.DependencyInjection/LSCore.Auth.Permission.DependencyInjection.csproj -c Release
+        
+      - name: Publish
+        run: dotnet nuget push src/LSCore.Auth/LSCore.Auth.Permission.DependencyInjection/bin/Release/*.nupkg --api-key ${{ secrets.NUGET_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+
+  pack-and-publish-auth-permission-domain:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '9.0.x'
+        
+      - name: Pack
+        run: dotnet pack src/LSCore.Auth/LSCore.Auth.Permission.Domain/LSCore.Auth.Permission.Domain.csproj -c Release
+        
+      - name: Publish
+        run: dotnet nuget push src/LSCore.Auth/LSCore.Auth.Permission.Domain/bin/Release/*.nupkg --api-key ${{ secrets.NUGET_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+
+  pack-and-publish-auth-role-contracts:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '9.0.x'
+        
+      - name: Pack
+        run: dotnet pack src/LSCore.Auth/LSCore.Auth.Role.Contracts/LSCore.Auth.Role.Contracts.csproj -c Release
+        
+      - name: Publish
+        run: dotnet nuget push src/LSCore.Auth/LSCore.Auth.Role.Contracts/bin/Release/*.nupkg --api-key ${{ secrets.NUGET_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+
+  pack-and-publish-auth-role-dependency-injection:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '9.0.x'
+        
+      - name: Pack
+        run: dotnet pack src/LSCore.Auth/LSCore.Auth.Role.DependencyInjection/LSCore.Auth.Role.DependencyInjection.csproj -c Release
+        
+      - name: Publish
+        run: dotnet nuget push src/LSCore.Auth/LSCore.Auth.Role.DependencyInjection/bin/Release/*.nupkg --api-key ${{ secrets.NUGET_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+
+  pack-and-publish-auth-role-domain:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '9.0.x'
+        
+      - name: Pack
+        run: dotnet pack src/LSCore.Auth/LSCore.Auth.Role.Domain/LSCore.Auth.Role.Domain.csproj -c Release
+        
+      - name: Publish
+        run: dotnet nuget push src/LSCore.Auth/LSCore.Auth.Role.Domain/bin/Release/*.nupkg --api-key ${{ secrets.NUGET_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+
+  pack-and-publish-auth-userpass-contracts:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '9.0.x'
+        
+      - name: Pack
+        run: dotnet pack src/LSCore.Auth/LSCore.Auth.UserPass.Contracts/LSCore.Auth.UserPass.Contracts.csproj -c Release
+        
+      - name: Publish
+        run: dotnet nuget push src/LSCore.Auth/LSCore.Auth.UserPass.Contracts/bin/Release/*.nupkg --api-key ${{ secrets.NUGET_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+
+  pack-and-publish-auth-userpass-dependency-injection:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '9.0.x'
+        
+      - name: Pack
+        run: dotnet pack src/LSCore.Auth/LSCore.Auth.UserPass.DependencyInjection/LSCore.Auth.UserPass.DependencyInjection.csproj -c Release
+        
+      - name: Publish
+        run: dotnet nuget push src/LSCore.Auth/LSCore.Auth.UserPass.DependencyInjection/bin/Release/*.nupkg --api-key ${{ secrets.NUGET_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+
+  pack-and-publish-auth-userpass-domain:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '9.0.x'
+        
+      - name: Pack
+        run: dotnet pack src/LSCore.Auth/LSCore.Auth.UserPass.Domain/LSCore.Auth.UserPass.Domain.csproj -c Release
+        
+      - name: Publish
+        run: dotnet nuget push src/LSCore.Auth/LSCore.Auth.UserPass.Domain/bin/Release/*.nupkg --api-key ${{ secrets.NUGET_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+
+  pack-and-publish-exceptions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '9.0.x'
+        
+      - name: Pack
+        run: dotnet pack src/LSCore.Exceptions/LSCore.Exceptions/LSCore.Exceptions.csproj -c Release
+        
+      - name: Publish
+        run: dotnet nuget push src/LSCore.Exceptions/LSCore.Exceptions/bin/Release/*.nupkg --api-key ${{ secrets.NUGET_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+
+  pack-and-publish-exceptions-dependency-injection:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '9.0.x'
+        
+      - name: Pack
+        run: dotnet pack src/LSCore.Exceptions/LSCore.Exceptions.DependencyInjection/LSCore.Exceptions.DependencyInjection.csproj -c Release
+        
+      - name: Publish
+        run: dotnet nuget push src/LSCore.Exceptions/LSCore.Exceptions.DependencyInjection/bin/Release/*.nupkg --api-key ${{ secrets.NUGET_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+
+  pack-and-publish-mapper-contracts:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '9.0.x'
+        
+      - name: Pack
+        run: dotnet pack src/LSCore.Mapper/LSCore.Mapper.Contracts/LSCore.Mapper.Contracts.csproj -c Release
+        
+      - name: Publish
+        run: dotnet nuget push src/LSCore.Mapper/LSCore.Mapper.Contracts/bin/Release/*.nupkg --api-key ${{ secrets.NUGET_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+
+  pack-and-publish-mapper-domain:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '9.0.x'
+        
+      - name: Pack
+        run: dotnet pack src/LSCore.Mapper/LSCore.Mapper.Domain/LSCore.Mapper.Domain.csproj -c Release
+        
+      - name: Publish
+        run: dotnet nuget push src/LSCore.Mapper/LSCore.Mapper.Domain/bin/Release/*.nupkg --api-key ${{ secrets.NUGET_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+
+  pack-and-publish-repository-contracts:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '9.0.x'
+        
+      - name: Pack
+        run: dotnet pack src/LSCore.Repository/LSCore.Repository.Contracts/LSCore.Repository.Contracts.csproj -c Release
+        
+      - name: Publish
+        run: dotnet nuget push src/LSCore.Repository/LSCore.Repository.Contracts/bin/Release/*.nupkg --api-key ${{ secrets.NUGET_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
 
   pack-and-publish-repository:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-
+        
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: '9.0.x'
         
-      - name: Pack Repository
-        run: dotnet pack src/LSCore.Repository/LSCore.Repository.csproj -c Release
+      - name: Pack
+        run: dotnet pack src/LSCore.Repository/LSCore.Repository/LSCore.Repository.csproj -c Release
         
-      - name: Publish Repository
-        run: dotnet nuget push src/LSCore.Repository/bin/Release/*.nupkg --api-key ${{ secrets.NUGET_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
-        
-  
-  pack-and-publish-framework:
+      - name: Publish
+        run: dotnet nuget push src/LSCore.Repository/LSCore.Repository/bin/Release/*.nupkg --api-key ${{ secrets.NUGET_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+
+  pack-and-publish-sort-and-page-contracts:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-
+        
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: '9.0.x'
         
-      - name: Pack Framework
-        run: dotnet pack src/LSCore.Framework/LSCore.Framework.csproj -c Release
+      - name: Pack
+        run: dotnet pack src/LSCore.SortAndPage/LSCore.SortAndPage.Contracts/LSCore.SortAndPage.Contracts.csproj -c Release
+        
+      - name: Publish
+        run: dotnet nuget push src/LSCore.SortAndPage/LSCore.SortAndPage.Contracts/bin/Release/*.nupkg --api-key ${{ secrets.NUGET_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
 
-      - name: Publish Framework
-        run: dotnet nuget push src/LSCore.Framework/bin/Release/*.nupkg --api-key ${{ secrets.NUGET_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
-  
+  pack-and-publish-sort-and-page-domain:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '9.0.x'
+        
+      - name: Pack
+        run: dotnet pack src/LSCore.SortAndPage/LSCore.SortAndPage.Domain/LSCore.SortAndPage.Domain.csproj -c Release
+        
+      - name: Publish
+        run: dotnet nuget push src/LSCore.SortAndPage/LSCore.SortAndPage.Domain/bin/Release/*.nupkg --api-key ${{ secrets.NUGET_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+
+  pack-and-publish-validation-contracts:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '9.0.x'
+        
+      - name: Pack
+        run: dotnet pack src/LSCore.Validation/LSCore.Validation.Contracts/LSCore.Validation.Contracts.csproj -c Release
+        
+      - name: Publish
+        run: dotnet nuget push src/LSCore.Validation/LSCore.Validation.Contracts/bin/Release/*.nupkg --api-key ${{ secrets.NUGET_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+
+  pack-and-publish-validation-domain:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '9.0.x'
+        
+      - name: Pack
+        run: dotnet pack src/LSCore.Validation/LSCore.Validation.Domain/LSCore.Validation.Domain.csproj -c Release
+        
+      - name: Publish
+        run: dotnet nuget push src/LSCore.Validation/LSCore.Validation.Domain/bin/Release/*.nupkg --api-key ${{ secrets.NUGET_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+
   pack-and-publish-dependency-injection:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-
+        
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: '9.0.x'
-
-      - name: Pack DependencyInjection
+        
+      - name: Pack
         run: dotnet pack src/LSCore.DependencyInjection/LSCore.DependencyInjection.csproj -c Release
-
-      - name: Publish DependencyInjection
+        
+      - name: Publish
         run: dotnet nuget push src/LSCore.DependencyInjection/bin/Release/*.nupkg --api-key ${{ secrets.NUGET_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
-        
-  
-  pack-and-publish-api-client-rest:
+
+  pack-and-publish-logging:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v3
-        with:
-          dotnet-version: '9.0.x'
-
-      - name: Pack DependencyInjection
-        run: dotnet pack src/LSCore.ApiClient.Rest/LSCore.ApiClient.Rest.csproj -c Release
-
-      - name: Publish DependencyInjection
-        run: dotnet nuget push src/LSCore.ApiClient.Rest/bin/Release/*.nupkg --api-key ${{ secrets.NUGET_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
         
-  pack-and-publish-api-client-rest-di:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: '9.0.x'
-
-      - name: Pack DependencyInjection
-        run: dotnet pack src/LSCore.ApiClient.Rest.DependencyInjection/LSCore.ApiClient.Rest.DependencyInjection.csproj -c Release
-
-      - name: Publish DependencyInjection
-        run: dotnet nuget push src/LSCore.ApiClient.Rest.DependencyInjection/bin/Release/*.nupkg --api-key ${{ secrets.NUGET_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+        
+      - name: Pack
+        run: dotnet pack src/LSCore.Logging/LSCore.Logging.csproj -c Release
+        
+      - name: Publish
+        run: dotnet nuget push src/LSCore.Logging/bin/Release/*.nupkg --api-key ${{ secrets.NUGET_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate

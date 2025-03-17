@@ -4,15 +4,32 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <Configuration>Release</Configuration>
-    <Version>9.0.15</Version>
+    <Version>9.1.0</Version>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\LSCore.ApiClient.Rest.DependencyInjection\LSCore.ApiClient.Rest.DependencyInjection.csproj"/>
-    <ProjectReference Include="..\LSCore.ApiClient.Rest\LSCore.ApiClient.Rest.csproj"/>
-    <ProjectReference Include="..\LSCore.Contracts\LSCore.Contracts.csproj"/>
+    <ProjectReference Include="..\LSCore.ApiClient\LSCore.ApiClient.Rest.DependencyInjection\LSCore.ApiClient.Rest.DependencyInjection.csproj"/>
+    <ProjectReference Include="..\LSCore.ApiClient\LSCore.ApiClient.Rest\LSCore.ApiClient.Rest.csproj"/>
+    <ProjectReference Include="..\LSCore.Auth\LSCore.Auth.Key.DependencyInjection\LSCore.Auth.Key.DependencyInjection.csproj"/>
+    <ProjectReference Include="..\LSCore.Auth\LSCore.Auth.Permission.Contracts\LSCore.Auth.Permission.Contracts.csproj"/>
+    <ProjectReference Include="..\LSCore.Auth\LSCore.Auth.Permission.DependencyInjection\LSCore.Auth.Permission.DependencyInjection.csproj"/>
+    <ProjectReference Include="..\LSCore.Auth\LSCore.Auth.Permission.Domain\LSCore.Auth.Permission.Domain.csproj"/>
+    <ProjectReference Include="..\LSCore.Auth\LSCore.Auth.Role.Contracts\LSCore.Auth.Role.Contracts.csproj"/>
+    <ProjectReference Include="..\LSCore.Auth\LSCore.Auth.Role.DependencyInjection\LSCore.Auth.Role.DependencyInjection.csproj"/>
+    <ProjectReference Include="..\LSCore.Auth\LSCore.Auth.Role.Domain\LSCore.Auth.Role.Domain.csproj"/>
+    <ProjectReference Include="..\LSCore.Auth\LSCore.Auth.UserPass.Contracts\LSCore.Auth.UserPass.Contracts.csproj"/>
+    <ProjectReference Include="..\LSCore.Auth\LSCore.Auth.UserPass.DependencyInjection\LSCore.Auth.UserPass.DependencyInjection.csproj"/>
+    <ProjectReference Include="..\LSCore.Auth\LSCore.Auth.UserPass.Domain\LSCore.Auth.UserPass.Domain.csproj"/>
     <ProjectReference Include="..\LSCore.DependencyInjection\LSCore.DependencyInjection.csproj"/>
-    <ProjectReference Include="..\LSCore.Domain\LSCore.Domain.csproj"/>
-    <ProjectReference Include="..\LSCore.Framework\LSCore.Framework.csproj"/>
-    <ProjectReference Include="..\LSCore.Repository\LSCore.Repository.csproj"/>
+    <ProjectReference Include="..\LSCore.Exceptions\LSCore.Exceptions.DependencyInjection\LSCore.Exceptions.DependencyInjection.csproj"/>
+    <ProjectReference Include="..\LSCore.Exceptions\LSCore.Exceptions\LSCore.Exceptions.csproj"/>
+    <ProjectReference Include="..\LSCore.Logging\LSCore.Logging.csproj"/>
+    <ProjectReference Include="..\LSCore.Mapper\LSCore.Mapper.Contracts\LSCore.Mapper.Contracts.csproj"/>
+    <ProjectReference Include="..\LSCore.Mapper\LSCore.Mapper.Domain\LSCore.Mapper.Domain.csproj"/>
+    <ProjectReference Include="..\LSCore.Repository\LSCore.Repository.Contracts\LSCore.Repository.Contracts.csproj"/>
+    <ProjectReference Include="..\LSCore.Repository\LSCore.Repository\LSCore.Repository.csproj"/>
+    <ProjectReference Include="..\LSCore.SortAndPage\LSCore.SortAndPage.Contracts\LSCore.SortAndPage.Contracts.csproj"/>
+    <ProjectReference Include="..\LSCore.SortAndPage\LSCore.SortAndPage.Domain\LSCore.SortAndPage.Domain.csproj"/>
+    <ProjectReference Include="..\LSCore.Validation\LSCore.Validation.Contracts\LSCore.Validation.Contracts.csproj"/>
+    <ProjectReference Include="..\LSCore.Validation\LSCore.Validation.Domain\LSCore.Validation.Domain.csproj"/>
   </ItemGroup>
 </Project>
