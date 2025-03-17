@@ -7,7 +7,7 @@ using Sample.AuthRole.Api.Requests;
 
 namespace Sample.AuthRole.Api.Controllers;
 
-public class UsersController(ILSCoreAuthPasswordManager<string> authPasswordManager)
+public class UsersController(ILSCoreAuthUserPassManager<string> authPasswordManager)
 	: ControllerBase
 {
 	[HttpPost]
