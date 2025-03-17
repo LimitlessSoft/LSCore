@@ -5,7 +5,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-  pack-and-publish-api-client:
+  pack-and-publish-api-client-rest:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -22,7 +22,7 @@ jobs:
       - name: Publish
         run: dotnet nuget push src/LSCore.ApiClient/LSCore.ApiClient.Rest/bin/Release/*.nupkg --api-key ${{ secrets.NUGET_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
 
-  pack-and-publish-api-client:
+  pack-and-publish-api-client-rest-dependency-injection:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository

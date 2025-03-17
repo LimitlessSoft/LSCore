@@ -6,4 +6,4 @@ namespace Sample.AuthUserPass.Api;
 public class AuthManager(
 	ILSCoreAuthUserPassIdentityEntityRepository<string> userPassIdentityEntityRepository,
 	LSCoreAuthUserPassConfiguration configuration
-) : LSCoreAuthUserPassManager<string>(userPassIdentityEntityRepository, configuration) { }
+) : LSCoreAuthUserPassManager<string>(userPassIdentityEntityRepository, configuration);

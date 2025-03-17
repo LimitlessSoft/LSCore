@@ -7,7 +7,7 @@
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <Version>9.1.0</Version>
+    <Version>9.1.1</Version>
     <Description>Package containing contracts used by LSCore.SortAndPage.</Description>
   </PropertyGroup>
   <ItemGroup>
