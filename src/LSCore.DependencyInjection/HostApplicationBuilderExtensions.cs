@@ -108,7 +108,7 @@ public static class HostApplicationBuilderExtensions
 				&& baseType.GetGenericTypeDefinition().Name.Contains("LSCoreValidatorBase")
 			)
 			{
-				builder.Services.AddTransient(baseType, type);
+				builder.Services.AddSingleton(baseType, type);
 				return;
 			}
 			baseType = baseType.BaseType;
