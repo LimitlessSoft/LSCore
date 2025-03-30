@@ -1,6 +1,3 @@
-> [!IMPORTANT]
-> Version 9.1.X has just been released, however documentaiton is still being updated
-
 # LSCore
 This framework aims to simplify the development of .NET applications.
 
