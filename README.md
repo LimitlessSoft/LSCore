@@ -17,7 +17,7 @@ If you want to implement feature, discuss it inside [Request Feature](https://gi
 If you have bug, report it at [Issues](https://github.com/LimitlessSoft/LSCore/issues)
 Also check out `Releases/Next Release` inside [Discussions](https://github.com/LimitlessSoft/LSCore/discussions) to see wether given feature/bugfix is already being worked on
 
-# (Maintener Note) Upgrading nuget version
+# (Maintainer Note) Upgrading nuget version
 All projects have synchronized versions. When development is done, to upgrade versions go to `/tools/version-upgrade` and run `node version-upgrade.js`
 This tool will update version number inside all projects and commit upgrade with appropriate message
 If you want to upgrade minor version, add --upgrade-minor at the end of the command
