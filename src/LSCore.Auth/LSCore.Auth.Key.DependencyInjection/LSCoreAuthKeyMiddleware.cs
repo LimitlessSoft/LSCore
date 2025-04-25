@@ -10,6 +10,7 @@ namespace LSCore.Auth.Key.DependencyInjection;
 public class LSCoreAuthKeyMiddleware(
 	RequestDelegate next,
 	ILogger<LSCoreAuthKeyMiddleware> logger,
+	ILSCoreAuthKeyProvider authKeyProvider,
 	LSCoreAuthKeyConfiguration configuration
 )
 {
@@ -36,7 +37,21 @@ public class LSCoreAuthKeyMiddleware(
 		// If no API key is provided, then the request is unauthenticated
 		if (configuration.BreakOnFailedAuth && string.IsNullOrWhiteSpace(apiKey))
 			throw new LSCoreUnauthenticatedException();
-		if (!configuration.ValidKeys.Contains(apiKey!))
+
+		// Left for backward compatibility
+		if (configuration.ValidKeys != null)
+		{
+			if (!configuration.ValidKeys.Contains(apiKey!))
+			{
+				if (configuration.BreakOnFailedAuth)
+					throw new LSCoreForbiddenException();
+			}
+			else
+			{
+				context.User = new ClaimsPrincipal(new ClaimsIdentity("ApiKey"));
+			}
+		}
+		else if (!authKeyProvider.IsValidKey(apiKey!))
 		{
 			if (configuration.BreakOnFailedAuth)
 				throw new LSCoreForbiddenException();
