@@ -1,7 +1,7 @@
 # LSCore
-This framework aims to simplify the development of .NET applications.
+LSCore is collection of libraries aiming to simplify the development of .NET applicaitons.
 
-Its core principles are **Simplicity** and **Abstraction**. To that end, features are divided into separate assemblies. This gives you the flexibility to include only the assemblies containing the functionality you need, preventing your codebase from being cluttered with unnecessary code.
+Its core principles are Simplicity and Abstraction. To that end, features are divided into separate libraries. This gives you the flexibility to include only the library containing the functionality you need, preventing your codebase from being cluttered with unnecessary code.
 
 It is free and open-sourced, do whatever you want with it.
 
