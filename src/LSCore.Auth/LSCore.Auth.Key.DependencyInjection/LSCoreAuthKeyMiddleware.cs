@@ -44,7 +44,7 @@ public class LSCoreAuthKeyMiddleware(
 			if (!configuration.ValidKeys.Contains(apiKey!))
 			{
 				if (configuration.BreakOnFailedAuth)
-					throw new LSCoreForbiddenException();
+					throw new LSCoreUnauthenticatedException();
 			}
 			else
 			{
@@ -54,7 +54,7 @@ public class LSCoreAuthKeyMiddleware(
 		else if (!authKeyProvider.IsValidKey(apiKey!))
 		{
 			if (configuration.BreakOnFailedAuth)
-				throw new LSCoreForbiddenException();
+				throw new LSCoreUnauthenticatedException();
 		}
 		else
 		{
