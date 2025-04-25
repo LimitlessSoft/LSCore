@@ -6,6 +6,7 @@ namespace LSCore.Auth.Key.DependencyInjection;
 
 public static class Extensions
 {
+	[Obsolete]
 	public static void AddLSCoreAuthKey(
 		this WebApplicationBuilder builder,
 		LSCoreAuthKeyConfiguration configuration
