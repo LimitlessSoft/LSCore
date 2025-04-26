@@ -7,7 +7,7 @@
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <Version>9.1.4</Version>
+    <Version>9.1.4.1</Version>
     <Description>Package containing all sorts of useful extensions which haven&apos;t found way to the separate packages</Description>
   </PropertyGroup>
   <ItemGroup>
