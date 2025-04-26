@@ -123,6 +123,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LSCore.Common.Extensions", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LSCore.Common.Contracts", "src\LSCore.Common\LSCore.Common.Contracts\LSCore.Common.Contracts.csproj", "{5C9EAEF0-4BD7-4CBA-B5FF-F3FCF7738EFE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.AuthKeyProvider.Api", "src\SampleApps\AuthKey\Sample.AuthKeyProvider.Api\Sample.AuthKeyProvider.Api.csproj", "{AAB5D5CA-1BEE-4FB3-A421-64228A696114}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -281,6 +283,10 @@ Global
 		{5C9EAEF0-4BD7-4CBA-B5FF-F3FCF7738EFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5C9EAEF0-4BD7-4CBA-B5FF-F3FCF7738EFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5C9EAEF0-4BD7-4CBA-B5FF-F3FCF7738EFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AAB5D5CA-1BEE-4FB3-A421-64228A696114}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAB5D5CA-1BEE-4FB3-A421-64228A696114}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAB5D5CA-1BEE-4FB3-A421-64228A696114}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAB5D5CA-1BEE-4FB3-A421-64228A696114}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -336,5 +342,6 @@ Global
 		{66173BBF-B507-426E-8F55-30244F7C32C7} = {352F13BE-7AAC-4CF8-A99E-02E69491360A}
 		{C28F7365-E945-44AE-8DD4-F8EBF4CFF134} = {3979B82D-24D1-44CC-8106-CABF9F15D02D}
 		{5C9EAEF0-4BD7-4CBA-B5FF-F3FCF7738EFE} = {3979B82D-24D1-44CC-8106-CABF9F15D02D}
+		{AAB5D5CA-1BEE-4FB3-A421-64228A696114} = {E376F39D-D99D-4D0E-B8E7-0307C0E90FE6}
 	EndGlobalSection
 EndGlobal

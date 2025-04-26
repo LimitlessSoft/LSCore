@@ -7,7 +7,7 @@
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <Version>9.1.3</Version>
+    <Version>9.1.4</Version>
     <Description>Package containing only contracts used to manage repository layer.</Description>
   </PropertyGroup>
   <ItemGroup>
