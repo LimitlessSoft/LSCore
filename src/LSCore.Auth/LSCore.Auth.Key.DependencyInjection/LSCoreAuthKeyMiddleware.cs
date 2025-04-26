@@ -3,6 +3,7 @@ using LSCore.Auth.Contracts;
 using LSCore.Auth.Key.Contracts;
 using LSCore.Exceptions;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
 namespace LSCore.Auth.Key.DependencyInjection;
@@ -10,12 +11,12 @@ namespace LSCore.Auth.Key.DependencyInjection;
 public class LSCoreAuthKeyMiddleware(
 	RequestDelegate next,
 	ILogger<LSCoreAuthKeyMiddleware> logger,
-	ILSCoreAuthKeyProvider authKeyProvider,
 	LSCoreAuthKeyConfiguration configuration
 )
 {
 	public async Task Invoke(HttpContext context)
 	{
+		var authKeyProvider = context.RequestServices.GetService<ILSCoreAuthKeyProvider>();
 		// If the request is already authenticated, then we can skip the rest of the middleware
 		if (context.User.Identity?.IsAuthenticated == true)
 		{
